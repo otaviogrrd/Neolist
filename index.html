@@ -355,6 +355,10 @@
                         <p>Login inválido, minímo de 6 caracteres.</p>
                         </div>
 
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpLoginUtilizado" class="ui-content" data-theme="b">
+                        <p>Este login já está sendo utilizado, escolha outro.</p>
+                        </div>
+
                         <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoLogin" class="ui-content" data-theme="b">
                         <p>Senha inválida, minímo de 6 caracteres.</p>
                         </div>
@@ -711,7 +715,7 @@
                 
       
                $(document).on("pageshow","#contatos-page",function() {       
-                var url="http://neolist.com.br/neolist/app/webroot/appweb/getContatosNeoList.php";
+                var url="http://neolist.com.br/appweb/getContatosNeoList.php";
                 $.getJSON(url,function(result, status) {
                     if ( status === 'success' ) {
                     
@@ -795,7 +799,7 @@
                        }                      
                 }
                 else {
-                    var url="http://neolist.com.br/neolist/app/webroot/appweb/getDetalheContatoNeoList.php?id=" + idSelecionado;
+                    var url="http://neolist.com.br/appweb/getDetalheContatoNeoList.php?id=" + idSelecionado;
                      $.getJSON(url,function(result, status) {
                      if ( status === 'success' ){
                         //console.log(result);
@@ -846,7 +850,7 @@
              $("#btn-edit").click(function() {
 
              /*   $.ajax({
-                    url:"http://104.131.233.239/android/neolist_phonegap/getSessaoUsuario.php?username="+username+"",
+                    url:"http://neolist.com.br/appweb/getSessaoUsuario.php?username="+username+"",
                         dataType : "json",
                         success : function(data) {
                             if(data.length == 0) {
@@ -867,7 +871,7 @@
                 if(username.length > 0 && senha.length > 0) {
 
                     $.ajax({
-                        url:"http://neolist.com.br/neolist/app/webroot/appweb/getLoginNeoList.php?username="+username+"&senha="+senha,
+                        url:"http://neolist.com.br/appweb/getLoginNeoList.php?username="+username+"&senha="+senha,
                         dataType : "json",
                         //data : "GET",
                         success : function(data) {
@@ -878,7 +882,7 @@
                             
                             } else if(data[0].login != null) {
                                 
-                                 var url="http://neolist.com.br/neolist/app/webroot/appweb/getDetalhesAlteracao.php?id="+data[0].login;
+                                 var url="http://neolist.com.br/appweb/getDetalhesAlteracao.php?id="+data[0].login;
                                  $.getJSON(url,function(result) {
                                     console.log(result);
 
@@ -952,20 +956,35 @@
                     {
 
                     if($.trim(senha).length>=6)
-                    {
-                          
+                    { 
+
                         $.ajax({
-                            type: "POST",
-                            //url: "http://phonegappro.esy.es/test/insert.php",
-                            url:"http://neolist.com.br/neolist/app/webroot/appweb/insertUsuariosNeoList.php",
-                            data: dataString,
-                            crossDomain: true,
-                            cache: false,
-                            beforeSend: function() { $("#insert").val('Connecting...');},
-                            success: function(data) {
-                                $.mobile.changePage("#home-page");
+                                url:"http://neolist.com.br/appweb/getExistenciaLogin.php?username="+username+"",
+                                dataType: "json",
+                                success: function(data) {
+                                //alert(data[0].login);
+                                if(data[0].login == null) {
+
+                                   
+                                   $.ajax({
+                                            type: "POST",
+                                            //url: "http://phonegappro.esy.es/test/insert.php",
+                                            url:"http://neolist.com.br/appweb/insertUsuariosNeoList.php",
+                                            data: dataString,
+                                            crossDomain: true,
+                                            cache: false,
+                                            beforeSend: function() { $("#insert").val('Connecting...');},
+                                            success: function(data) {
+                                                $.mobile.changePage("#home-page");
+                                            }
+                                        }); 
+                                
+                                } else {
+                                    $('#popUpLoginUtilizado').popup('open');
+
+                                }
                             }
-                        });
+                        }); 
 
                     } else {
 
@@ -1015,7 +1034,7 @@
                         $.ajax({
                             type: "POST",
                             //url: "http://phonegappro.esy.es/test/insert.php",
-                            url:"http://neolist.com.br/neolist/app/webroot/appweb/updateUsuariosNeoList.php",
+                            url:"http://neolist.com.br/appweb/updateUsuariosNeoList.php",
                             data: dataString,
                             crossDomain: true,
                             cache: false,
