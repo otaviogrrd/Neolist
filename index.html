@@ -1,936 +1,1038 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <meta name="format-detection" content="telephone=no" />
+            <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
 
-        <link rel="stylesheet"  href="libs/jQM-flat/jquery.mobile.flatui.css">
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+            <link rel="stylesheet"  href="libs/jQM-flat/jquery.mobile.flatui.css">
+            <link rel="stylesheet" type="text/css" href="css/index.css" />
 
-        <title>Neolist</title>
+            <title>Neolist</title>
 
-        <script type="text/javascript" src="js/jquery.js"></script>
-         <script type="text/javascript" src="js/geturi.js"></script>
-        
-        <script type="text/javascript">
+            <script type="text/javascript" src="js/jquery.js"></script>
+             <script type="text/javascript" src="js/geturi.js"></script>
+            
+            <script type="text/javascript">
 
-        var idSelecionado = 0;
-  
-        function pegaIdSelecionado(arg) {  
-          idSelecionado = arg;
-          return false;
-        }
+            var idSelecionado = 0;
+      
+            function pegaIdSelecionado(arg) {  
+              idSelecionado = arg;
+              return false;
+            }
+           
+            </script> 
 
-        $(document).ready(function() {
+        </head>
+        <body>
 
-            $("#insert").click(function() {
-             alert('asd');
+            <div id="app">
 
-             var nome=$("#nome").val();
-             var username=$("#username").val();
-             var senha=$("#senha").val();
-             var idioma=$("#idioma").val();
-             var email=$("#email").val();
-             var telefone=$("#telefone").val();
-             var pais=$("#pais").val();
-             var estado=$("#estado").val();
-             var cidade=$("#cidade").val();
+                <div id="home-page" data-role="page">
 
-                var dataString = "nome="+nome+"&username="+username+"&senha="+senha+"&idioma="+idioma+"&email="+email+"&telefone="+telefone+"&pais="+pais+"&cidade="+cidade+"&estado="+estado+"&insert=";
-               
-                //if($.trim(title).length>0 & $.trim(duration).length>0 & $.trim(price).length>0)
-               // {
-                    $.ajax({
-                        type: "POST",
-                        //url: "http://phonegappro.esy.es/test/insert.php",
-                        url:"http://104.131.233.239/android/neolist_phonegap/insertUsuariosNeoList.php",
-                        data: dataString,
-                        crossDomain: true,
-                        cache: false,
-                        beforeSend: function() { $("#insert").val('Connecting...');},
-                        success: function(data) {
-                            if(data=="ok")
-                            {
-                                alert("inserted");
-                                $("#insert").val('Insert');
+                    <div data-role="content" >
+     
+                        <div id="logoContainer" class="centerText" >
+                                <img src="img/caminho-neocatecumenal-logo.png" id="logo" style="max-width:136px;" />
+                            </div>
+
+                        <div id="menu">
+                            <!--<a data-icon="flat-checkround" data-theme="a" href="#login-page" data-role="button">Login</a>-->
+                            <a data-icon="flat-man" data-theme="d" href="#contatos-page" data-role="button">Contatos</a>
+                            <a data-icon="flat-plus" data-theme="f" href="#cadastro-page"  data-role="button">Cadastre-se</a>
+                            <fieldset class="ui-grid-a">
+                                <div class="ui-block-a"> <a id="btn-edit" data-icon="flat-settings" data-theme="e" data-role="button" href="#login-page">Editar</a></div>
+                                <div class="ui-block-b"><a data-icon="ms-question" data-theme="g" href="#about-page"  data-role="button" >Suporte</a></div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div><!-- /page  -->
+
+                <div id="contatos-page" data-role="page">
+                    <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
+                        <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Contatos</h1>
+                    </div>
+                    <div data-role="main">
+                       
+                                 <div id="listview"></div>
+                        
+                        
+                    </div> 
+                </div>
+
+                <div id="login-page" data-role="page">
+                    <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
+                        <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Login</h1>
+                    </div>
+
+
+                    <div data-role="content">
+                        <form>
+
+                            <input type="text" name="input-username" id="input-username" data-mini="true" placeholder="Login"/>
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="password" name="input-senha" id="input-senha" data-mini="true" placeholder="Senha"/>
+                            
+                            <div style="margin-bottom:7px;"></div>
+                            
+                         
+                            <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="login-btn" value="Entrar"/>
+                            
+                        </form>
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpDadosLoginInvalidos">
+                           <p>Usuário ou senha inválidos, verifique.</p>
+                        </div>
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpFaltaDadosLogin">
+                           <p>Informe o usuário e senha, campos obrigatórios.</p>
+                        </div>
+
+                    </div>
+                   
+                </div>
+
+
+                <div id="cadastro-page" data-role="page">
+                    <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
+                        <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Novo Cadastro</h1>
+                    </div>
+                    <div data-role="content" >
+                        <form  id="search-form" action="" >
+                            
+                            <input type="text" name="nome" id="nome" data-mini="true" placeholder="Nome" required/>
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="username" id="username" data-mini="true" placeholder="Login" style="text-transform: lowercase;"/>
+    						<div style="margin-bottom:7px;"></div>
+                            <input type="password" name="senha" id="senha" data-mini="true" placeholder="Senha"/>
+                            <div style="margin-bottom:7px;"></div>
+                                <select name="categoria" id="categoria" data-native-menu="false" data-mini="true" data-theme="b">
+                                    <option value="">Categoria</option>
+                                        <option value="7">Brigadista</option>
+                                        <option value="6">Enfermeiro(a)</option>
+                                        <option value="5">Médico</option>
+                                        <option value="1">Monitor</option>
+                                        <option value="2">Peregrino(a)</option>
+                                        <option value="3">Responsável de Grupo</option>
+                                        <option value="4">Responsável pela Acolhida</option>
+                                </select>
+                                <div style="margin-bottom:7px;"></div>
+    						
+    						<select name="idioma" id="idioma" data-native-menu="false" data-mini="true" data-theme="b">
+    							<option value="">Idioma</option>
+    							<option value="ar">Árabe</option>
+    							<option value="es">Espanhol</option>
+    							<option value="fr">Francês</option>
+    							<option value="in">Inglês</option>
+    							<option value="it">Italiano</option>
+    							<option value="pt">Português</option>
+    						</select>
+    						<div style="margin-bottom:7px;"></div>
+                            <input type="text" name="email" id="email" data-mini="true" placeholder="Email"/>
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="telefone" id="telefone" data-mini="true" placeholder="Telefone"/>
+    						<div style="margin-bottom:7px;"></div>
+    						<select name="pais" id="pais" data-native-menu="false" data-mini="true" data-theme="b" placeholder="Pais">
+    							<option value="">País</option>
+                                            <option value="af">Afghanistan • افغانستان</option>
+                                            <option value="al">Albania • Shqipëria</option>
+                                            <option value="dz">Algeria • الجزائر</option>
+                                            <option value="ad">Andorra</option>
+                                            <option value="ao">Angola</option>
+                                            <option value="ag">Antigua and Barbuda</option>
+                                            <option value="ar">Argentina</option>
+                                            <option value="am">Armenia • Հայաստան</option>
+                                            <option value="au">Australia</option>
+                                            <option value="at">Austria • Österreich</option>
+                                            <option value="az">Azerbaijan • Azərbaycan</option>
+                                            <option value="bs">Bahamas</option>
+                                            <option value="bh">Bahrain • البحرين</option>
+                                            <option value="bd">Bangladesh • বাংলাদেশ</option>
+                                            <option value="bb">Barbados</option>
+                                            <option value="by">Belarus • Беларусь</option>
+                                            <option value="be">Belgium • België • Belgique • Belgien</option>
+                                            <option value="bz">Belize</option>
+                                            <option value="bj">Benin • Bénin</option>
+                                            <option value="bt">Bhutan • འབྲུག་ཡུལ།</option>
+                                            <option value="bo">Bolivia • Wuliwya • Volívia • Buliwya</option>
+                                            <option value="ba">Bosnia and Herzegovina • Bosna i Hercegovina</option>
+                                            <option value="bw">Botswana</option>
+                                            <option value="br">Brazil • Brasil</option>
+                                            <option value="bn">Brunei</option>
+                                            <option value="bg">Bulgaria • България</option>
+                                            <option value="bf">Burkina Faso</option>
+                                            <option value="mm">Burma • မ္ရန္&amp;zwnj;မာ</option>
+                                            <option value="bi">Burundi • Uburundi</option>
+                                            <option value="kh">Cambodia • កម្ពុជា</option>
+                                            <option value="cm">Cameroon • Cameroun</option>
+                                            <option value="ca">Canada</option>
+                                            <option value="cv">Cape Verde • Cabo Verde</option>
+                                            <option value="cf">Central African Republic • Centrafrique • Bêafrîka</option>
+                                            <option value="td">Chad • Tchad • تشاد</option>
+                                            <option value="cl">Chile</option>
+                                            <option value="cn">China • 中國/中国</option>
+                                            <option value="co">Colombia</option>
+                                            <option value="km">Comoros • Komori • Comores • جزر القمر</option>
+                                            <option value="cd">Congo, Dem. Rep. • Congo, Rép. dém.</option>
+                                            <option value="cg">Congo, Republic • Congo, République</option>
+                                            <option value="cr">Costa Rica</option>
+                                            <option value="ci">Cote d’Ivoire • Côte d’Ivoire</option>
+                                            <option value="hr">Croatia • Hrvatska</option>
+                                            <option value="cu">Cuba</option>
+                                            <option value="cy">Cyprus • Κύπρος • Kıbrıs</option>
+                                            <option value="cz">Czechia • Česko</option>
+                                            <option value="dk">Denmark • Danmark</option>
+                                            <option value="dj">Djibouti • جيبوتي</option>
+                                            <option value="dm">Dominica</option>
+                                            <option value="do">Dominican Republic • República Dominicana</option>
+                                            <option value="tl">East Timor • Timór-Leste • Timor-Leste</option>
+                                            <option value="ec">Ecuador</option>
+                                            <option value="eg">Egypt • مصر</option>
+                                            <option value="sv">El Salvador</option>
+                                            <option value="gq">Equatorial Guinea • Guinea Ecuatorial • Guinée équatoriale • Guiné Equatorial</option>
+                                            <option value="er">Eritrea • ኤርትራ • إرتريا</option>
+                                            <option value="ee">Estonia • Eesti</option>
+                                            <option value="et">Ethiopia • ኢትዮጵያ</option>
+                                            <option value="fj">Fiji • Viti • फ़िजी</option>
+                                            <option value="fi">Finland • Suomi</option>
+                                            <option value="fr">France</option>
+                                            <option value="ga">Gabon</option>
+                                            <option value="gm">Gambia</option>
+                                            <option value="ge">Georgia • საქართველო</option>
+                                            <option value="de">Germany • Deutschland</option>
+                                            <option value="gh">Ghana</option>
+                                            <option value="gr">Greece • Ελλάδα</option>
+                                            <option value="gd">Grenada</option>
+                                            <option value="gt">Guatemala</option>
+                                            <option value="gn">Guinea • Guinée</option>
+                                            <option value="gw">Guinea-Bissau • Guiné-Bissau</option>
+                                            <option value="gy">Guyana</option>
+                                            <option value="ht">Haiti • Haïti • Ayiti</option>
+                                            <option value="hn">Honduras</option>
+                                            <option value="hu">Hungary • Magyarország</option>
+                                            <option value="is">Iceland • Ísland</option>
+                                            <option value="in">India • भारत</option>
+                                            <option value="id">Indonesia</option>
+                                            <option value="ir">Iran • ایران</option>
+                                            <option value="iq">Iraq • العراق</option>
+                                            <option value="ie">Ireland • Éire</option>
+                                            <option value="il">Israel • إسرائيل • ישראל</option>
+                                            <option value="it">Italy • Italia</option>
+                                            <option value="jm">Jamaica</option>
+                                            <option value="jp">Japan • 日本</option>
+                                            <option value="jo">Jordan • الأردن</option>
+                                            <option value="kz">Kazakhstan • Қазақстан</option>
+                                            <option value="ke">Kenya</option>
+                                            <option value="ki">Kiribati</option>
+                                            <option value="kp">Korea, North • 조선</option>
+                                            <option value="kr">Korea, South • 한국</option>
+                                            <option value="kv">Kosovo • Kosova • Косово</option>
+                                            <option value="kw">Kuwait • الكويت</option>
+                                            <option value="kg">Kyrgyzstan • Кыргызстан</option>
+                                            <option value="la">Laos • ປະເທດລາວ</option>
+                                            <option value="lv">Latvia • Latvija</option>
+                                            <option value="lb">Lebanon • لبنان</option>
+                                            <option value="ls">Lesotho</option>
+                                            <option value="lr">Liberia</option>
+                                            <option value="ly">Libya • ليبيا</option>
+                                            <option value="li">Liechtenstein</option>
+                                            <option value="lt">Lithuania • Lietuva</option>
+                                            <option value="lu">Luxembourg • Luxemburg • Lëtzebuerg</option>
+                                            <option value="mk">Macedonia • Македонија</option>
+                                            <option value="mg">Madagascar • Madagasikara</option>
+                                            <option value="mw">Malawi • Malaŵi</option>
+                                            <option value="my">Malaysia</option>
+                                            <option value="mv">Maldives</option>
+                                            <option value="ml">Mali</option>
+                                            <option value="mt">Malta</option>
+                                            <option value="mh">Marshall Islands • Aelōñin Ṃajeḷ</option>
+                                            <option value="mr">Mauritania • موريتانيا • Mauritanie</option>
+                                            <option value="mu">Mauritius • Maurice</option>
+                                            <option value="mx">Mexico • México • Mēxihco</option>
+                                            <option value="fm">Micronesia</option>
+                                            <option value="md">Moldova</option>
+                                            <option value="mc">Monaco</option>
+                                            <option value="mn">Mongolia • Монгол улс</option>
+                                            <option value="me">Montenegro • Crna Gora / Црна Гора</option>
+                                            <option value="ma">Morocco • المغرب</option>
+                                            <option value="mz">Mozambique • Moçambique</option>
+                                            <option value="na">Namibia</option>
+                                            <option value="nr">Nauru • Naoero</option>
+                                            <option value="np">Nepal • नेपाल</option>
+                                            <option value="nl">Netherlands • Nederland</option>
+                                            <option value="nz">New Zealand • Aotearoa</option>
+                                            <option value="ni">Nicaragua</option>
+                                            <option value="ne">Niger</option>
+                                            <option value="ng">Nigeria</option>
+                                            <option value="no">Norway • Norge / Noreg</option>
+                                            <option value="om">Oman • عمان</option>
+                                            <option value="pk">Pakistan • پاکستان</option>
+                                            <option value="pw">Palau • Belau</option>
+                                            <option value="ps">Palestine • فلسطين</option>
+                                            <option value="pa">Panama • Panamá</option>
+                                            <option value="pg">Papua New Guinea • Papua Niugini</option>
+                                            <option value="py">Paraguay • Paraguái</option>
+                                            <option value="pe">Peru • Perú</option>
+                                            <option value="ph">Philippines • Pilipinas</option>
+                                            <option value="pl">Poland • Polska</option>
+                                            <option value="pt">Portugal</option>
+                                            <option value="qa">Qatar • قطر</option>
+                                            <option value="ro">Romania • România</option>
+                                            <option value="ru">Russia • Россия</option>
+                                            <option value="rw">Rwanda</option>
+                                            <option value="kn">Saint Kitts and Nevis</option>
+                                            <option value="lc">Saint Lucia</option>
+                                            <option value="vc">Saint Vincent and the Grenadines</option>
+                                            <option value="ws">Samoa • Sāmoa</option>
+                                            <option value="sm">San Marino</option>
+                                            <option value="st">Sao Tome and Principe • São Tomé e Príncipe</option>
+                                            <option value="sa">Saudi Arabia • العربية السعودية</option>
+                                            <option value="sn">Senegal • Sénégal</option>
+                                            <option value="rs">Serbia • Србија / Srbija</option>
+                                            <option value="sc">Seychelles • Sesel</option>
+                                            <option value="sl">Sierra Leone</option>
+                                            <option value="sg">Singapore • 新加坡 • Singapura • சிங்கப்பூர்</option>
+                                            <option value="sk">Slovakia • Slovensko</option>
+                                            <option value="si">Slovenia • Slovenija</option>
+                                            <option value="sb">Solomon Islands</option>
+                                            <option value="so">Somalia • Soomaaliya • الصومال</option>
+                                            <option value="za">South Africa • Suid-Afrika</option>
+                                            <option value="ss">South Sudan</option>
+                                            <option value="es">Spain • España</option>
+                                            <option value="lk">Sri Lanka • ශ්&amp;zwj;රී ලංකාව • இலங்கை</option>
+                                            <option value="sd">Sudan • السودان</option>
+                                            <option value="sr">Suriname</option>
+                                            <option value="sz">Swaziland • eSwatini</option>
+                                            <option value="se">Sweden • Sverige</option>
+                                            <option value="ch">Switzerland • Schweiz • Suisse • Svizzera • Svizra</option>
+                                            <option value="sy">Syria • سورية</option>
+                                            <option value="tw">Taiwan • 臺灣/台湾</option>
+                                            <option value="tj">Tajikistan • Тоҷикистон</option>
+                                            <option value="tz">Tanzania</option>
+                                            <option value="th">Thailand • ประเทศไทย</option>
+                                            <option value="tg">Togo</option>
+                                            <option value="to">Tonga</option>
+                                            <option value="tt">Trinidad and Tobago</option>
+                                            <option value="tn">Tunisia • تونس</option>
+                                            <option value="tr">Turkey • Türkiye</option>
+                                            <option value="tm">Turkmenistan • Türkmenistan</option>
+                                            <option value="tv">Tuvalu</option>
+                                            <option value="ug">Uganda</option>
+                                            <option value="ua">Ukraine • Україна</option>
+                                            <option value="ae">United Arab Emirates • الإمارات العربية المتحدة</option>
+                                            <option value="gb">United Kingdom</option>
+                                            <option value="us">United States</option>
+                                            <option value="uy">Uruguay</option>
+                                            <option value="uz">Uzbekistan • Oʻzbekiston</option>
+                                            <option value="vu">Vanuatu</option>
+                                            <option value="va">Vatican City • Civitas Vaticana</option>
+                                            <option value="ve">Venezuela</option>
+                                            <option value="vn">Vietnam • Việt Nam</option>
+                                            <option value="eh">Western Sahara • الصحراء الغربية</option>
+                                            <option value="ye">Yemen • اليمن</option>
+                                            <option value="zm">Zambia</option>
+                                            <option value="zw">Zimbabwe</option>
+    						</select>
+    						<div style="margin-bottom:7px;"></div>
+                            <input type="text" name="estado" id="estado" data-mini="true" placeholder="Estado"/>
+    						<div style="margin-bottom:7px;"></div>
+                            <input type="text" name="cidade" id="cidade" data-mini="true" placeholder="Cidade"/>
+                          <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="insert" value="Salvar"/>
+                        </form>
+                        
+                        
+                       
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpCamposVazios" class="ui-content" data-theme="b">
+                        <p>Informe todos os campos, preenchimento obrigatório.</p>
+                        </div>
+
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoLogin" class="ui-content" data-theme="b">
+                        <p>Login inválido, minímo de 6 caracteres.</p>
+                        </div>
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoLogin" class="ui-content" data-theme="b">
+                        <p>Senha inválida, minímo de 6 caracteres.</p>
+                        </div>
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popLoginUtilizado" class="ui-content" data-theme="b">
+                        <p>Login já utilizado, escolha outro.</p>
+                        </div>''
+
+                         <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoSenha" class="ui-content" data-theme="b">
+                        <p>Senha inválida, minímo de 6 caracteres</p>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <div id="edit-page" data-role="page">
+                    <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
+                        <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Editar Cadastro</h1>
+                    </div>
+                    <div data-role="content" >
+                        <form  id="search-form" action="" >
+                            <input type="hidden" name="id-edit" id="id-edit"/>
+                            <input type="text" name="nome-edit" id="nome-edit" data-mini="true" placeholder="Nome" />
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="username-edit" id="username-edit" data-mini="true" placeholder="Login" readonly="true"/>
+                            <div style="margin-bottom:7px;"></div>
+                                <select name="categoria-edit" id="categoria-edit" data-native-menu="false" data-mini="true" data-theme="b">
+                                    <option value="">Categoria</option>
+                                        <option value="7">Brigadista</option>
+                                        <option value="6">Enfermeiro(a)</option>
+                                        <option value="5">Médico</option>
+                                        <option value="1">Monitor</option>
+                                        <option value="2">Peregrino(a)</option>
+                                        <option value="3">Responsável de Grupo</option>
+                                        <option value="4">Responsável pela Acolhida</option>
+                                </select>
+                                <div style="margin-bottom:7px;"></div>
+                            
+                            <select name="idioma-edit" id="idioma-edit" data-native-menu="false" data-mini="true" data-theme="b">
+                                <option value="">Idioma</option>
+                                <option value="ar">Árabe</option>
+                                <option value="es">Espanhol</option>
+                                <option value="fr">Francês</option>
+                                <option value="in">Inglês</option>
+                                <option value="it">Italiano</option>
+                                <option value="pt">Português</option>
+                            </select>
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="email-edit" id="email-edit" data-mini="true" placeholder="Email"/>
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="telefone-edit" id="telefone-edit" data-mini="true" placeholder="Telefone"/>
+                            <div style="margin-bottom:7px;"></div>
+                            <select name="pais-edit" id="pais-edit" data-native-menu="false" data-mini="true" data-theme="b" placeholder="Pais">
+                                <option value="">País</option>
+                                            <option value="af">Afghanistan • افغانستان</option>
+                                            <option value="al">Albania • Shqipëria</option>
+                                            <option value="dz">Algeria • الجزائر</option>
+                                            <option value="ad">Andorra</option>
+                                            <option value="ao">Angola</option>
+                                            <option value="ag">Antigua and Barbuda</option>
+                                            <option value="ar">Argentina</option>
+                                            <option value="am">Armenia • Հայաստան</option>
+                                            <option value="au">Australia</option>
+                                            <option value="at">Austria • Österreich</option>
+                                            <option value="az">Azerbaijan • Azərbaycan</option>
+                                            <option value="bs">Bahamas</option>
+                                            <option value="bh">Bahrain • البحرين</option>
+                                            <option value="bd">Bangladesh • বাংলাদেশ</option>
+                                            <option value="bb">Barbados</option>
+                                            <option value="by">Belarus • Беларусь</option>
+                                            <option value="be">Belgium • België • Belgique • Belgien</option>
+                                            <option value="bz">Belize</option>
+                                            <option value="bj">Benin • Bénin</option>
+                                            <option value="bt">Bhutan • འབྲུག་ཡུལ།</option>
+                                            <option value="bo">Bolivia • Wuliwya • Volívia • Buliwya</option>
+                                            <option value="ba">Bosnia and Herzegovina • Bosna i Hercegovina</option>
+                                            <option value="bw">Botswana</option>
+                                            <option value="br">Brazil • Brasil</option>
+                                            <option value="bn">Brunei</option>
+                                            <option value="bg">Bulgaria • България</option>
+                                            <option value="bf">Burkina Faso</option>
+                                            <option value="mm">Burma • မ္ရန္&amp;zwnj;မာ</option>
+                                            <option value="bi">Burundi • Uburundi</option>
+                                            <option value="kh">Cambodia • កម្ពុជា</option>
+                                            <option value="cm">Cameroon • Cameroun</option>
+                                            <option value="ca">Canada</option>
+                                            <option value="cv">Cape Verde • Cabo Verde</option>
+                                            <option value="cf">Central African Republic • Centrafrique • Bêafrîka</option>
+                                            <option value="td">Chad • Tchad • تشاد</option>
+                                            <option value="cl">Chile</option>
+                                            <option value="cn">China • 中國/中国</option>
+                                            <option value="co">Colombia</option>
+                                            <option value="km">Comoros • Komori • Comores • جزر القمر</option>
+                                            <option value="cd">Congo, Dem. Rep. • Congo, Rép. dém.</option>
+                                            <option value="cg">Congo, Republic • Congo, République</option>
+                                            <option value="cr">Costa Rica</option>
+                                            <option value="ci">Cote d’Ivoire • Côte d’Ivoire</option>
+                                            <option value="hr">Croatia • Hrvatska</option>
+                                            <option value="cu">Cuba</option>
+                                            <option value="cy">Cyprus • Κύπρος • Kıbrıs</option>
+                                            <option value="cz">Czechia • Česko</option>
+                                            <option value="dk">Denmark • Danmark</option>
+                                            <option value="dj">Djibouti • جيبوتي</option>
+                                            <option value="dm">Dominica</option>
+                                            <option value="do">Dominican Republic • República Dominicana</option>
+                                            <option value="tl">East Timor • Timór-Leste • Timor-Leste</option>
+                                            <option value="ec">Ecuador</option>
+                                            <option value="eg">Egypt • مصر</option>
+                                            <option value="sv">El Salvador</option>
+                                            <option value="gq">Equatorial Guinea • Guinea Ecuatorial • Guinée équatoriale • Guiné Equatorial</option>
+                                            <option value="er">Eritrea • ኤርትራ • إرتريا</option>
+                                            <option value="ee">Estonia • Eesti</option>
+                                            <option value="et">Ethiopia • ኢትዮጵያ</option>
+                                            <option value="fj">Fiji • Viti • फ़िजी</option>
+                                            <option value="fi">Finland • Suomi</option>
+                                            <option value="fr">France</option>
+                                            <option value="ga">Gabon</option>
+                                            <option value="gm">Gambia</option>
+                                            <option value="ge">Georgia • საქართველო</option>
+                                            <option value="de">Germany • Deutschland</option>
+                                            <option value="gh">Ghana</option>
+                                            <option value="gr">Greece • Ελλάδα</option>
+                                            <option value="gd">Grenada</option>
+                                            <option value="gt">Guatemala</option>
+                                            <option value="gn">Guinea • Guinée</option>
+                                            <option value="gw">Guinea-Bissau • Guiné-Bissau</option>
+                                            <option value="gy">Guyana</option>
+                                            <option value="ht">Haiti • Haïti • Ayiti</option>
+                                            <option value="hn">Honduras</option>
+                                            <option value="hu">Hungary • Magyarország</option>
+                                            <option value="is">Iceland • Ísland</option>
+                                            <option value="in">India • भारत</option>
+                                            <option value="id">Indonesia</option>
+                                            <option value="ir">Iran • ایران</option>
+                                            <option value="iq">Iraq • العراق</option>
+                                            <option value="ie">Ireland • Éire</option>
+                                            <option value="il">Israel • إسرائيل • ישראל</option>
+                                            <option value="it">Italy • Italia</option>
+                                            <option value="jm">Jamaica</option>
+                                            <option value="jp">Japan • 日本</option>
+                                            <option value="jo">Jordan • الأردن</option>
+                                            <option value="kz">Kazakhstan • Қазақстан</option>
+                                            <option value="ke">Kenya</option>
+                                            <option value="ki">Kiribati</option>
+                                            <option value="kp">Korea, North • 조선</option>
+                                            <option value="kr">Korea, South • 한국</option>
+                                            <option value="kv">Kosovo • Kosova • Косово</option>
+                                            <option value="kw">Kuwait • الكويت</option>
+                                            <option value="kg">Kyrgyzstan • Кыргызстан</option>
+                                            <option value="la">Laos • ປະເທດລາວ</option>
+                                            <option value="lv">Latvia • Latvija</option>
+                                            <option value="lb">Lebanon • لبنان</option>
+                                            <option value="ls">Lesotho</option>
+                                            <option value="lr">Liberia</option>
+                                            <option value="ly">Libya • ليبيا</option>
+                                            <option value="li">Liechtenstein</option>
+                                            <option value="lt">Lithuania • Lietuva</option>
+                                            <option value="lu">Luxembourg • Luxemburg • Lëtzebuerg</option>
+                                            <option value="mk">Macedonia • Македонија</option>
+                                            <option value="mg">Madagascar • Madagasikara</option>
+                                            <option value="mw">Malawi • Malaŵi</option>
+                                            <option value="my">Malaysia</option>
+                                            <option value="mv">Maldives</option>
+                                            <option value="ml">Mali</option>
+                                            <option value="mt">Malta</option>
+                                            <option value="mh">Marshall Islands • Aelōñin Ṃajeḷ</option>
+                                            <option value="mr">Mauritania • موريتانيا • Mauritanie</option>
+                                            <option value="mu">Mauritius • Maurice</option>
+                                            <option value="mx">Mexico • México • Mēxihco</option>
+                                            <option value="fm">Micronesia</option>
+                                            <option value="md">Moldova</option>
+                                            <option value="mc">Monaco</option>
+                                            <option value="mn">Mongolia • Монгол улс</option>
+                                            <option value="me">Montenegro • Crna Gora / Црна Гора</option>
+                                            <option value="ma">Morocco • المغرب</option>
+                                            <option value="mz">Mozambique • Moçambique</option>
+                                            <option value="na">Namibia</option>
+                                            <option value="nr">Nauru • Naoero</option>
+                                            <option value="np">Nepal • नेपाल</option>
+                                            <option value="nl">Netherlands • Nederland</option>
+                                            <option value="nz">New Zealand • Aotearoa</option>
+                                            <option value="ni">Nicaragua</option>
+                                            <option value="ne">Niger</option>
+                                            <option value="ng">Nigeria</option>
+                                            <option value="no">Norway • Norge / Noreg</option>
+                                            <option value="om">Oman • عمان</option>
+                                            <option value="pk">Pakistan • پاکستان</option>
+                                            <option value="pw">Palau • Belau</option>
+                                            <option value="ps">Palestine • فلسطين</option>
+                                            <option value="pa">Panama • Panamá</option>
+                                            <option value="pg">Papua New Guinea • Papua Niugini</option>
+                                            <option value="py">Paraguay • Paraguái</option>
+                                            <option value="pe">Peru • Perú</option>
+                                            <option value="ph">Philippines • Pilipinas</option>
+                                            <option value="pl">Poland • Polska</option>
+                                            <option value="pt">Portugal</option>
+                                            <option value="qa">Qatar • قطر</option>
+                                            <option value="ro">Romania • România</option>
+                                            <option value="ru">Russia • Россия</option>
+                                            <option value="rw">Rwanda</option>
+                                            <option value="kn">Saint Kitts and Nevis</option>
+                                            <option value="lc">Saint Lucia</option>
+                                            <option value="vc">Saint Vincent and the Grenadines</option>
+                                            <option value="ws">Samoa • Sāmoa</option>
+                                            <option value="sm">San Marino</option>
+                                            <option value="st">Sao Tome and Principe • São Tomé e Príncipe</option>
+                                            <option value="sa">Saudi Arabia • العربية السعودية</option>
+                                            <option value="sn">Senegal • Sénégal</option>
+                                            <option value="rs">Serbia • Србија / Srbija</option>
+                                            <option value="sc">Seychelles • Sesel</option>
+                                            <option value="sl">Sierra Leone</option>
+                                            <option value="sg">Singapore • 新加坡 • Singapura • சிங்கப்பூர்</option>
+                                            <option value="sk">Slovakia • Slovensko</option>
+                                            <option value="si">Slovenia • Slovenija</option>
+                                            <option value="sb">Solomon Islands</option>
+                                            <option value="so">Somalia • Soomaaliya • الصومال</option>
+                                            <option value="za">South Africa • Suid-Afrika</option>
+                                            <option value="ss">South Sudan</option>
+                                            <option value="es">Spain • España</option>
+                                            <option value="lk">Sri Lanka • ශ්&amp;zwj;රී ලංකාව • இலங்கை</option>
+                                            <option value="sd">Sudan • السودان</option>
+                                            <option value="sr">Suriname</option>
+                                            <option value="sz">Swaziland • eSwatini</option>
+                                            <option value="se">Sweden • Sverige</option>
+                                            <option value="ch">Switzerland • Schweiz • Suisse • Svizzera • Svizra</option>
+                                            <option value="sy">Syria • سورية</option>
+                                            <option value="tw">Taiwan • 臺灣/台湾</option>
+                                            <option value="tj">Tajikistan • Тоҷикистон</option>
+                                            <option value="tz">Tanzania</option>
+                                            <option value="th">Thailand • ประเทศไทย</option>
+                                            <option value="tg">Togo</option>
+                                            <option value="to">Tonga</option>
+                                            <option value="tt">Trinidad and Tobago</option>
+                                            <option value="tn">Tunisia • تونس</option>
+                                            <option value="tr">Turkey • Türkiye</option>
+                                            <option value="tm">Turkmenistan • Türkmenistan</option>
+                                            <option value="tv">Tuvalu</option>
+                                            <option value="ug">Uganda</option>
+                                            <option value="ua">Ukraine • Україна</option>
+                                            <option value="ae">United Arab Emirates • الإمارات العربية المتحدة</option>
+                                            <option value="gb">United Kingdom</option>
+                                            <option value="us">United States</option>
+                                            <option value="uy">Uruguay</option>
+                                            <option value="uz">Uzbekistan • Oʻzbekiston</option>
+                                            <option value="vu">Vanuatu</option>
+                                            <option value="va">Vatican City • Civitas Vaticana</option>
+                                            <option value="ve">Venezuela</option>
+                                            <option value="vn">Vietnam • Việt Nam</option>
+                                            <option value="eh">Western Sahara • الصحراء الغربية</option>
+                                            <option value="ye">Yemen • اليمن</option>
+                                            <option value="zm">Zambia</option>
+                                            <option value="zw">Zimbabwe</option>
+                            </select>
+
+
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="estado-edit" id="estado-edit" data-mini="true" placeholder="Estado"/>
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="cidade-edit" id="cidade-edit" data-mini="true" placeholder="Cidade"/>
+                            <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="update-btn" value="Atualizar"/>
+
+                            <div style="background:#fff700; !important;" data-role="popup" id="popUpCamposVaziosUpdate" class="ui-content" data-theme="b">
+                            <p>Informe todos os campos, preenchimento obrigatório.</p>
+                            </div>
+
+                        </form>
+                    </div>
+                   
+                </div>
+
+
+
+                    
+
+                <div  id="about-page" data-role="page">
+                    <div data-role="header" data-id="header1" data-position="fixed" class="ui-header">
+                        <a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Suporte</h1>
+                    </div>
+                    <div data-role="content" class="big-text">
+                        <h2>Fabiano Carvalho</h2>
+                        <p>Email: carvalho.fabiano@gmail.com</p>
+                        <p>Telefone: +5561991199497</p>
+                       
+                    </div>
+
+                    <div data-role="content" class="big-text">
+                        <h2>Otávio Garrido</h2>
+                        <p>Email: otavio.grrd@gmail.com</p>
+                        <p>Telefone: +5561982291992</p>
+                       
+                    </div>
+
+                     <div data-role="content" class="big-text">
+                        <h2>Luis Gustavo Souza</h2>
+                        <p>Email: os.luisgustavo@gmail.com</p>
+                        <p>Telefone: +5516982205070</p>
+                       
+                    </div>
+                </div>
+
+                <div id="detalhes-page" data-role="page">
+                    <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
+                        <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Detalhes</h1>
+                    </div>
+                    <div data-role="content" >
+                        <form  id="search-form" action="">
+                            <label for="address">Nome</label>
+                            <input type="text" name="nome-detalhe" id="nome-detalhe" data-mini="true" readonly="true"/>
+
+                            <label for="address">Categoria</label>
+                            <input type="text" name="categoria-detalhe" id="categoria-detalhe" data-mini="true" readonly="true"/>
+
+                            <label for="address">Idioma</label>
+                            <input type="text" name="idioma-detalhe" id="idioma-detalhe" data-mini="true" readonly="true"/>
+
+                            <label for="address">Email</label>
+                            <input type="text" name="email-detalhe" id="email-detalhe" data-mini="true" readonly="true"/>
+
+                            <label for="address">Telefone</label>
+                            <input type="text" name="telefone-detalhe" id="telefone-detalhe" data-mini="true" readonly="true"/>
+
+
+                            <label for="address">Pais</label>
+                            <input type="text" name="pais-detalhe" id="pais-detalhe" data-mini="true" readonly="true"/>
+
+                            <label for="address">Cidade</label>
+                            <input type="text" name="cidade-detalhe" id="cidade-detalhe" data-mini="true" readonly="true"/>
+                           
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+            <script type="text/javascript" src="libs/fastclick.min.js"></script>
+            <script type="text/javascript" src="phonegap.js"></script>
+            <script type="text/javascript" src="libs/jquery-2.0.3.min.js"></script>
+            <script type="text/javascript" src="libs/jQueryMobile/jquery.mobile-1.3.2.min.js"></script>
+
+
+            <script type="text/javascript" src="js/index.js"></script>
+
+            <script type="text/javascript">
+
+                
+      
+               $(document).on("pageshow","#contatos-page",function() {       
+                var url="http://104.131.233.239/android/neolist_phonegap/getContatosNeoList.php";
+                $.getJSON(url,function(result, status) {
+                    if ( status === 'success' ) {
+                    
+                     window.localStorage.clear();
+                
+                     $.each(result, function(i, field) {
+                      var id=field.id;
+                      var nome=field.nome;
+                      var username = field.login;
+                      var categoria = field.categoria;
+                      var idioma = field.idioma;
+                      var email = field.email;
+                      var telefone = field.telefone;
+                      var pais = field.pais;
+                      var estado = field.estado;
+                      var cidade = field.cidade;
+                
+                      var localData = JSON.stringify(field);
+                      window.localStorage.setItem('CONTACT'+id, localData);
+                        
+                      $("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
+                            
+                     });            
+                    }
+                })
+                .fail(function() {
+                console.log('getJSON request failed!'); 
+                var i = 1;                  
+                    while (i < 5000) {  
+                        var localData = JSON.parse(window.localStorage.getItem('CONTACT'+i));
+                        if ( localData !== null ){
+                               var id=localData.id;
+                               var nome=localData.nome;
+                               var username = localData.login;
+                               var categoria = localData.categoria;
+                               var idioma = localData.idioma;
+                               var email = localData.email;
+                               var telefone = localData.telefone;
+                               var pais = localData.pais;
+                               var estado = localData.estado;
+                               var cidade = localData.cidade;
+                                $("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
+                            
+                        }
+                        i++;
+                    }
+                }); 
+            });
+
+
+
+             $(document).on("pageshow","#detalhes-page",function() {       
+                
+                $("#nome-detalhe").val("");  
+                
+                var localData = JSON.parse(window.localStorage.getItem('CONTACT'+idSelecionado));
+                if ( localData !== null ){
+                       var id=localData.id;
+                       var nome=localData.nome;
+                       var username = localData.login;
+                       var categoria = localData.categoria;
+                       var idioma = localData.idioma;
+                       var email = localData.email;
+                       var telefone = localData.telefone;
+                       var pais = localData.pais;
+                       var estado = localData.estado;
+                       var cidade = localData.cidade;
+                        $("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
+                    
+                       $("#nome-detalhe").val(nome);
+                       $("#categoria-detalhe").val(categoria);
+                       $("#idioma-detalhe").val(idioma);
+                       $("#email-detalhe").val(email);
+                       $("#telefone-detalhe").val(telefone);
+                       $("#pais-detalhe").val(pais);
+                       
+                       if(estado == null || estado == "null" || estado == "") {
+                        $("#cidade-detalhe").val(cidade);
+                       } else {
+                        $("#cidade-detalhe").val(cidade + " - " + estado);
+                       }                      
+                }
+                else {
+                    var url="http://104.131.233.239/android/neolist_phonegap/getDetalheContatoNeoList.php?id=" + idSelecionado;
+                     $.getJSON(url,function(result, status) {
+                     if ( status === 'success' ){
+                        //console.log(result);
+
+                          $.each(result, function(i, field) {
+                           var id=field.id;
+                           var nome=field.nome;
+                           var categoria = field.descricao_categoria;
+                           var idioma = field.descricao_idioma;
+                           var email = field.email;
+                           var telefone = field.telefone;
+                           var pais = field.nome_pais;
+                           var cidade = field.cidade;
+                           var estado = field.estado;
+                         
+
+                           $("#nome-detalhe").val(nome);
+                           $("#categoria-detalhe").val(categoria);
+                           $("#idioma-detalhe").val(idioma);
+                           $("#email-detalhe").val(email);
+                           $("#telefone-detalhe").val(telefone);
+                           $("#pais-detalhe").val(pais);
+                           
+                           if(estado == null || estado == "null" || estado == "") {
+                            $("#cidade-detalhe").val(cidade);
+                           } else {
+                            $("#cidade-detalhe").val(cidade + " - " + estado);
+                           }
+                          
+
+                          });
+                     }
+                     });
+                }                   
+            });
+            
+            
+            $(document).on("pageinit","#login-page",function() { 
+
+                $("#input-username").val("");
+                $("#input-senha").val("");
+            });
+
+            $(document).on("pagebeforeshow","#edit-page",function() {
+
+            });
+
+             $("#btn-edit").click(function() {
+
+             /*   $.ajax({
+                    url:"http://104.131.233.239/android/neolist_phonegap/getSessaoUsuario.php?username="+username+"",
+                        dataType : "json",
+                        success : function(data) {
+                            if(data.length == 0) {
+                              $.mobile.changePage("#home-page");
+                            } else if(data.length == 1) {
+                               $.mobile.changePage("#edit-page");
                             }
-                            else if(data=="error")
-                            {
-                                alert("error");
-                                 $("#insert").val('Insert');
+                        }
+                    }); */
+
+            });
+
+            $("#login-btn").click(function() {
+               
+                var username=$("#input-username").val();
+                var senha=$("#input-senha").val();
+                    
+                if(username.length > 0 && senha.length > 0) {
+
+                    $.ajax({
+                        url:"http://104.131.233.239/android/neolist_phonegap/getLoginNeoList.php?username="+username+"&senha="+senha,
+                        dataType : "json",
+                        //data : "GET",
+                        success : function(data) {
+                            //alert(data[0].login);
+                            if(data[0].login == null) {
+                           
+                              $('#popUpDadosLoginInvalidos').popup('open');
+                            
+                            } else if(data[0].login != null) {
+                                
+                                 var url="http://104.131.233.239/android/neolist_phonegap/getDetalhesAlteracao.php?id="+data[0].login;
+                                 $.getJSON(url,function(result) {
+                                    console.log(result);
+
+                                      $.each(result, function(i, field) {
+                                       
+                                       var id=field.id;
+                                       var nome=field.nome;
+                                       var username=field.login;
+                                       var email=field.email;
+                                       var telefone = field.telefone;
+                                       var categoria = field.categoria;
+                                       var idioma = field.idioma;
+                                       var estado = field.estado;
+                                       var cidade = field.cidade;
+
+                                       $("#id-edit").val(id);   
+                                       $("#nome-edit").val(nome);
+                                       $("#username-edit").val(username);
+                                       $("#email-edit").val(email);
+                                       $("#telefone-edit").val(telefone);
+                                       $("#categoria-edit").val(categoria);
+                                       $("#idioma-edit").val(idioma);
+                                       $("#estado-edit").val(estado);
+                                       $("#cidade-edit").val(cidade);
+                                      });
+                                 }); 
+
+                              $.mobile.changePage("#edit-page");
                             }
                         }
                     });
-                //} 
-                return false;
-            });
+
+                } else {
+
+                    $('#popUpFaltaDadosLogin').popup('open');
+
+                }
+
+             });
 
 
-        });
-        </script> 
+               $("#insert").click(function() {
+            
+                 var nome=$("#nome").val();
+                 var username=$("#username").val();
+                 var senha=$("#senha").val();
+                 var categoria=$("#categoria").val();
+                 var idioma=$("#idioma").val();
+                 var email=$("#email").val();
+                 var telefone=$("#telefone").val();
+                 var pais=$("#pais").val();
+                 var estado=$("#estado").val();
+                 var cidade=$("#cidade").val();
 
-    </head>
-    <body>
+                    var dataString = "nome="+nome+"&username="+username+"&senha="+senha+"&idioma="+idioma+"&email="+email+"&telefone="+telefone+"&pais="+pais+"&cidade="+cidade+"&estado="+estado+"&insert=";
+                   /* alert(nome);
+                    alert(username);
+                    alert(senha);
+                    alert(categoria);
+                    alert(idioma);
+                    alert(pais);
+                    alert(email);
+                    alert(telefone);
+                    alert(estado);
+                    alert(cidade); */
 
-        <div id="app">
-
-            <div id="home-page" data-role="page">
-
-                <div data-role="content" >
- 
-                    <div id="logoContainer" class="centerText" >
-                            <img src="img/caminho-neocatecumenal-logo.png" id="logo" style="max-width:136px;" />
-                        </div>
-
-                    <div id="menu">
-                        <!--<a data-icon="flat-checkround" data-theme="a" href="#login-page" data-role="button">Login</a>-->
-                        <a data-icon="flat-man" data-theme="d" href="#contatos-page" data-role="button">Contatos</a>
-                        <a data-icon="flat-plus" data-theme="f" href="#cadastro-page"  data-role="button">Cadastre-se</a>
-                        <fieldset class="ui-grid-a">
-                            <div class="ui-block-a"> <a id="btn-edit" data-icon="flat-settings" data-theme="e" data-role="button" href="#login-page">Editar</a></div>
-                            <div class="ui-block-b"><a data-icon="ms-question" data-theme="g" href="#about-page"  data-role="button" >Suporte</a></div>
-                        </fieldset>
-                    </div>
-                </div>
-            </div><!-- /page  -->
-
-            <div id="contatos-page" data-role="page">
-                <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
-                    <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
-                    <h1>Contatos</h1>
-                </div>
-                <div data-role="main">
+               if($.trim(nome).length>=0 & $.trim(username).length>=0 & $.trim(senha).length>=0 & categoria >0 & $.trim(idioma).length>0 & $.trim(pais).length>0 & $.trim(email).length>0 & $.trim(telefone).length>0 & $.trim(estado).length>0 & $.trim(cidade).length>0) 
+                {
                    
-                             <div id="listview"></div>
-                    
-                    
-                </div> 
-            </div>
+                    if($.trim(username).length>=6)
+                    {
 
-            <div id="login-page" data-role="page">
-                <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
-                    <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
-                    <h1>Login</h1>
-                </div>
+                    if($.trim(senha).length>=6)
+                    {
+                          
+                        $.ajax({
+                            type: "POST",
+                            //url: "http://phonegappro.esy.es/test/insert.php",
+                            url:"http://104.131.233.239/android/neolist_phonegap/insertUsuariosNeoList.php",
+                            data: dataString,
+                            crossDomain: true,
+                            cache: false,
+                            beforeSend: function() { $("#insert").val('Connecting...');},
+                            success: function(data) {
+                                $.mobile.changePage("#home-page");
+                            }
+                        });
 
+                    } else {
 
-                <div data-role="content">
-                    <form>
-
-                        <input type="text" name="input-username" id="input-username" data-mini="true" placeholder="Login"/>
-                        <div style="margin-bottom:7px;"></div>
-                        <input type="password" name="input-senha" id="input-senha" data-mini="true" placeholder="Senha"/>
-                        
-                        <div style="margin-bottom:7px;"></div>
-                        
-                     
-                        <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="login-btn" value="Entrar"/>
-                        
-                    </form>
-
-                    <div data-role="popup" id="popUpDadosLoginInvalidos">
-                       <p>Usuário ou senha inválidos, verifique.</p>
-                    </div>
-
-                    <div data-role="popup" id="popUpFaltaDadosLogin">
-                       <p>Informe o usuário e senha, campos obrigatórios.</p>
-                    </div>
-
-                </div>
-               
-            </div>
-
-
-            <div id="cadastro-page" data-role="page">
-                <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
-                    <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
-                    <h1>Novo Cadastro</h1>
-                </div>
-                <div data-role="content" >
-                    <form  id="search-form" action="" >
-                        
-                        <input type="text" name="nome" id="nome" data-mini="true" placeholder="Nome" />
-                        <div style="margin-bottom:7px;"></div>
-                        <input type="text" name="username" id="username" data-mini="true" placeholder="Login"/>
-						<div style="margin-bottom:7px;"></div>
-                        <input type="password" name="senha" id="senha" data-mini="true" placeholder="Senha"/>
-                        <div style="margin-bottom:7px;"></div>
-                            <select name="categoria" id="categoria" data-native-menu="false" data-mini="true" data-theme="b">
-                                <option value="">Categoria</option>
-                                    <option value="7">Brigadista</option>
-                                    <option value="6">Enfermeiro(a)</option>
-                                    <option value="5">Médico</option>
-                                    <option value="1">Monitor</option>
-                                    <option value="2">Peregrino(a)</option>
-                                    <option value="3">Responsável de Grupo</option>
-                                    <option value="4">Responsável pela Acolhida</option>
-                            </select>
-                            <div style="margin-bottom:7px;"></div>
-						
-						<select name="idioma" id="idioma" data-native-menu="false" data-mini="true" data-theme="b">
-							<option value="">Idioma</option>
-							<option value="ar">Árabe</option>
-							<option value="es">Espanhol</option>
-							<option value="fr">Francês</option>
-							<option value="in">Inglês</option>
-							<option value="it">Italiano</option>
-							<option value="pt">Português</option>
-						</select>
-						<div style="margin-bottom:7px;"></div>
-                        <input type="text" name="email" id="email" data-mini="true" placeholder="Email"/>
-                        <div style="margin-bottom:7px;"></div>
-                        <input type="text" name="telefone" id="telefone" data-mini="true" placeholder="Telefone"/>
-						<div style="margin-bottom:7px;"></div>
-						<select name="pais" id="pais" data-native-menu="false" data-mini="true" data-theme="b" placeholder="Pais">
-							<option value="">País</option>
-                                        <option value="af">Afghanistan • افغانستان</option>
-                                        <option value="al">Albania • Shqipëria</option>
-                                        <option value="dz">Algeria • الجزائر</option>
-                                        <option value="ad">Andorra</option>
-                                        <option value="ao">Angola</option>
-                                        <option value="ag">Antigua and Barbuda</option>
-                                        <option value="ar">Argentina</option>
-                                        <option value="am">Armenia • Հայաստան</option>
-                                        <option value="au">Australia</option>
-                                        <option value="at">Austria • Österreich</option>
-                                        <option value="az">Azerbaijan • Azərbaycan</option>
-                                        <option value="bs">Bahamas</option>
-                                        <option value="bh">Bahrain • البحرين</option>
-                                        <option value="bd">Bangladesh • বাংলাদেশ</option>
-                                        <option value="bb">Barbados</option>
-                                        <option value="by">Belarus • Беларусь</option>
-                                        <option value="be">Belgium • België • Belgique • Belgien</option>
-                                        <option value="bz">Belize</option>
-                                        <option value="bj">Benin • Bénin</option>
-                                        <option value="bt">Bhutan • འབྲུག་ཡུལ།</option>
-                                        <option value="bo">Bolivia • Wuliwya • Volívia • Buliwya</option>
-                                        <option value="ba">Bosnia and Herzegovina • Bosna i Hercegovina</option>
-                                        <option value="bw">Botswana</option>
-                                        <option value="br">Brazil • Brasil</option>
-                                        <option value="bn">Brunei</option>
-                                        <option value="bg">Bulgaria • България</option>
-                                        <option value="bf">Burkina Faso</option>
-                                        <option value="mm">Burma • မ္ရန္&amp;zwnj;မာ</option>
-                                        <option value="bi">Burundi • Uburundi</option>
-                                        <option value="kh">Cambodia • កម្ពុជា</option>
-                                        <option value="cm">Cameroon • Cameroun</option>
-                                        <option value="ca">Canada</option>
-                                        <option value="cv">Cape Verde • Cabo Verde</option>
-                                        <option value="cf">Central African Republic • Centrafrique • Bêafrîka</option>
-                                        <option value="td">Chad • Tchad • تشاد</option>
-                                        <option value="cl">Chile</option>
-                                        <option value="cn">China • 中國/中国</option>
-                                        <option value="co">Colombia</option>
-                                        <option value="km">Comoros • Komori • Comores • جزر القمر</option>
-                                        <option value="cd">Congo, Dem. Rep. • Congo, Rép. dém.</option>
-                                        <option value="cg">Congo, Republic • Congo, République</option>
-                                        <option value="cr">Costa Rica</option>
-                                        <option value="ci">Cote d’Ivoire • Côte d’Ivoire</option>
-                                        <option value="hr">Croatia • Hrvatska</option>
-                                        <option value="cu">Cuba</option>
-                                        <option value="cy">Cyprus • Κύπρος • Kıbrıs</option>
-                                        <option value="cz">Czechia • Česko</option>
-                                        <option value="dk">Denmark • Danmark</option>
-                                        <option value="dj">Djibouti • جيبوتي</option>
-                                        <option value="dm">Dominica</option>
-                                        <option value="do">Dominican Republic • República Dominicana</option>
-                                        <option value="tl">East Timor • Timór-Leste • Timor-Leste</option>
-                                        <option value="ec">Ecuador</option>
-                                        <option value="eg">Egypt • مصر</option>
-                                        <option value="sv">El Salvador</option>
-                                        <option value="gq">Equatorial Guinea • Guinea Ecuatorial • Guinée équatoriale • Guiné Equatorial</option>
-                                        <option value="er">Eritrea • ኤርትራ • إرتريا</option>
-                                        <option value="ee">Estonia • Eesti</option>
-                                        <option value="et">Ethiopia • ኢትዮጵያ</option>
-                                        <option value="fj">Fiji • Viti • फ़िजी</option>
-                                        <option value="fi">Finland • Suomi</option>
-                                        <option value="fr">France</option>
-                                        <option value="ga">Gabon</option>
-                                        <option value="gm">Gambia</option>
-                                        <option value="ge">Georgia • საქართველო</option>
-                                        <option value="de">Germany • Deutschland</option>
-                                        <option value="gh">Ghana</option>
-                                        <option value="gr">Greece • Ελλάδα</option>
-                                        <option value="gd">Grenada</option>
-                                        <option value="gt">Guatemala</option>
-                                        <option value="gn">Guinea • Guinée</option>
-                                        <option value="gw">Guinea-Bissau • Guiné-Bissau</option>
-                                        <option value="gy">Guyana</option>
-                                        <option value="ht">Haiti • Haïti • Ayiti</option>
-                                        <option value="hn">Honduras</option>
-                                        <option value="hu">Hungary • Magyarország</option>
-                                        <option value="is">Iceland • Ísland</option>
-                                        <option value="in">India • भारत</option>
-                                        <option value="id">Indonesia</option>
-                                        <option value="ir">Iran • ایران</option>
-                                        <option value="iq">Iraq • العراق</option>
-                                        <option value="ie">Ireland • Éire</option>
-                                        <option value="il">Israel • إسرائيل • ישראל</option>
-                                        <option value="it">Italy • Italia</option>
-                                        <option value="jm">Jamaica</option>
-                                        <option value="jp">Japan • 日本</option>
-                                        <option value="jo">Jordan • الأردن</option>
-                                        <option value="kz">Kazakhstan • Қазақстан</option>
-                                        <option value="ke">Kenya</option>
-                                        <option value="ki">Kiribati</option>
-                                        <option value="kp">Korea, North • 조선</option>
-                                        <option value="kr">Korea, South • 한국</option>
-                                        <option value="kv">Kosovo • Kosova • Косово</option>
-                                        <option value="kw">Kuwait • الكويت</option>
-                                        <option value="kg">Kyrgyzstan • Кыргызстан</option>
-                                        <option value="la">Laos • ປະເທດລາວ</option>
-                                        <option value="lv">Latvia • Latvija</option>
-                                        <option value="lb">Lebanon • لبنان</option>
-                                        <option value="ls">Lesotho</option>
-                                        <option value="lr">Liberia</option>
-                                        <option value="ly">Libya • ليبيا</option>
-                                        <option value="li">Liechtenstein</option>
-                                        <option value="lt">Lithuania • Lietuva</option>
-                                        <option value="lu">Luxembourg • Luxemburg • Lëtzebuerg</option>
-                                        <option value="mk">Macedonia • Македонија</option>
-                                        <option value="mg">Madagascar • Madagasikara</option>
-                                        <option value="mw">Malawi • Malaŵi</option>
-                                        <option value="my">Malaysia</option>
-                                        <option value="mv">Maldives</option>
-                                        <option value="ml">Mali</option>
-                                        <option value="mt">Malta</option>
-                                        <option value="mh">Marshall Islands • Aelōñin Ṃajeḷ</option>
-                                        <option value="mr">Mauritania • موريتانيا • Mauritanie</option>
-                                        <option value="mu">Mauritius • Maurice</option>
-                                        <option value="mx">Mexico • México • Mēxihco</option>
-                                        <option value="fm">Micronesia</option>
-                                        <option value="md">Moldova</option>
-                                        <option value="mc">Monaco</option>
-                                        <option value="mn">Mongolia • Монгол улс</option>
-                                        <option value="me">Montenegro • Crna Gora / Црна Гора</option>
-                                        <option value="ma">Morocco • المغرب</option>
-                                        <option value="mz">Mozambique • Moçambique</option>
-                                        <option value="na">Namibia</option>
-                                        <option value="nr">Nauru • Naoero</option>
-                                        <option value="np">Nepal • नेपाल</option>
-                                        <option value="nl">Netherlands • Nederland</option>
-                                        <option value="nz">New Zealand • Aotearoa</option>
-                                        <option value="ni">Nicaragua</option>
-                                        <option value="ne">Niger</option>
-                                        <option value="ng">Nigeria</option>
-                                        <option value="no">Norway • Norge / Noreg</option>
-                                        <option value="om">Oman • عمان</option>
-                                        <option value="pk">Pakistan • پاکستان</option>
-                                        <option value="pw">Palau • Belau</option>
-                                        <option value="ps">Palestine • فلسطين</option>
-                                        <option value="pa">Panama • Panamá</option>
-                                        <option value="pg">Papua New Guinea • Papua Niugini</option>
-                                        <option value="py">Paraguay • Paraguái</option>
-                                        <option value="pe">Peru • Perú</option>
-                                        <option value="ph">Philippines • Pilipinas</option>
-                                        <option value="pl">Poland • Polska</option>
-                                        <option value="pt">Portugal</option>
-                                        <option value="qa">Qatar • قطر</option>
-                                        <option value="ro">Romania • România</option>
-                                        <option value="ru">Russia • Россия</option>
-                                        <option value="rw">Rwanda</option>
-                                        <option value="kn">Saint Kitts and Nevis</option>
-                                        <option value="lc">Saint Lucia</option>
-                                        <option value="vc">Saint Vincent and the Grenadines</option>
-                                        <option value="ws">Samoa • Sāmoa</option>
-                                        <option value="sm">San Marino</option>
-                                        <option value="st">Sao Tome and Principe • São Tomé e Príncipe</option>
-                                        <option value="sa">Saudi Arabia • العربية السعودية</option>
-                                        <option value="sn">Senegal • Sénégal</option>
-                                        <option value="rs">Serbia • Србија / Srbija</option>
-                                        <option value="sc">Seychelles • Sesel</option>
-                                        <option value="sl">Sierra Leone</option>
-                                        <option value="sg">Singapore • 新加坡 • Singapura • சிங்கப்பூர்</option>
-                                        <option value="sk">Slovakia • Slovensko</option>
-                                        <option value="si">Slovenia • Slovenija</option>
-                                        <option value="sb">Solomon Islands</option>
-                                        <option value="so">Somalia • Soomaaliya • الصومال</option>
-                                        <option value="za">South Africa • Suid-Afrika</option>
-                                        <option value="ss">South Sudan</option>
-                                        <option value="es">Spain • España</option>
-                                        <option value="lk">Sri Lanka • ශ්&amp;zwj;රී ලංකාව • இலங்கை</option>
-                                        <option value="sd">Sudan • السودان</option>
-                                        <option value="sr">Suriname</option>
-                                        <option value="sz">Swaziland • eSwatini</option>
-                                        <option value="se">Sweden • Sverige</option>
-                                        <option value="ch">Switzerland • Schweiz • Suisse • Svizzera • Svizra</option>
-                                        <option value="sy">Syria • سورية</option>
-                                        <option value="tw">Taiwan • 臺灣/台湾</option>
-                                        <option value="tj">Tajikistan • Тоҷикистон</option>
-                                        <option value="tz">Tanzania</option>
-                                        <option value="th">Thailand • ประเทศไทย</option>
-                                        <option value="tg">Togo</option>
-                                        <option value="to">Tonga</option>
-                                        <option value="tt">Trinidad and Tobago</option>
-                                        <option value="tn">Tunisia • تونس</option>
-                                        <option value="tr">Turkey • Türkiye</option>
-                                        <option value="tm">Turkmenistan • Türkmenistan</option>
-                                        <option value="tv">Tuvalu</option>
-                                        <option value="ug">Uganda</option>
-                                        <option value="ua">Ukraine • Україна</option>
-                                        <option value="ae">United Arab Emirates • الإمارات العربية المتحدة</option>
-                                        <option value="gb">United Kingdom</option>
-                                        <option value="us">United States</option>
-                                        <option value="uy">Uruguay</option>
-                                        <option value="uz">Uzbekistan • Oʻzbekiston</option>
-                                        <option value="vu">Vanuatu</option>
-                                        <option value="va">Vatican City • Civitas Vaticana</option>
-                                        <option value="ve">Venezuela</option>
-                                        <option value="vn">Vietnam • Việt Nam</option>
-                                        <option value="eh">Western Sahara • الصحراء الغربية</option>
-                                        <option value="ye">Yemen • اليمن</option>
-                                        <option value="zm">Zambia</option>
-                                        <option value="zw">Zimbabwe</option>
-						</select>
-						<div style="margin-bottom:7px;"></div>
-                        <input type="text" name="estado" id="estado" data-mini="true" placeholder="Estado"/>
-						<div style="margin-bottom:7px;"></div>
-                        <input type="text" name="cidade" id="cidade" data-mini="true" placeholder="Cidade"/>
-                        <button type="submit" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="insert">
-                        Salvar</button>
-                    </form>
-                </div>
-               
-            </div>
-
-            <div id="edit-page" data-role="page">
-                <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
-                    <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
-                    <h1>Editar Cadastro</h1>
-                </div>
-                <div data-role="content" >
-                    <form  id="search-form" action="" >
-                        
-                        <input type="text" name="nome-edit" id="nome-edit" data-mini="true" placeholder="Nome" />
-                        <div style="margin-bottom:7px;"></div>
-                        <input type="text" name="username-edit" id="username-edit" data-mini="true" placeholder="Login"/>
-                        <div style="margin-bottom:7px;"></div>
-                        <input type="password" name="senha-edit" id="senha-edit" data-mini="true" placeholder="Senha"/>
-                        <div style="margin-bottom:7px;"></div>
-                            <select name="categoria-edit" id="categoria-edit" data-native-menu="false" data-mini="true" data-theme="b">
-                                <option value="">Categoria</option>
-                                    <option value="7">Brigadista</option>
-                                    <option value="6">Enfermeiro(a)</option>
-                                    <option value="5">Médico</option>
-                                    <option value="1">Monitor</option>
-                                    <option value="2">Peregrino(a)</option>
-                                    <option value="3">Responsável de Grupo</option>
-                                    <option value="4">Responsável pela Acolhida</option>
-                            </select>
-                            <div style="margin-bottom:7px;"></div>
-                        
-                        <select name="idioma-edit" id="idioma-edit" data-native-menu="false" data-mini="true" data-theme="b">
-                            <option value="">Idioma</option>
-                            <option value="ar">Árabe</option>
-                            <option value="es">Espanhol</option>
-                            <option value="fr">Francês</option>
-                            <option value="in">Inglês</option>
-                            <option value="it">Italiano</option>
-                            <option value="pt">Português</option>
-                        </select>
-                        <div style="margin-bottom:7px;"></div>
-                        <input type="text" name="email-edit" id="email-edit" data-mini="true" placeholder="Email"/>
-                        <div style="margin-bottom:7px;"></div>
-                        <input type="text" name="telefone-edit" id="telefone-edit" data-mini="true" placeholder="Telefone"/>
-                        <div style="margin-bottom:7px;"></div>
-                        <select name="pais-edit" id="pais-edit" data-native-menu="false" data-mini="true" data-theme="b" placeholder="Pais">
-                            <option value="">País</option>
-                                        <option value="af">Afghanistan • افغانستان</option>
-                                        <option value="al">Albania • Shqipëria</option>
-                                        <option value="dz">Algeria • الجزائر</option>
-                                        <option value="ad">Andorra</option>
-                                        <option value="ao">Angola</option>
-                                        <option value="ag">Antigua and Barbuda</option>
-                                        <option value="ar">Argentina</option>
-                                        <option value="am">Armenia • Հայաստան</option>
-                                        <option value="au">Australia</option>
-                                        <option value="at">Austria • Österreich</option>
-                                        <option value="az">Azerbaijan • Azərbaycan</option>
-                                        <option value="bs">Bahamas</option>
-                                        <option value="bh">Bahrain • البحرين</option>
-                                        <option value="bd">Bangladesh • বাংলাদেশ</option>
-                                        <option value="bb">Barbados</option>
-                                        <option value="by">Belarus • Беларусь</option>
-                                        <option value="be">Belgium • België • Belgique • Belgien</option>
-                                        <option value="bz">Belize</option>
-                                        <option value="bj">Benin • Bénin</option>
-                                        <option value="bt">Bhutan • འབྲུག་ཡུལ།</option>
-                                        <option value="bo">Bolivia • Wuliwya • Volívia • Buliwya</option>
-                                        <option value="ba">Bosnia and Herzegovina • Bosna i Hercegovina</option>
-                                        <option value="bw">Botswana</option>
-                                        <option value="br">Brazil • Brasil</option>
-                                        <option value="bn">Brunei</option>
-                                        <option value="bg">Bulgaria • България</option>
-                                        <option value="bf">Burkina Faso</option>
-                                        <option value="mm">Burma • မ္ရန္&amp;zwnj;မာ</option>
-                                        <option value="bi">Burundi • Uburundi</option>
-                                        <option value="kh">Cambodia • កម្ពុជា</option>
-                                        <option value="cm">Cameroon • Cameroun</option>
-                                        <option value="ca">Canada</option>
-                                        <option value="cv">Cape Verde • Cabo Verde</option>
-                                        <option value="cf">Central African Republic • Centrafrique • Bêafrîka</option>
-                                        <option value="td">Chad • Tchad • تشاد</option>
-                                        <option value="cl">Chile</option>
-                                        <option value="cn">China • 中國/中国</option>
-                                        <option value="co">Colombia</option>
-                                        <option value="km">Comoros • Komori • Comores • جزر القمر</option>
-                                        <option value="cd">Congo, Dem. Rep. • Congo, Rép. dém.</option>
-                                        <option value="cg">Congo, Republic • Congo, République</option>
-                                        <option value="cr">Costa Rica</option>
-                                        <option value="ci">Cote d’Ivoire • Côte d’Ivoire</option>
-                                        <option value="hr">Croatia • Hrvatska</option>
-                                        <option value="cu">Cuba</option>
-                                        <option value="cy">Cyprus • Κύπρος • Kıbrıs</option>
-                                        <option value="cz">Czechia • Česko</option>
-                                        <option value="dk">Denmark • Danmark</option>
-                                        <option value="dj">Djibouti • جيبوتي</option>
-                                        <option value="dm">Dominica</option>
-                                        <option value="do">Dominican Republic • República Dominicana</option>
-                                        <option value="tl">East Timor • Timór-Leste • Timor-Leste</option>
-                                        <option value="ec">Ecuador</option>
-                                        <option value="eg">Egypt • مصر</option>
-                                        <option value="sv">El Salvador</option>
-                                        <option value="gq">Equatorial Guinea • Guinea Ecuatorial • Guinée équatoriale • Guiné Equatorial</option>
-                                        <option value="er">Eritrea • ኤርትራ • إرتريا</option>
-                                        <option value="ee">Estonia • Eesti</option>
-                                        <option value="et">Ethiopia • ኢትዮጵያ</option>
-                                        <option value="fj">Fiji • Viti • फ़िजी</option>
-                                        <option value="fi">Finland • Suomi</option>
-                                        <option value="fr">France</option>
-                                        <option value="ga">Gabon</option>
-                                        <option value="gm">Gambia</option>
-                                        <option value="ge">Georgia • საქართველო</option>
-                                        <option value="de">Germany • Deutschland</option>
-                                        <option value="gh">Ghana</option>
-                                        <option value="gr">Greece • Ελλάδα</option>
-                                        <option value="gd">Grenada</option>
-                                        <option value="gt">Guatemala</option>
-                                        <option value="gn">Guinea • Guinée</option>
-                                        <option value="gw">Guinea-Bissau • Guiné-Bissau</option>
-                                        <option value="gy">Guyana</option>
-                                        <option value="ht">Haiti • Haïti • Ayiti</option>
-                                        <option value="hn">Honduras</option>
-                                        <option value="hu">Hungary • Magyarország</option>
-                                        <option value="is">Iceland • Ísland</option>
-                                        <option value="in">India • भारत</option>
-                                        <option value="id">Indonesia</option>
-                                        <option value="ir">Iran • ایران</option>
-                                        <option value="iq">Iraq • العراق</option>
-                                        <option value="ie">Ireland • Éire</option>
-                                        <option value="il">Israel • إسرائيل • ישראל</option>
-                                        <option value="it">Italy • Italia</option>
-                                        <option value="jm">Jamaica</option>
-                                        <option value="jp">Japan • 日本</option>
-                                        <option value="jo">Jordan • الأردن</option>
-                                        <option value="kz">Kazakhstan • Қазақстан</option>
-                                        <option value="ke">Kenya</option>
-                                        <option value="ki">Kiribati</option>
-                                        <option value="kp">Korea, North • 조선</option>
-                                        <option value="kr">Korea, South • 한국</option>
-                                        <option value="kv">Kosovo • Kosova • Косово</option>
-                                        <option value="kw">Kuwait • الكويت</option>
-                                        <option value="kg">Kyrgyzstan • Кыргызстан</option>
-                                        <option value="la">Laos • ປະເທດລາວ</option>
-                                        <option value="lv">Latvia • Latvija</option>
-                                        <option value="lb">Lebanon • لبنان</option>
-                                        <option value="ls">Lesotho</option>
-                                        <option value="lr">Liberia</option>
-                                        <option value="ly">Libya • ليبيا</option>
-                                        <option value="li">Liechtenstein</option>
-                                        <option value="lt">Lithuania • Lietuva</option>
-                                        <option value="lu">Luxembourg • Luxemburg • Lëtzebuerg</option>
-                                        <option value="mk">Macedonia • Македонија</option>
-                                        <option value="mg">Madagascar • Madagasikara</option>
-                                        <option value="mw">Malawi • Malaŵi</option>
-                                        <option value="my">Malaysia</option>
-                                        <option value="mv">Maldives</option>
-                                        <option value="ml">Mali</option>
-                                        <option value="mt">Malta</option>
-                                        <option value="mh">Marshall Islands • Aelōñin Ṃajeḷ</option>
-                                        <option value="mr">Mauritania • موريتانيا • Mauritanie</option>
-                                        <option value="mu">Mauritius • Maurice</option>
-                                        <option value="mx">Mexico • México • Mēxihco</option>
-                                        <option value="fm">Micronesia</option>
-                                        <option value="md">Moldova</option>
-                                        <option value="mc">Monaco</option>
-                                        <option value="mn">Mongolia • Монгол улс</option>
-                                        <option value="me">Montenegro • Crna Gora / Црна Гора</option>
-                                        <option value="ma">Morocco • المغرب</option>
-                                        <option value="mz">Mozambique • Moçambique</option>
-                                        <option value="na">Namibia</option>
-                                        <option value="nr">Nauru • Naoero</option>
-                                        <option value="np">Nepal • नेपाल</option>
-                                        <option value="nl">Netherlands • Nederland</option>
-                                        <option value="nz">New Zealand • Aotearoa</option>
-                                        <option value="ni">Nicaragua</option>
-                                        <option value="ne">Niger</option>
-                                        <option value="ng">Nigeria</option>
-                                        <option value="no">Norway • Norge / Noreg</option>
-                                        <option value="om">Oman • عمان</option>
-                                        <option value="pk">Pakistan • پاکستان</option>
-                                        <option value="pw">Palau • Belau</option>
-                                        <option value="ps">Palestine • فلسطين</option>
-                                        <option value="pa">Panama • Panamá</option>
-                                        <option value="pg">Papua New Guinea • Papua Niugini</option>
-                                        <option value="py">Paraguay • Paraguái</option>
-                                        <option value="pe">Peru • Perú</option>
-                                        <option value="ph">Philippines • Pilipinas</option>
-                                        <option value="pl">Poland • Polska</option>
-                                        <option value="pt">Portugal</option>
-                                        <option value="qa">Qatar • قطر</option>
-                                        <option value="ro">Romania • România</option>
-                                        <option value="ru">Russia • Россия</option>
-                                        <option value="rw">Rwanda</option>
-                                        <option value="kn">Saint Kitts and Nevis</option>
-                                        <option value="lc">Saint Lucia</option>
-                                        <option value="vc">Saint Vincent and the Grenadines</option>
-                                        <option value="ws">Samoa • Sāmoa</option>
-                                        <option value="sm">San Marino</option>
-                                        <option value="st">Sao Tome and Principe • São Tomé e Príncipe</option>
-                                        <option value="sa">Saudi Arabia • العربية السعودية</option>
-                                        <option value="sn">Senegal • Sénégal</option>
-                                        <option value="rs">Serbia • Србија / Srbija</option>
-                                        <option value="sc">Seychelles • Sesel</option>
-                                        <option value="sl">Sierra Leone</option>
-                                        <option value="sg">Singapore • 新加坡 • Singapura • சிங்கப்பூர்</option>
-                                        <option value="sk">Slovakia • Slovensko</option>
-                                        <option value="si">Slovenia • Slovenija</option>
-                                        <option value="sb">Solomon Islands</option>
-                                        <option value="so">Somalia • Soomaaliya • الصومال</option>
-                                        <option value="za">South Africa • Suid-Afrika</option>
-                                        <option value="ss">South Sudan</option>
-                                        <option value="es">Spain • España</option>
-                                        <option value="lk">Sri Lanka • ශ්&amp;zwj;රී ලංකාව • இலங்கை</option>
-                                        <option value="sd">Sudan • السودان</option>
-                                        <option value="sr">Suriname</option>
-                                        <option value="sz">Swaziland • eSwatini</option>
-                                        <option value="se">Sweden • Sverige</option>
-                                        <option value="ch">Switzerland • Schweiz • Suisse • Svizzera • Svizra</option>
-                                        <option value="sy">Syria • سورية</option>
-                                        <option value="tw">Taiwan • 臺灣/台湾</option>
-                                        <option value="tj">Tajikistan • Тоҷикистон</option>
-                                        <option value="tz">Tanzania</option>
-                                        <option value="th">Thailand • ประเทศไทย</option>
-                                        <option value="tg">Togo</option>
-                                        <option value="to">Tonga</option>
-                                        <option value="tt">Trinidad and Tobago</option>
-                                        <option value="tn">Tunisia • تونس</option>
-                                        <option value="tr">Turkey • Türkiye</option>
-                                        <option value="tm">Turkmenistan • Türkmenistan</option>
-                                        <option value="tv">Tuvalu</option>
-                                        <option value="ug">Uganda</option>
-                                        <option value="ua">Ukraine • Україна</option>
-                                        <option value="ae">United Arab Emirates • الإمارات العربية المتحدة</option>
-                                        <option value="gb">United Kingdom</option>
-                                        <option value="us">United States</option>
-                                        <option value="uy">Uruguay</option>
-                                        <option value="uz">Uzbekistan • Oʻzbekiston</option>
-                                        <option value="vu">Vanuatu</option>
-                                        <option value="va">Vatican City • Civitas Vaticana</option>
-                                        <option value="ve">Venezuela</option>
-                                        <option value="vn">Vietnam • Việt Nam</option>
-                                        <option value="eh">Western Sahara • الصحراء الغربية</option>
-                                        <option value="ye">Yemen • اليمن</option>
-                                        <option value="zm">Zambia</option>
-                                        <option value="zw">Zimbabwe</option>
-                        </select>
-                        <div style="margin-bottom:7px;"></div>
-                        <input type="text" name="estado-edit" id="estado-edit" data-mini="true" placeholder="Estado"/>
-                        <div style="margin-bottom:7px;"></div>
-                        <input type="text" name="cidade-edit" id="cidade-edit" data-mini="true" placeholder="Cidade"/>
-                        <button type="submit" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="insert">
-                        Salvar</button>
-                    </form>
-                </div>
-               
-            </div>
-
-
-
-                
-
-            <div  id="about-page" data-role="page">
-                <div data-role="header" data-id="header1" data-position="fixed" class="ui-header">
-                    <a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
-                    <h1>Suporte</h1>
-                </div>
-                <div data-role="content"  class="big-text">
-                    <h2>Fabiano Carvalho</h2>
-                    <p>Email: carvalho.fabiano@gmail.com</p>
-                    <p>Telefone: +55(61)991199497</p>
-                   
-                </div>
-
-                 <div data-role="content"  class="big-text">
-                    <h2>Luis Gustavo Souza</h2>
-                    <p>Email: os.luisgustavo@gmail.com</p>
-                    <p>Telefone: +55(16)982205070</p>
-                   
-                </div>
-                 <div data-role="content"  class="big-text">
-                    <h2>Otávio Garrido Moraes</h2>
-                    <p>Email: otavio.grrd@gmail.com</p>
-                    <p>Telefone: +55(61)982291992</p>
-                   
-                </div>
-            </div>
-
-            <div id="detalhes-page" data-role="page">
-                <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
-                    <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
-                    <h1>Detalhes</h1>
-                </div>
-                <div data-role="content" >
-                    <form  id="search-form" action="">
-                        <label for="address">Nome</label>
-                        <input type="text" name="nome-detalhe" id="nome-detalhe" data-mini="true" readonly="true"/>
-
-                        <label for="address">Categoria</label>
-                        <input type="text" name="categoria-detalhe" id="categoria-detalhe" data-mini="true" readonly="true"/>
-
-                        <label for="address">Idioma</label>
-                        <input type="text" name="idioma-detalhe" id="idioma-detalhe" data-mini="true" readonly="true"/>
-
-                        <label for="address">Email</label>
-                        <input type="text" name="email-detalhe" id="email-detalhe" data-mini="true" readonly="true"/>
-
-                        <label for="address">Telefone</label>
-                        <input type="text" name="telefone-detalhe" id="telefone-detalhe" data-mini="true" readonly="true"/>
-
-
-                        <label for="address">Pais</label>
-                        <input type="text" name="pais-detalhe" id="pais-detalhe" data-mini="true" readonly="true"/>
-
-                        <label for="address">Cidade</label>
-                        <input type="text" name="cidade-detalhe" id="cidade-detalhe" data-mini="true" readonly="true"/>
-                       
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
-
-        <script type="text/javascript" src="libs/fastclick.min.js"></script>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="libs/jquery-2.0.3.min.js"></script>
-        <script type="text/javascript" src="libs/jQueryMobile/jquery.mobile-1.3.2.min.js"></script>
-
-
-        <script type="text/javascript" src="js/index.js"></script>
-
-        <script type="text/javascript">
-  
-            $(document).on("pageshow","#contatos-page",function() {       
-                var url="http://104.131.233.239/android/neolist_phonegap/getContatosNeoList.php";
-                $.getJSON(url,function(result, status) {
-					if ( status === 'success' ){
-					
-					 window.localStorage.clear();
-				
-					 $.each(result, function(i, field) {
-					  var id=field.id;
-					  var nome=field.nome;
-					  var username = field.login;
-					  var categoria = field.categoria;
-					  var idioma = field.idioma;
-					  var email = field.email;
-					  var telefone = field.telefone;
-					  var pais = field.pais;
-					  var estado = field.estado;
-					  var cidade = field.cidade;
-				
-					  var localData = JSON.stringify(field);
-					  window.localStorage.setItem('CONTACT'+id, localData);
-						
-					  $("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
-							
-					 });			
-					}
-				})
-				.fail(function() {
-				console.log('getJSON request failed!'); 
-				var i = 1;					
-					while (i < 5000) {	
-						var localData = JSON.parse(window.localStorage.getItem('CONTACT'+i));
-						if ( localData !== null ){
-							   var id=localData.id;
-							   var nome=localData.nome;
-							   var username = localData.login;
-							   var categoria = localData.categoria;
-							   var idioma = localData.idioma;
-							   var email = localData.email;
-							   var telefone = localData.telefone;
-							   var pais = localData.pais;
-							   var estado = localData.estado;
-							   var cidade = localData.cidade;
-								$("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
-							
-						}
-						i++;
-					}
-				}); 
-            });
-
-
-            $(document).on("pageshow","#detalhes-page",function() {       
-                
-                $("#nome-detalhe").val("");  
-				
-				var localData = JSON.parse(window.localStorage.getItem('CONTACT'+idSelecionado));
-				if ( localData !== null ){
-					   var id=localData.id;
-					   var nome=localData.nome;
-					   var username = localData.login;
-					   var categoria = localData.categoria;
-					   var idioma = localData.idioma;
-					   var email = localData.email;
-					   var telefone = localData.telefone;
-					   var pais = localData.pais;
-					   var estado = localData.estado;
-					   var cidade = localData.cidade;
-						$("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
-					
-					   $("#nome-detalhe").val(nome);
-					   $("#categoria-detalhe").val(categoria);
-					   $("#idioma-detalhe").val(idioma);
-					   $("#email-detalhe").val(email);
-					   $("#telefone-detalhe").val(telefone);
-					   $("#pais-detalhe").val(pais);
-					   
-					   if(estado == null || estado == "null" || estado == "") {
-						$("#cidade-detalhe").val(cidade);
-					   } else {
-						$("#cidade-detalhe").val(cidade + " - " + estado);
-					   }                      
-				}
-				else {
-					var url="http://104.131.233.239/android/neolist_phonegap/getDetalheContatoNeoList.php?id=" + idSelecionado;
-					 $.getJSON(url,function(result, status) {
-					 if ( status === 'success' ){
-						//console.log(result);
-
-						  $.each(result, function(i, field) {
-						   var id=field.id;
-						   var nome=field.nome;
-						   var categoria = field.descricao_categoria;
-						   var idioma = field.descricao_idioma;
-						   var email = field.email;
-						   var telefone = field.telefone;
-						   var pais = field.nome_pais;
-						   var cidade = field.cidade;
-						   var estado = field.estado;
-						 
-
-						   $("#nome-detalhe").val(nome);
-						   $("#categoria-detalhe").val(categoria);
-						   $("#idioma-detalhe").val(idioma);
-						   $("#email-detalhe").val(email);
-						   $("#telefone-detalhe").val(telefone);
-						   $("#pais-detalhe").val(pais);
-						   
-						   if(estado == null || estado == "null" || estado == "") {
-							$("#cidade-detalhe").val(cidade);
-						   } else {
-							$("#cidade-detalhe").val(cidade + " - " + estado);
-						   }
-						  
-
-						  });
-					 }
-					 });
-				}					
-            });
-        
-        $(document).on("pageinit","#login-page",function() { 
-
-            $("#input-username").val("");
-            $("#input-senha").val("");
-        });
-
-        $(document).on("pagebeforeshow","#edit-page",function() {
-
-        });
-
-         $("#btn-edit").click(function() {
-
-         /*   $.ajax({
-                url:"http://104.131.233.239/android/neolist_phonegap/getSessaoUsuario.php?username="+username+"",
-                    dataType : "json",
-                    success : function(data) {
-                        if(data.length == 0) {
-                          $.mobile.changePage("#home-page");
-                        } else if(data.length == 1) {
-                           $.mobile.changePage("#edit-page");
-                        }
+                       $('#popUpValorMinimoCampoSenha').popup('open');
                     }
-                }); */
+                    
+                    } else {
 
-        });
+                       $('#popUpValorMinimoCampoLogin').popup('open');
+                }
 
-        $("#login-btn").click(function() {
-           
-            var username=$("#input-username").val();
-            var senha=$("#input-senha").val();
-                
-            if(username.length > 0 && senha.length > 0) {
+                } else {
 
-            var url="http://104.131.233.239/android/neolist_phonegap/getLoginNeoList.php?username="+username+"&senha="+senha+"";
-               
-                $.ajax({
-                    url:"http://104.131.233.239/android/neolist_phonegap/getLoginNeoList.php?username="+username+"&senha="+senha,
-                    dataType : "json",
-                    //data : "GET",
-                    success : function(data) {
-                        //alert(data[0].login);
-                        if(data.length == 0) {
-                       // <a href="#popupBasic" data-rel="popup" data-role="button" data-inline="true">Open Popup</a>
-                          $('#popUpDadosLoginInvalidos').popup('open');
-                        
-                        } else if(data.length == 1) {
-                            
-                             var url="http://104.131.233.239/android/neolist_phonegap/getDetalheAlteracaoNeoList.php?id="+data[0].login;
-                             $.getJSON(url,function(result) {
-                                console.log(result);
-
-                                  $.each(result, function(i, field) {
-                                   //var id=field.id;
-                                   var nome=field.nome;
-                                   
-                                   $("#nome-edit").val(nome);
-                                   
-                                  // $("#idioma-detalhe").val(idioma);
-                                   //$("#email-detalhe").val(email);
-                                  // $("#telefone-detalhe").val(telefone);
-                                  // $("#pais-detalhe").val(pais);
-                                   
-                                  // if(estado == null || estado == "null" || estado == "") {
-                                   // $("#cidade-detalhe").val(cidade);
-                                   //} else {
-                                  //  $("#cidade-detalhe").val(cidade + " - " + estado);
-                                  // }
-                                  
-
-                                  });
-                             }); 
-
-                          $.mobile.changePage("#edit-page");
-                        }
+                       $('#popUpCamposVazios').popup('open');
                     }
+                    return false;
                 });
 
-            } else {
+                $("#update-btn").click(function() {
+                 
+                 var id=$("#id-edit").val();
+                 var nome=$("#nome-edit").val();
+                 var categoria=$("#categoria-edit").val();
+                 var idioma=$("#idioma-edit").val();
+                 var email=$("#email-edit").val();
+                 var telefone=$("#telefone-edit").val();
+                 var pais=$("#pais-edit").val();
+                 var estado=$("#estado-edit").val();
+                 var cidade=$("#cidade-edit").val();
 
-                $('#popUpFaltaDadosLogin').popup('open');
+                 var dataString = "nome-edit="+nome+"&categoria-edit="+categoria+"&idioma-edit="+idioma+"&email-edit="+email+"&telefone-edit="+telefone+"&pais-edit="+pais+"&cidade-edit="+cidade+"&estado-edit="+estado+"id-edit="+id+"&update=";
 
-            }
+                    /*alert(id);
+                    alert(nome);
+                    alert(categoria);
+                    alert(idioma);
+                    alert(pais);
+                    alert(email);
+                    alert(telefone);
+                    alert(estado);
+                    alert(cidade); */
+                   
+               if($.trim(nome).length>=0 & categoria >0 & $.trim(idioma).length>0 & $.trim(pais).length>0 & $.trim(email).length>0 & $.trim(telefone).length>0 & 
+                $.trim(estado).length>0 & $.trim(cidade).length>0) 
+                {
 
-         });
+                        $.ajax({
+                            type: "POST",
+                            //url: "http://phonegappro.esy.es/test/insert.php",
+                            url:"http://104.131.233.239/android/neolist_phonegap/updateUsuariosNeoList.php",
+                            data: dataString,
+                            crossDomain: true,
+                            cache: false,
+                            beforeSend: function() { $("#insert").val('Connecting...');},
+                            success: function(data) {
+                                $.mobile.changePage("#home-page");
+                            }
+                        });
 
-        
-         
-        </script>
+                } else {
 
-    </body>
-</html>
+                       $('#popUpCamposVaziosUpdate').popup('open');
+                    }
+                    return false;
+                });
+
+            </script>
+
+        </body>
+    </html>
