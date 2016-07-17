@@ -365,7 +365,7 @@
 
                         <div style="background:#fff700; !important;" data-role="popup" id="popLoginUtilizado" class="ui-content" data-theme="b">
                         <p>Login já utilizado, escolha outro.</p>
-                        </div>''
+                        </div>
 
                          <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoSenha" class="ui-content" data-theme="b">
                         <p>Senha inválida, minímo de 6 caracteres</p>
@@ -843,8 +843,22 @@
                 $("#input-senha").val("");
             });
 
-            $(document).on("pagebeforeshow","#edit-page",function() {
+            $(document).on("pagebeforeshow","#cadastro-page",function() {
+                alert('AQUII');
 
+                $("#nome").val("");
+
+                $("#username").val("");
+
+                $("#senha").val("");
+
+                $("#categoria").val("");
+                $("#idioma").val("");
+                $("#email").val("");
+                $("#telefone").val("");
+                $("#pais").val("");
+                $("#estado").val("");
+                $("#cidade").val("");    
             });
 
              $("#btn-edit").click(function() {
