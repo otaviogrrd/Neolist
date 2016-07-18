@@ -36,7 +36,9 @@ h1 {
 }
 
 /* header */
-
+.ui-listview-filter {
+  margin: 0;
+}
 .ui-header {
     height: 50px;	
 }
