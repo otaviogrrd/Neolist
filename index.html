@@ -2,7 +2,7 @@
     <html>
         <head>
             <meta charset="utf-8" />
-            <meta name="format-detection" content="telephone=no" />
+            <meta name="format-detection" /> <!-- content="telephone=no" /> -->
             <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
 
             <link rel="stylesheet"  href="libs/jQM-flat/jquery.mobile.flatui.css">
@@ -641,7 +641,7 @@
                         <h2>Fabiano Carvalho</h2>
                         <p>Email: carvalho.fabiano@gmail.com</p>
                         <p>Telefone: +5561991199497</p>
-                       
+                      
                     </div>
 
                     <div data-role="content" class="big-text">
@@ -679,8 +679,8 @@
                             <input type="text" name="email-detalhe" id="email-detalhe" data-mini="true" readonly="true"/>
 
                             <label for="address">Telefone</label>
-                            <input type="text" name="telefone-detalhe" id="telefone-detalhe" data-mini="true" readonly="true"/>
-
+                            <input type="text" name="telefone-detalhe" id="telefone-detalhe" data-mini="true" readonly="true"/>							
+                            <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="call-btn" value="Ligar"/>
 
                             <label for="address">Pais</label>
                             <input type="text" name="pais-detalhe" id="pais-detalhe" data-mini="true" readonly="true"/>
@@ -732,7 +732,9 @@
                       var pais = field.pais;
                       var estado = field.estado;
                       var cidade = field.cidade;
-                
+                var descricao_categoria = field.descricao_categoria;
+                var descricao_idioma = field.descricao_idioma;
+                var nome_pais = field.nome_pais;
                       var localData = JSON.stringify(field);
                       window.localStorage.setItem('CONTACT'+id, localData);
                         
@@ -743,7 +745,7 @@
 											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
 											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
 											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
-											  '<span style="display:none;">'+categoria+'</span>'+
+											  '<span style="display:none;">'+descricao_categoria+'</span>'+
 											  '<span class="ui-icon ui-icon-check">&nbsp;</span></span></a>');   
                       }else if ( categoria === '5' || categoria === '6') {
 						$("#contatoslist").append('<a '+
@@ -752,7 +754,7 @@
 											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
 											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
 											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
-											'<span style="display:none;">'+categoria+'</span>'+
+											'<span style="display:none;">'+descricao_categoria+'</span>'+
 											  '<span class="ui-icon ui-icon-plus">&nbsp;</span></span></a>');  
 					  }else if ( categoria === '7') { //brigadista
 						$("#contatoslist").append('<a '+
@@ -761,7 +763,7 @@
 											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
 											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
 											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
-											'<span style="display:none;">'+categoria+'</span>'+
+											'<span style="display:none;">'+descricao_categoria+'</span>'+
 											  '<span class="ui-icon ui-icon-alert">&nbsp;</span></span></a>');  
 					  }else if ( categoria === '1') { //monitor
 						$("#contatoslist").append('<a '+
@@ -770,7 +772,7 @@
 											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
 											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
 											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
-											'<span style="display:none;">'+categoria+'</span>'+
+											'<span style="display:none;">'+descricao_categoria+'</span>'+
 											  '<span class="ui-icon ui-icon-alert">&nbsp;</span></span></a>');  
 					 
 					  }else {	//responsaveis
@@ -779,7 +781,7 @@
 											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
 											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
 											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
-											'<span style="display:none;">'+categoria+'</span>'+
+											'<span style="display:none;">'+descricao_categoria+'</span>'+
 											  '<span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');    
                      }
 					 });            
@@ -802,6 +804,9 @@
                                var pais = localData.pais;
                                var estado = localData.estado;
                                var cidade = localData.cidade;
+                var descricao_categoria = localData.descricao_categoria;
+                var descricao_idioma = localData.descricao_idioma;
+                var nome_pais = localData.nome_pais;
                                 
 						 
                       if ( categoria === '2') { //peregrino
@@ -875,14 +880,17 @@
                        var pais = localData.pais;
                        var estado = localData.estado;
                        var cidade = localData.cidade;
+					   var descricao_categoria = localData.descricao_categoria;
+                var descricao_idioma = localData.descricao_idioma;
+                var nome_pais = localData.nome_pais;
                        // $("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
                     
                        $("#nome-detalhe").val(nome);
-                       $("#categoria-detalhe").val(categoria);
-                       $("#idioma-detalhe").val(idioma);
+                       $("#categoria-detalhe").val(descricao_categoria);
+                       $("#idioma-detalhe").val(descricao_idioma);
                        $("#email-detalhe").val(email);
                        $("#telefone-detalhe").val(telefone);
-                       $("#pais-detalhe").val(pais);
+                       $("#pais-detalhe").val(nome_pais);
                        
                        if(estado == null || estado == "null" || estado == "") {
                         $("#cidade-detalhe").val(cidade);
@@ -906,6 +914,9 @@
                            var pais = field.nome_pais;
                            var cidade = field.cidade;
                            var estado = field.estado;
+                var descricao_categoria = field.descricao_categoria;
+                var descricao_idioma = field.descricao_idioma;
+                var nome_pais = field.nome_pais;
                          
 
                            $("#nome-detalhe").val(nome);
@@ -964,7 +975,12 @@
                     }); */
 
             });
-
+			
+			$("#call-btn").click(function() {
+               
+                var tel=$("#telefone-detalhe").val();
+				document.location.href = 'tel:'+tel;
+			});
             $("#login-btn").click(function() {
                
                 var username=$("#input-username").val();
