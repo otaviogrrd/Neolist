@@ -103,7 +103,7 @@
                             
                             <input type="text" name="nome" id="nome" data-mini="true" placeholder="Nome" required/>
                             <div style="margin-bottom:7px;"></div>
-                            <input autocomplete="off" type="text" name="username" id="username" data-mini="true" placeholder="Login" style="text-transform: lowercase;"/>
+                            <input type="text" name="username" id="username" data-mini="true" placeholder="Login" style="text-transform: lowercase;" autocomplete="off"/>
     						<div style="margin-bottom:7px;"></div>
                             <input type="password" name="senha" id="senha" data-mini="true" placeholder="Senha"/>
                             <div style="margin-bottom:7px;"></div>
@@ -129,8 +129,8 @@
     							<option value="pt">Português</option>
     						</select>
     						<div style="margin-bottom:7px;"></div>
-                            <input autocomplete="off" type="text" name="email" id="email" data-mini="true" placeholder="Email"/>
-                            			<div style="margin-bottom:7px;"></div>
+                            <input type="text" name="email" id="email" data-mini="true" placeholder="Email" autocomplete="off" /> 
+                            <div style="margin-bottom:7px;"></div>
                             <input type="number" pattern="+[0-9]*" name="telefone" id="telefone" data-mini="true" placeholder="Telefone"/>
 							<div style="margin-bottom:7px;"></div>
     						<select name="pais" id="pais" data-native-menu="false" data-mini="true" data-theme="b" placeholder="Pais">
@@ -381,7 +381,7 @@
                             <input type="hidden" name="id-edit" id="id-edit"/>
                             <input type="text" name="nome-edit" id="nome-edit" data-mini="true" placeholder="Nome" />
                             <div style="margin-bottom:7px;"></div>
-                            <input type="text" name="username-edit" id="username-edit" data-mini="true" placeholder="Login" readonly="true"/>
+                            <input type="text" name="username-edit" id="username-edit" data-mini="true" placeholder="Login" readonly="true" autocomplete="off"/>
                             <div style="margin-bottom:7px;"></div>
                                 <select name="categoria-edit" id="categoria-edit" data-native-menu="false" data-mini="true" data-theme="b">
                                     <option value="">Categoria</option>
@@ -405,9 +405,9 @@
                                 <option value="pt">Português</option>
                             </select>
                             <div style="margin-bottom:7px;"></div>
-                            <input type="text" name="email-edit" id="email-edit" data-mini="true" placeholder="Email"/>
+                            <input type="text" name="email-edit" id="email-edit" data-mini="true" placeholder="Email" autocomplete="off"/>
                             <div style="margin-bottom:7px;"></div>
-                            <input type="text" name="telefone-edit" id="telefone-edit" data-mini="true" placeholder="Telefone"/>
+                            <input type="number" pattern="+[0-9]*" name="telefone-edit" id="telefone-edit" data-mini="true" placeholder="Telefone"/>
                             <div style="margin-bottom:7px;"></div>
                             <select name="pais-edit" id="pais-edit" data-native-menu="false" data-mini="true" data-theme="b" placeholder="Pais">
                                 <option value="">País</option>
