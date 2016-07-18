@@ -103,7 +103,7 @@
                             
                             <input type="text" name="nome" id="nome" data-mini="true" placeholder="Nome" required/>
                             <div style="margin-bottom:7px;"></div>
-                            <input type="text" name="username" id="username" data-mini="true" placeholder="Login" style="text-transform: lowercase;"/>
+                            <input autocomplete="off" type="text" name="username" id="username" data-mini="true" placeholder="Login" style="text-transform: lowercase;"/>
     						<div style="margin-bottom:7px;"></div>
                             <input type="password" name="senha" id="senha" data-mini="true" placeholder="Senha"/>
                             <div style="margin-bottom:7px;"></div>
@@ -129,10 +129,10 @@
     							<option value="pt">Português</option>
     						</select>
     						<div style="margin-bottom:7px;"></div>
-                            <input type="text" name="email" id="email" data-mini="true" placeholder="Email"/>
-                            <div style="margin-bottom:7px;"></div>
-                            <input type="text" name="telefone" id="telefone" data-mini="true" placeholder="Telefone"/>
-    						<div style="margin-bottom:7px;"></div>
+                            <input autocomplete="off" type="text" name="email" id="email" data-mini="true" placeholder="Email"/>
+                            			<div style="margin-bottom:7px;"></div>
+                            <input type="number" pattern="+[0-9]*" name="telefone" id="telefone" data-mini="true" placeholder="Telefone"/>
+							<div style="margin-bottom:7px;"></div>
     						<select name="pais" id="pais" data-native-menu="false" data-mini="true" data-theme="b" placeholder="Pais">
     							<option value="">País</option>
                                             <option value="af">Afghanistan • افغانستان</option>
