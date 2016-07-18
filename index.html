@@ -54,12 +54,9 @@
                         <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
                         <h1>Contatos</h1>
                     </div>
-                    <div data-role="main">
-                       
-                                 <div id="listview"></div>
-                        
-                        
-                    </div> 
+					<div data-role="main"> 
+				    	 <ul id="contatoslist" data-role="listview" data-enhanced="true" data-filter="true" data-filter-placeholder="Filtrar..."/>
+					</div>	
                 </div>
 
                 <div id="login-page" data-role="page">
@@ -715,6 +712,8 @@
                 
       
                $(document).on("pageshow","#contatos-page",function() {       
+			   $("#contatoslist").empty().listview("refresh"); 
+			   
                 var url="http://neolist.com.br/appweb/getContatosNeoList.php";
                 $.getJSON(url,function(result, status) {
                     if ( status === 'success' ) {
@@ -736,10 +735,17 @@
                       var localData = JSON.stringify(field);
                       window.localStorage.setItem('CONTACT'+id, localData);
                         
-                      $("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
-                            
+                      
+						$("#contatoslist").append('<a '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" '+
+											  'idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" '+
+											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');    
                      });            
                     }
+                $('#contatoslist').listview('refresh');
                 })
                 .fail(function() {
                 console.log('getJSON request failed!'); 
@@ -757,11 +763,18 @@
                                var pais = localData.pais;
                                var estado = localData.estado;
                                var cidade = localData.cidade;
-                                $("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
-                            
+                                
+						$("#contatoslist").append('<a '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" '+
+											  'idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" '+
+											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
                         }
                         i++;
                     }
+                $('#contatoslist').listview('refresh');
                 }); 
             });
 
@@ -783,7 +796,7 @@
                        var pais = localData.pais;
                        var estado = localData.estado;
                        var cidade = localData.cidade;
-                        $("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
+                       // $("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
                     
                        $("#nome-detalhe").val(nome);
                        $("#categoria-detalhe").val(categoria);
