@@ -55,6 +55,7 @@
                         <h1>Contatos</h1>
                     </div>
 					<div data-role="main"> 
+					<span style="padding-left:20px;"> Pesquise também por categorias: Brigadista, Enfermeiro, Médico, Monitor, Peregrino, Responsável</span>
 				    	 <ul id="contatoslist" data-role="listview" data-enhanced="true" data-filter="true" data-filter-placeholder="Filtrar..."/>
 					</div>	
                 </div>
@@ -735,15 +736,53 @@
                       var localData = JSON.stringify(field);
                       window.localStorage.setItem('CONTACT'+id, localData);
                         
-                      
+                      if ( categoria === '2') { //peregrino
 						$("#contatoslist").append('<a '+
-											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" '+
-											  'idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" '+
+											  'style="border: 1px solid #11af4a!important; background:#11af4a!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											  '<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-check">&nbsp;</span></span></a>');   
+                      }else if ( categoria === '5' || categoria === '6') {
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #c70f0f!important; background:#c70f0f!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-plus">&nbsp;</span></span></a>');  
+					  }else if ( categoria === '7') { //brigadista
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #ef7008!important; background:#ef7008!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-alert">&nbsp;</span></span></a>');  
+					  }else if ( categoria === '1') { //monitor
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #6c49f1!important; background:#6c49f1!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-alert">&nbsp;</span></span></a>');  
+					 
+					  }else {	//responsaveis
+						$("#contatoslist").append('<a '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
 											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
 											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
 											'<span style="display:none;">'+categoria+'</span>'+
 											  '<span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');    
-                     });            
+                     }
+					 });            
                     }
                 $('#contatoslist').listview('refresh');
                 })
@@ -764,14 +803,54 @@
                                var estado = localData.estado;
                                var cidade = localData.cidade;
                                 
+						 
+                      if ( categoria === '2') { //peregrino
 						$("#contatoslist").append('<a '+
-											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" '+
-											  'idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" '+
+											  'style="border: 1px solid #11af4a!important; background:#11af4a!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											  '<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-check">&nbsp;</span></span></a>');   
+                      }else if ( categoria === '5' || categoria === '6') {
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #c70f0f!important; background:#c70f0f!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-plus">&nbsp;</span></span></a>');  
+					  }else if ( categoria === '7') { //brigadista
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #ef7008!important; background:#ef7008!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-alert">&nbsp;</span></span></a>');  
+					  }else if ( categoria === '1') { //monitor
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #6c49f1!important; background:#6c49f1!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-alert">&nbsp;</span></span></a>');  
+					 
+					  }else {	//responsaveis
+						$("#contatoslist").append('<a '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
 											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
 											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
 											'<span style="display:none;">'+categoria+'</span>'+
-											  '<span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
-                        }
+											  '<span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');    
+                     }
+						}
                         i++;
                     }
                 $('#contatoslist').listview('refresh');
