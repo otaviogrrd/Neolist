@@ -132,7 +132,7 @@
     						<div style="margin-bottom:7px;"></div>
                             <input type="text" name="email" id="email" data-mini="true" placeholder="Email" autocomplete="off" /> 
                             <div style="margin-bottom:7px;"></div>
-                            <input type="tel" pattern="+[0-9]*" name="telefone" id="telefone" data-mini="true" placeholder="Telefone +55 11 2222 2222"/>
+                            <input type="tel" pattern="+[0-9]*" name="telefone" id="telefone" data-mini="true" placeholder="Telefone +55 11 2222222222"/>
 							<div style="margin-bottom:7px;"></div>
                             <select name="pais" id="pais" data-native-menu="false" data-mini="true" data-theme="b">
                                 <option value="">Pais</option>  
@@ -157,6 +157,9 @@
                         <p>Informe todos os campos, preenchimento obrigatório.</p>
                         </div>
 
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpCadastroSucesso" class="ui-content" data-theme="b">
+                        <p>Cadastro realizado com sucesso.</p>
+                        </div>
 
                         <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoLogin" class="ui-content" data-theme="b">
                         <p>Login inválido, minímo de 6 caracteres.</p>
@@ -726,7 +729,7 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                                             cache: false,
                                             beforeSend: function() { $("#insert").val('Connecting...');},
                                             success: function(data) {
-											alert('Cadastro realizado com sucesso.');
+											    $('#popUpCadastroSucesso').popup('open');
                                                 $.mobile.changePage("#home-page");
                                             }
                                         }); 
