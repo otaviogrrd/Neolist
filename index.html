@@ -118,7 +118,7 @@
     						<div style="margin-bottom:7px;"></div>
                             <input type="password" name="senha" id="senha" data-mini="true" placeholder="Senha"/>
                             <div style="margin-bottom:7px;"></div>
-                                <select name="categoria" id="categoria" data-native-menu="true" data-mini="true" data-theme="b">
+                                <select name="categoria" id="categoria" data-native-menu="false" data-mini="true" data-theme="b">
                                     <option value="">Categoria</option>
                                         <option value="7">Brigadista</option>
                                         <option value="6">Enfermeiro(a)</option>
@@ -130,7 +130,7 @@
                                 </select>
                                 <div style="margin-bottom:7px;"></div>
     						
-    						<select name="idioma" id="idioma" data-native-menu="true" data-mini="true" data-theme="b">
+    						<select name="idioma" id="idioma" data-native-menu="false" data-mini="true" data-theme="b">
     							<option value="">Idioma</option>
     							<option value="ar">Árabe</option>
     							<option value="es">Espanhol</option>
@@ -144,7 +144,7 @@
                             <div style="margin-bottom:7px;"></div>
                             <input type="number" pattern="[0-9]" name="telefone" id="telefone" data-mini="true" placeholder="Telefone 55 11 9999999999"/>
 							<div style="margin-bottom:7px;"></div>
-                            <select name="pais" id="pais" data-native-menu="true" data-mini="true" data-theme="b">
+                            <select name="pais" id="pais" data-native-menu="false" data-mini="true" data-theme="b">
                                 <option value="">Pais</option>  
                                 <option value="de">Alemanha</option>     
                                 <option value="at">Austria</option>
@@ -771,14 +771,14 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                 $("#update-btn").click(function() {
                  
                  var id=$("#id-edit").val();
-                 var nome=$("#nome-edit").val();
+                 var nome=removerAcentos($("#nome-edit").val());
                  var categoria=$("#categoria-edit").val();
                  var idioma=$("#idioma-edit").val();
                  var email=$("#email-edit").val();
                  var telefone=$("#telefone-edit").val();
                  var pais=$("#pais-edit").val();
-                 var estado=$("#estado-edit").val();
-                 var cidade=$("#cidade-edit").val();
+                 var estado=removerAcentos($("#estado-edit").val());
+                 var cidade=removerAcentos($("#cidade-edit").val());
 
                  var dataString = "nome-edit="+nome+"&categoria-edit="+categoria+"&idioma-edit="+idioma+"&email-edit="+email+"&telefone-edit="+telefone+"&pais-edit="+pais+"&cidade-edit="+cidade+"&estado-edit="+estado+"id-edit="+id+"&update=";
 
