@@ -58,6 +58,9 @@
 					<p style="margin:5px;"> Pesquise também por categorias: Brigadista, Enfermeiro, Médico, Monitor, Peregrino, Responsável</p>
 				    	 <ul id="contatoslist" data-role="listview" data-enhanced="true" data-filter="true" data-filter-placeholder="Filtrar..."/>
 					</div>	
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpConexErro" class="ui-content" data-theme="b">
+                        <p>Erro de Conexão, verifique sua internet ou tente mais tarde.</p>
+                        </div>
                 </div>
 
                 <div id="login-page" data-role="page">
@@ -431,7 +434,7 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                 $('#contatoslist').listview('refresh');
                 })
                 .fail(function() {
-                console.log('getJSON request failed!'); 
+                	$('#popUpConexErro').popup('open');
                 var i = 1;                  
                     while (i < 5000) {  
                         var localData = JSON.parse(window.localStorage.getItem('CONTACT'+i));
