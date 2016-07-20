@@ -1,315 +1,823 @@
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <meta name="format-detection"  content="telephone=no" /> 
+            <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
 
-<head>
-    <title>Neolist</title>
-    <meta charset="utf-8" />
-    <meta name="format-detection"  content="telephone=no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
-    <link rel="stylesheet" href="libs/jQM-flat/jquery.mobile.flatui.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/geturi.js"></script>
-    <script type="text/javascript" src="libs/fastclick.min.js"></script>>
-    <script type="text/javascript" src="phonegap.js"></script>
-    <script type="text/javascript" src="libs/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="libs/jQueryMobile/jquery.mobile-1.3.2.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/functions.js"></script>
-</head>
+            <link rel="stylesheet"  href="libs/jQM-flat/jquery.mobile.flatui.css">
+            <link rel="stylesheet" type="text/css" href="css/index.css" />
 
-<body>
+            <title>Neolist</title>
 
-    <div id="app">
+            <script type="text/javascript" src="js/jquery.js"></script>
+             <script type="text/javascript" src="js/geturi.js"></script>
+            
+            <script type="text/javascript">
 
-        <div id="home-page" data-role="page">
+            var idSelecionado = 0;
+      
+            function pegaIdSelecionado(arg) {  
+              idSelecionado = arg;
+              return false;
+            }
+           
+            </script> 
 
-            <div data-role="content">
+        </head>
+        <body>
 
-                <div id="logoContainer" class="centerText">
-                    <img src="img/caminho-neocatecumenal-logo.png" id="logo" style="max-width:136px;" />
-                    <p>NeoList 2016</p>
-                    <p>Versão: 1.0.5</p>
+            <div id="app">
+
+                <div id="home-page" data-role="page">
+
+                    <div data-role="content" >
+     
+                        <div id="logoContainer" class="centerText" >
+                                <img src="img/caminho-neocatecumenal-logo.png" id="logo" style="max-width:136px;" />
+								<p>NeoList 2016</p>
+								<p>Versão: 1.0.5</p>
+                            </div>
+
+                        <div id="menu">
+                            <!--<a data-icon="flat-checkround" data-theme="a" href="#login-page" data-role="button">Login</a>-->
+                            <a data-icon="flat-man" data-theme="d" href="#contatos-page" data-role="button">Contatos</a>
+                            <a data-icon="flat-plus" data-theme="f" href="#cadastro-page"  data-role="button">Cadastre-se</a>
+                            <fieldset class="ui-grid-a">
+                                <div class="ui-block-a"> <a id="btn-edit" data-icon="flat-settings" data-theme="e" data-role="button" href="#login-page">Editar</a></div>
+                                <div class="ui-block-b"><a data-icon="ms-question" data-theme="g" href="#about-page"  data-role="button" >Sobre</a></div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div><!-- /page  -->
+
+                <div id="contatos-page" data-role="page">
+                    <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
+                        <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Contatos</h1>
+                    </div>
+					<div data-role="main"> 
+					<p style="margin:5px;"> Pesquise também por categorias: Brigadista, Enfermeiro, Médico, Monitor, Peregrino, Responsável</p>
+				    	 <ul id="contatoslist" data-role="listview" data-enhanced="true" data-filter="true" data-filter-placeholder="Filtrar..."/>
+					</div>	
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpConexErro" class="ui-content" data-theme="b">
+                        <p>Erro de Conexão, verifique sua internet ou tente mais tarde.</p>
+                        </div>
                 </div>
 
-                <div id="menu">
-                    <!--<a data-icon="flat-checkround" data-theme="a" href="#login-page" data-role="button">Login</a>-->
-                    <a data-icon="flat-man" data-theme="d" href="#contatos-page" data-role="button">Contatos</a>
-                    <a data-icon="flat-plus" data-theme="f" href="#cadastro-page" data-role="button">Cadastre-se</a>
-                    <fieldset class="ui-grid-a">
-                        <div class="ui-block-a"> <a id="btn-edit" data-icon="flat-settings" data-theme="e" data-role="button" href="#login-page">Editar</a></div>
-                        <div class="ui-block-b"><a data-icon="ms-question" data-theme="g" href="#about-page" data-role="button">Sobre</a></div>
-                    </fieldset>
-                </div>
-            </div>
-        </div>
-        <!-- /page  -->
-
-        <div id="contatos-page" data-role="page">
-            <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
-                <a href="#home-page" data-role="button" data-icon="arrow-l" data-inline="true">Voltar</a>
-                <h1>Contatos</h1>
-            </div>
-            <div data-role="main">
-                <p style="margin:5px;"> Pesquise também por categorias: Brigadista, Enfermeiro, Médico, Monitor, Peregrino, Responsável</p>
-                <ul id="contatoslist" data-role="listview" data-enhanced="true" data-filter="true" data-filter-placeholder="Filtrar..." />
-            </div>
-            <div style="background:#fff700; !important;" data-role="popup" id="popUpConexErro" class="ui-content" data-theme="b">
-                <p>Erro de Conexão, verifique sua internet ou tente mais tarde.</p>
-            </div>
-        </div>
-
-        <div id="login-page" data-role="page">
-            <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
-                <a href="#home-page" data-role="button" data-icon="arrow-l" data-inline="true">Voltar</a>
-                <h1>Login</h1>
-            </div>
-
-            <div data-role="content">
-                <form>
-
-                    <input type="text" style="text-transform: lowercase;" name="input-username" id="input-username" data-mini="true" placeholder="Login" />
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="password" name="input-senha" id="input-senha" data-mini="true" placeholder="Senha" />
-
-                    <div style="margin-bottom:7px;"></div>
-
-                    <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="login-btn" value="Entrar" />
-
-                </form>
-
-                <div style="background:#fff700; !important;" data-role="popup" id="popUpDadosLoginInvalidos">
-                    <p>Usuário ou senha inválidos, verifique.</p>
-                </div>
-
-                <div style="background:#fff700; !important;" data-role="popup" id="popUpFaltaDadosLogin">
-                    <p>Informe o usuário e senha, campos obrigatórios.</p>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div id="cadastro-page" data-role="page">
-            <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
-                <a href="#home-page" data-role="button" data-icon="arrow-l" data-inline="true">Voltar</a>
-                <h1>Novo Cadastro</h1>
-            </div>
-            <div data-role="content">
-                <form id="search-form" action="">
-
-                    <input type="text" name="nome" id="nome" data-mini="true" placeholder="Nome" required/>
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="text" name="username" id="username" data-mini="true" placeholder="Login" style="text-transform: lowercase;" autocomplete="off" />
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="password" name="senha" id="senha" data-mini="true" placeholder="Senha" />
-                    <div style="margin-bottom:7px;"></div>
-                    <select name="categoria" id="categoria"   data-mini="true" data-theme="b">
-								<option value="">Categoria</option>
-									<option value="7">Brigadista</option>
-									<option value="6">Enfermeiro(a)</option>
-									<option value="5">Médico</option>
-									<option value="1">Monitor</option>
-									<option value="2">Peregrino(a)</option>
-									<option value="3">Responsável de Grupo</option>
-									<option value="4">Responsável pela Acolhida</option>
-							</select>
-                    <div style="margin-bottom:7px;"></div>
-
-                    <select name="idioma" id="idioma"   data-mini="true" data-theme="b">
-							<option value="">Idioma</option>
-							<option value="ar">Árabe</option>
-							<option value="es">Espanhol</option>
-							<option value="fr">Francês</option>
-							<option value="in">Inglês</option>
-							<option value="it">Italiano</option>
-							<option value="pt">Português</option>
-						</select>
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="text" name="email" id="email" data-mini="true" placeholder="Email" autocomplete="off" />
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="number" pattern="[0-9]" name="telefone" id="telefone" data-mini="true" placeholder="Telefone 55 11 9999999999" />
-                    <div style="margin-bottom:7px;"></div>
-                    <select name="pais" id="pais"   data-mini="true" data-theme="b">
-							<option value="">Pais</option>  
-							<option value="de">Alemanha</option>     
-							<option value="at">Austria</option>
-							<option value="br">Brasil</option>
-							<option value="pl">Polonia</option>
-							<option value="pt">Portugal</option>
-							<option value="pt">Republica Tcheca</option>
-						</select>
-
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="text" name="estado" id="estado" data-mini="true" placeholder="Estado" />
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="text" name="cidade" id="cidade" data-mini="true" placeholder="Cidade" />
-                    <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="insert" value="Salvar" />
-                </form>
-
-                <div style="background:#fff700; !important;" data-role="popup" id="popUpCamposVazios" class="ui-content" data-theme="b">
-                    <p>Informe todos os campos, preenchimento obrigatório.</p>
-                </div>
-
-                <div style="background:#fff700; !important;" data-role="popup" id="popUpCadastroSucesso" class="ui-content" data-theme="b">
-                    <p>Cadastro realizado com sucesso.</p>
-                </div>
-
-                <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoLogin" class="ui-content" data-theme="b">
-                    <p>Login inválido, minímo de 6 caracteres.</p>
-                </div>
-
-                <div style="background:#fff700; !important;" data-role="popup" id="popUpLoginUtilizado" class="ui-content" data-theme="b">
-                    <p>Este login já está sendo utilizado, escolha outro.</p>
-                </div>
-
-                <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoLogin" class="ui-content" data-theme="b">
-                    <p>Senha inválida, minímo de 6 caracteres.</p>
-                </div>
-
-                <div style="background:#fff700; !important;" data-role="popup" id="popLoginUtilizado" class="ui-content" data-theme="b">
-                    <p>Login já utilizado, escolha outro.</p>
-                </div>
-
-                <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoSenha" class="ui-content" data-theme="b">
-                    <p>Senha inválida, minímo de 6 caracteres</p>
-                </div>
-            </div>
-
-        </div>
-
-        <div id="edit-page" data-role="page">
-            <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
-                <a href="#home-page" data-role="button" data-icon="arrow-l" data-inline="true">Voltar</a>
-                <h1>Editar Cadastro</h1>
-            </div>
-            <div data-role="content">
-                <form id="search-form" action="">
-                    <input type="hidden" name="id-edit" id="id-edit" />
-                    <input type="text" name="nome-edit" id="nome-edit" data-mini="true" placeholder="Nome" />
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="text" name="username-edit" id="username-edit" data-mini="true" placeholder="Login" readonly="true" autocomplete="off" />
-                    <div style="margin-bottom:7px;"></div>
-                    <select name="categoria-edit" id="categoria-edit" data-mini="true" data-theme="b">
-								<option value="">Categoria</option>
-									<option value="7">Brigadista</option>
-									<option value="6">Enfermeiro(a)</option>
-									<option value="5">Médico</option>
-									<option value="1">Monitor</option>
-									<option value="2">Peregrino(a)</option>
-									<option value="3">Responsável de Grupo</option>
-									<option value="4">Responsável pela Acolhida</option>
-							</select>
-                    <div style="margin-bottom:7px;"></div>
-
-                    <select name="idioma-edit" id="idioma-edit" data-mini="true" data-theme="b">
-							<option value="">Idioma</option>
-							<option value="ar">Árabe</option>
-							<option value="es">Espanhol</option>
-							<option value="fr">Francês</option>
-							<option value="in">Inglês</option>
-							<option value="it">Italiano</option>
-							<option value="pt">Português</option>
-						</select>
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="text" name="email-edit" id="email-edit" data-mini="true" placeholder="Email" autocomplete="off" />
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="number" pattern="+[0-9]*" name="telefone-edit" id="telefone-edit" data-mini="true" placeholder="Telefone" />
-                    <div style="margin-bottom:7px;"></div>
-                    <select name="pais-edit" id="pais-edit" data-mini="true" data-theme="b" placeholder="Pais">
-							<option value="">País</option>       
-							<option value="de">Alemanha</option>     
-							<option value="at">Austria</option>
-							<option value="br">Brasil</option>
-							<option value="pl">Polonia</option>
-							<option value="pt">Portugal</option>
-							<option value="pt">Republica Tcheca</option>
-							
-						</select>
-
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="text" name="estado-edit" id="estado-edit" data-mini="true" placeholder="Estado" />
-                    <div style="margin-bottom:7px;"></div>
-                    <input type="text" name="cidade-edit" id="cidade-edit" data-mini="true" placeholder="Cidade" />
-                    <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="update-btn" value="Atualizar" />
-
-                    <div style="background:#fff700; !important;" data-role="popup" id="popUpCamposVaziosUpdate" class="ui-content" data-theme="b">
-                        <p>Informe todos os campos, preenchimento obrigatório.</p>
+                <div id="login-page" data-role="page">
+                    <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
+                        <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Login</h1>
                     </div>
 
-                </form>
+
+                    <div data-role="content">
+                        <form>
+
+                            <input type="text" style="text-transform: lowercase;" name="input-username" id="input-username" data-mini="true" placeholder="Login"/>
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="password" name="input-senha" id="input-senha" data-mini="true" placeholder="Senha"/>
+                            
+                            <div style="margin-bottom:7px;"></div>
+                            
+                         
+                            <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="login-btn" value="Entrar"/>
+                          
+                            
+                        </form>
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpDadosLoginInvalidos">
+                           <p>Usuário ou senha inválidos, verifique.</p>
+                        </div>
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpFaltaDadosLogin">
+                           <p>Informe o usuário e senha, campos obrigatórios.</p>
+                        </div>
+
+                    </div>
+                   
+                </div>
+
+
+               
+
+
+
+                <div id="cadastro-page" data-role="page">
+                    <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
+                        <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Novo Cadastro</h1>
+                    </div>
+                    <div data-role="content" >
+                        <form  id="search-form" action="" >
+                            
+                            <input type="text" name="nome" id="nome" data-mini="true" placeholder="Nome" required/>
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="username" id="username" data-mini="true" placeholder="Login" style="text-transform: lowercase;" autocomplete="off"/>
+    						<div style="margin-bottom:7px;"></div>
+                            <input type="password" name="senha" id="senha" data-mini="true" placeholder="Senha"/>
+                            <div style="margin-bottom:7px;"></div>
+							<!--data-native-menu="false"-->
+                                <select name="categoria" id="categoria"  data-mini="true" data-theme="b">
+                                    <option value="">Categoria</option>
+                                        <option value="7">Brigadista</option>
+                                        <option value="6">Enfermeiro(a)</option>
+                                        <option value="5">Médico</option>
+                                        <option value="1">Monitor</option>
+                                        <option value="2">Peregrino(a)</option>
+                                        <option value="3">Responsável de Grupo</option>
+                                        <option value="4">Responsável pela Acolhida</option>
+                                </select>
+                                <div style="margin-bottom:7px;"></div>
+    						
+    						<select name="idioma" id="idioma" data-mini="true" data-theme="b">
+    							<option value="">Idioma</option>
+    							<option value="ar">Árabe</option>
+    							<option value="es">Espanhol</option>
+    							<option value="fr">Francês</option>
+    							<option value="in">Inglês</option>
+    							<option value="it">Italiano</option>
+    							<option value="pt">Português</option>
+    						</select>
+    						<div style="margin-bottom:7px;"></div>
+                            <input type="text" name="email" id="email" data-mini="true" placeholder="Email" autocomplete="off" /> 
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="number" pattern="[0-9]" name="telefone" id="telefone" data-mini="true" placeholder="Telefone 55 11 9999999999"/>
+							<div style="margin-bottom:7px;"></div>
+                            <select name="pais" id="pais" data-mini="true" data-theme="b">
+                                <option value="">Pais</option>  
+                                <option value="de">Alemanha</option>     
+                                <option value="at">Austria</option>
+                                <option value="br">Brasil</option>
+                                <option value="pl">Polonia</option>
+                                <option value="pt">Portugal</option>
+                                <option value="pt">Republica Tcheca</option>
+                            </select>
+    						
+    						<div style="margin-bottom:7px;"></div>
+                            <input type="text" name="estado" id="estado" data-mini="true" placeholder="Estado"/>
+    						<div style="margin-bottom:7px;"></div>
+                            <input type="text" name="cidade" id="cidade" data-mini="true" placeholder="Cidade"/>
+                          <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="insert" value="Salvar"/>
+                        </form>
+                        
+                        
+                       
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpCamposVazios" class="ui-content" data-theme="b">
+                        <p>Informe todos os campos, preenchimento obrigatório.</p>
+                        </div>
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpCadastroSucesso" class="ui-content" data-theme="b">
+                        <p>Cadastro realizado com sucesso.</p>
+                        </div>
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoLogin" class="ui-content" data-theme="b">
+                        <p>Login inválido, minímo de 6 caracteres.</p>
+                        </div>
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpLoginUtilizado" class="ui-content" data-theme="b">
+                        <p>Este login já está sendo utilizado, escolha outro.</p>
+                        </div>
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoLogin" class="ui-content" data-theme="b">
+                        <p>Senha inválida, minímo de 6 caracteres.</p>
+                        </div>
+
+                        <div style="background:#fff700; !important;" data-role="popup" id="popLoginUtilizado" class="ui-content" data-theme="b">
+                        <p>Login já utilizado, escolha outro.</p>
+                        </div>
+
+                         <div style="background:#fff700; !important;" data-role="popup" id="popUpValorMinimoCampoSenha" class="ui-content" data-theme="b">
+                        <p>Senha inválida, minímo de 6 caracteres</p>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <div id="edit-page" data-role="page">
+                    <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
+                        <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Editar Cadastro</h1>
+                    </div>
+                    <div data-role="content" >
+                        <form  id="search-form" action="" >
+                            <input type="hidden" name="id-edit" id="id-edit"/>
+                            <input type="text" name="nome-edit" id="nome-edit" data-mini="true" placeholder="Nome" />
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="username-edit" id="username-edit" data-mini="true" placeholder="Login" readonly="true" autocomplete="off"/>
+                            <div style="margin-bottom:7px;"></div>
+                                <select name="categoria-edit" id="categoria-edit" data-mini="true" data-theme="b">
+                                    <option value="">Categoria</option>
+                                        <option value="7">Brigadista</option>
+                                        <option value="6">Enfermeiro(a)</option>
+                                        <option value="5">Médico</option>
+                                        <option value="1">Monitor</option>
+                                        <option value="2">Peregrino(a)</option>
+                                        <option value="3">Responsável de Grupo</option>
+                                        <option value="4">Responsável pela Acolhida</option>
+                                </select>
+                                <div style="margin-bottom:7px;"></div>
+                            
+                            <select name="idioma-edit" id="idioma-edit" data-mini="true" data-theme="b">
+                                <option value="">Idioma</option>
+                                <option value="ar">Árabe</option>
+                                <option value="es">Espanhol</option>
+                                <option value="fr">Francês</option>
+                                <option value="in">Inglês</option>
+                                <option value="it">Italiano</option>
+                                <option value="pt">Português</option>
+                            </select>
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="email-edit" id="email-edit" data-mini="true" placeholder="Email" autocomplete="off"/>
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="number" pattern="+[0-9]*" name="telefone-edit" id="telefone-edit" data-mini="true" placeholder="Telefone"/>
+                            <div style="margin-bottom:7px;"></div>
+                            <select name="pais-edit" id="pais-edit" data-mini="true" data-theme="b" placeholder="Pais">
+                                <option value="">País</option>       
+                                <option value="de">Alemanha</option>     
+                                <option value="at">Austria</option>
+                                <option value="br">Brasil</option>
+                                <option value="pl">Polonia</option>
+                                <option value="pt">Portugal</option>
+                                <option value="pt">Republica Tcheca</option>
+                                
+                            </select>
+
+
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="estado-edit" id="estado-edit" data-mini="true" placeholder="Estado"/>
+                            <div style="margin-bottom:7px;"></div>
+                            <input type="text" name="cidade-edit" id="cidade-edit" data-mini="true" placeholder="Cidade"/>
+                            <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="update-btn" value="Atualizar"/>
+
+                            <div style="background:#fff700; !important;" data-role="popup" id="popUpCamposVaziosUpdate" class="ui-content" data-theme="b">
+                            <p>Informe todos os campos, preenchimento obrigatório.</p>
+                            </div>
+
+                        </form>
+                    </div>
+                   
+                </div>
+
+
+
+                    
+
+                <div  id="about-page" data-role="page">
+                    <div data-role="header" data-id="header1" data-position="fixed" class="ui-header">
+                        <a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Sobre</h1>
+                    </div>
+
+                    <div data-role="content" class="big-text">
+                        <h2>Sobre o Neolist</h2>
+                        <p>O NeoList é um Aplicativo do Centro Neocatecumenal de Brasília, de apoio para os grupos de peregrinos do Caminho Neocatecumenal no Brasil, para a JMJ Cracóvia 2016.
+                        Ele é um ajuda para as comunicações entre os responsáveis e aqueles irmãos de apóio.
+                        Faça o cadastro para receber SMS do Centro Neocatecumenal de Brasília, durante a peregrinação.
+                        Lembre que em caso de mudança ou modificação de dados deverá atualizar seu cadastro.
+
+                        Os dados do Neolist devem ser usados com prudência, e somente para este fim, enquanto têm nomes de Responsáveis dos diversos grupos de peregrinos.
+                    </div>
+
+
+
+
+                    <div data-role="content" class="big-text">
+                        <h2>Fabiano Carvalho</h2>
+                        <p>Email: carvalho.fabiano@gmail.com</p>
+                        <p>Telefone: +5561991199497</p>
+                      
+                    </div>
+
+                    <div data-role="content" class="big-text">
+                        <h2>Otávio Garrido</h2>
+                        <p>Email: otavio.grrd@gmail.com</p>
+                        <p>Telefone: +5561982291992</p>
+                       
+                    </div>
+
+                     <div data-role="content" class="big-text">
+                        <h2>Luis Gustavo Souza</h2>
+                        <p>Email: os.luisgustavo@gmail.com</p>
+                        <p>Telefone: +5516982205070</p>
+                       
+                    </div>
+                </div>
+
+                <div id="detalhes-page" data-role="page">
+                    <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
+                        <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Voltar</a>
+                        <h1>Detalhes</h1>
+                    </div>
+                    <div data-role="content" >
+                        <form  id="search-form" action="">
+                            <label for="address">Nome</label>
+                            <input type="text" name="nome-detalhe" id="nome-detalhe" data-mini="true" readonly="true"/>
+
+                            <label for="address">Categoria</label>
+                            <input type="text" name="categoria-detalhe" id="categoria-detalhe" data-mini="true" readonly="true"/>
+
+                            <label for="address">Idioma</label>
+                            <input type="text" name="idioma-detalhe" id="idioma-detalhe" data-mini="true" readonly="true"/>
+
+                            <label for="address">Email</label>
+                            <input type="text" name="email-detalhe" id="email-detalhe" data-mini="true" readonly="true"/>
+
+                            <label for="address">Telefone</label>
+                            <input type="text" name="telefone-detalhe" id="telefone-detalhe" data-mini="true" readonly="true"/>							
+                            <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="call-btn" value="Ligar"/>
+
+                            <label for="address">Pais</label>
+                            <input type="text" name="pais-detalhe" id="pais-detalhe" data-mini="true" readonly="true"/>
+
+                            <label for="address">Cidade</label>
+                            <input type="text" name="cidade-detalhe" id="cidade-detalhe" data-mini="true" readonly="true"/>
+                           
+                        </form>
+                    </div>
+                </div>
+
             </div>
 
-        </div>
 
-        <div id="about-page" data-role="page">
-            <div data-role="header" data-id="header1" data-position="fixed" class="ui-header">
-                <a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true">Voltar</a>
-                <h1>Sobre</h1>
-            </div>
 
-            <div data-role="content" class="big-text">
-                <h2>Sobre o Neolist</h2>
-                <p>O NeoList é um Aplicativo do Centro Neocatecumenal de Brasília, de apoio para os grupos de peregrinos do Caminho Neocatecumenal no Brasil, para a JMJ Cracóvia 2016. Ele é um ajuda para as comunicações entre os responsáveis e aqueles irmãos de apóio. Faça o cadastro para receber SMS do Centro Neocatecumenal de Brasília, durante a peregrinação. Lembre que em caso de mudança ou modificação de dados deverá atualizar seu cadastro. Os dados do Neolist devem ser usados com prudência, e somente para este fim, enquanto têm nomes de Responsáveis dos diversos grupos de peregrinos.
-            </div>
 
-            <div data-role="content" class="big-text">
-                <h2>Fabiano Carvalho</h2>
-                <p>Email: carvalho.fabiano@gmail.com</p>
-                <p>Telefone: +5561991199497</p>
 
-            </div>
 
-            <div data-role="content" class="big-text">
-                <h2>Otávio Garrido</h2>
-                <p>Email: otavio.grrd@gmail.com</p>
-                <p>Telefone: +5561982291992</p>
 
-            </div>
+            <script type="text/javascript" src="libs/fastclick.min.js"></script>
+            <script type="text/javascript" src="phonegap.js"></script>
+            <script type="text/javascript" src="libs/jquery-2.0.3.min.js"></script>
+            <script type="text/javascript" src="libs/jQueryMobile/jquery.mobile-1.3.2.min.js"></script>
 
-            <div data-role="content" class="big-text">
-                <h2>Luis Gustavo Souza</h2>
-                <p>Email: os.luisgustavo@gmail.com</p>
-                <p>Telefone: +5516982205070</p>
 
-            </div>
-        </div>
+            <script type="text/javascript" src="js/index.js"></script>
 
-        <div id="detalhes-page" data-role="page">
-            <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
-                <a href="#home-page" data-role="button" data-icon="arrow-l" data-inline="true">Voltar</a>
-                <h1>Detalhes</h1>
-            </div>
-            <div data-role="content">
-                <form id="search-form" action="">
-                    <label for="address">Nome</label>
-                    <input type="text" name="nome-detalhe" id="nome-detalhe" data-mini="true" readonly="true" />
+            <script type="text/javascript">
 
-                    <label for="address">Categoria</label>
-                    <input type="text" name="categoria-detalhe" id="categoria-detalhe" data-mini="true" readonly="true" />
+                var map={"â":"a","Â":"A","à":"a","À":"A","á":"a","Á":"A","ã":"a","Ã":"A","ê":"e","Ê":"E","è":"e","È":"E","é":"e","É":"E","î":"i","Î":"I","ì":"i","Ì":"I","í":"i","Í":"I","õ":"o","Õ":"O","ô":"o","Ô":"O","ò":"o","Ò":"O","ó":"o","Ó":"O","ü":"u","Ü":"U","û":"u","Û":"U","ú":"u","Ú":"U","ù":"u","Ù":"U","ç":"c","Ç":"C"};
 
-                    <label for="address">Idioma</label>
-                    <input type="text" name="idioma-detalhe" id="idioma-detalhe" data-mini="true" readonly="true" />
+function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map[a]||a}) };
+      
+               $(document).on("pageshow","#contatos-page",function() {       
+			   $("#contatoslist").empty().listview("refresh"); 
+			   
+                var url="http://neolist.com.br/appweb/getContatosNeoList.php";
+                $.getJSON(url,function(result, status) {
+                    if ( status === 'success' ) {
+                    
+                     window.localStorage.clear();
+                
+                     $.each(result, function(i, field) {
+                      var id=field.id;
+                      var nome=field.nome;
+                      var username = field.login;
+                      var categoria = field.categoria;
+                      var idioma = field.idioma;
+                      var email = field.email;
+                      var telefone = field.telefone;
+                      var pais = field.pais;
+                      var estado = field.estado;
+                      var cidade = field.cidade;
+                var descricao_categoria = field.descricao_categoria;
+                var descricao_idioma = field.descricao_idioma;
+                var nome_pais = field.nome_pais;
+                      var localData = JSON.stringify(field);
+                      window.localStorage.setItem('CONTACT'+id, localData);
+                        
+                      if ( categoria === '2') { //peregrino
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #11af4a!important; background:#11af4a!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											  '<span style="display:none;">'+descricao_categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-check">&nbsp;</span></span></a>');   
+                      }else if ( categoria === '5' || categoria === '6') {
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #c70f0f!important; background:#c70f0f!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+descricao_categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-plus">&nbsp;</span></span></a>');  
+					  }else if ( categoria === '7') { //brigadista
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #ef7008!important; background:#ef7008!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+descricao_categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-alert">&nbsp;</span></span></a>');  
+					  }else if ( categoria === '1') { //monitor
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #6c49f1!important; background:#6c49f1!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+descricao_categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-alert">&nbsp;</span></span></a>');  
+					 
+					  }else {	//responsaveis
+						$("#contatoslist").append('<a '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+descricao_categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');    
+                     }
+					 });            
+                    }
+                $('#contatoslist').listview('refresh');
+                })
+                .fail(function() {
+                	$('#popUpConexErro').popup('open');
+                var i = 1;                  
+                    while (i < 5000) {  
+                        var localData = JSON.parse(window.localStorage.getItem('CONTACT'+i));
+                        if ( localData !== null ){
+                               var id=localData.id;
+                               var nome=localData.nome;
+                               var username = localData.login;
+                               var categoria = localData.categoria;
+                               var idioma = localData.idioma;
+                               var email = localData.email;
+                               var telefone = localData.telefone;
+                               var pais = localData.pais;
+                               var estado = localData.estado;
+                               var cidade = localData.cidade;
+                var descricao_categoria = localData.descricao_categoria;
+                var descricao_idioma = localData.descricao_idioma;
+                var nome_pais = localData.nome_pais;
+                                
+						 
+                      if ( categoria === '2') { //peregrino
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #11af4a!important; background:#11af4a!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											  '<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-check">&nbsp;</span></span></a>');   
+                      }else if ( categoria === '5' || categoria === '6') {
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #c70f0f!important; background:#c70f0f!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-plus">&nbsp;</span></span></a>');  
+					  }else if ( categoria === '7') { //brigadista
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #ef7008!important; background:#ef7008!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-alert">&nbsp;</span></span></a>');  
+					  }else if ( categoria === '1') { //monitor
+						$("#contatoslist").append('<a '+
+											  'style="border: 1px solid #6c49f1!important; background:#6c49f1!important;" '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-alert">&nbsp;</span></span></a>');  
+					 
+					  }else {	//responsaveis
+						$("#contatoslist").append('<a '+
+											  'onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" '+
+											  'idContato="'+id+'" data-role="button" data-corners="true" data-shadow="true" '+
+											  'data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all '+
+											  'ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span>'+
+											'<span style="display:none;">'+categoria+'</span>'+
+											  '<span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');    
+                     }
+						}
+                        i++;
+                    }
+                $('#contatoslist').listview('refresh');
+                }); 
+            });
 
-                    <label for="address">Email</label>
-                    <input type="text" name="email-detalhe" id="email-detalhe" data-mini="true" readonly="true" />
 
-                    <label for="address">Telefone</label>
-                    <input type="text" name="telefone-detalhe" id="telefone-detalhe" data-mini="true" readonly="true" />
-                    <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="call-btn" value="Ligar" />
 
-                    <label for="address">Pais</label>
-                    <input type="text" name="pais-detalhe" id="pais-detalhe" data-mini="true" readonly="true" />
+             $(document).on("pageshow","#detalhes-page",function() {       
+                
+                $("#nome-detalhe").val("");  
+                
+                var localData = JSON.parse(window.localStorage.getItem('CONTACT'+idSelecionado));
+                if ( localData !== null ){
+                       var id=localData.id;
+                       var nome=localData.nome;
+                       var username = localData.login;
+                       var categoria = localData.categoria;
+                       var idioma = localData.idioma;
+                       var email = localData.email;
+                       var telefone = localData.telefone;
+                       var pais = localData.pais;
+                       var estado = localData.estado;
+                       var cidade = localData.cidade;
+					   var descricao_categoria = localData.descricao_categoria;
+                var descricao_idioma = localData.descricao_idioma;
+                var nome_pais = localData.nome_pais;
+                       // $("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
+                    
+                       $("#nome-detalhe").val(nome);
+                       $("#categoria-detalhe").val(descricao_categoria);
+                       $("#idioma-detalhe").val(descricao_idioma);
+                       $("#email-detalhe").val(email);
+                       $("#telefone-detalhe").val(telefone);
+                       $("#pais-detalhe").val(nome_pais);
+                       
+                       if(estado == null || estado == "null" || estado == "") {
+                        $("#cidade-detalhe").val(cidade);
+                       } else {
+                        $("#cidade-detalhe").val(cidade + " - " + estado);
+                       }                      
+                }
+                else {
+                    var url="http://neolist.com.br/appweb/getDetalheContatoNeoList.php?id=" + idSelecionado;
+                     $.getJSON(url,function(result, status) {
+                     if ( status === 'success' ){
+                        //console.log(result);
 
-                    <label for="address">Cidade</label>
-                    <input type="text" name="cidade-detalhe" id="cidade-detalhe" data-mini="true" readonly="true" />
+                          $.each(result, function(i, field) {
+                           var id=field.id;
+                           var nome=field.nome;
+                           var categoria = field.descricao_categoria;
+                           var idioma = field.descricao_idioma;
+                           var email = field.email;
+                           var telefone = field.telefone;
+                           var pais = field.nome_pais;
+                           var cidade = field.cidade;
+                           var estado = field.estado;
+                var descricao_categoria = field.descricao_categoria;
+                var descricao_idioma = field.descricao_idioma;
+                var nome_pais = field.nome_pais;
+                         
 
-                </form>
-            </div>
-        </div>
+                           $("#nome-detalhe").val(nome);
+                           $("#categoria-detalhe").val(categoria);
+                           $("#idioma-detalhe").val(idioma);
+                           $("#email-detalhe").val(email);
+                           $("#telefone-detalhe").val(telefone);
+                           $("#pais-detalhe").val(pais);
+                           
+                           if(estado == null || estado == "null" || estado == "") {
+                            $("#cidade-detalhe").val(cidade);
+                           } else {
+                            $("#cidade-detalhe").val(cidade + " - " + estado);
+                           }
+                          
 
-    </div>
+                          });
+                     }
+                     });
+                }                   
+            });
+            
+            
+            $(document).on("pageinit","#login-page",function() { 
 
-</body>
+                $("#input-username").val("");
+                $("#input-senha").val("");
+            });
 
-</html>
+            $(document).on("pagebeforeshow","#cadastro-page",function() {
+            
+                $("#nome").val("");
+                $("#username").val("");
+                $("#senha").val("");
+                $("#categoria").val("");
+                $("#idioma").val("");
+                $("#email").val("");
+                $("#telefone").val("");
+                $("#pais").val("");
+                $("#estado").val("");
+                $("#cidade").val("");    
+            });
+
+             $("#btn-edit").click(function() {
+
+             /*   $.ajax({
+                    url:"http://neolist.com.br/appweb/getSessaoUsuario.php?username="+username+"",
+                        dataType : "json",
+                        success : function(data) {
+                            if(data.length == 0) {
+                              $.mobile.changePage("#home-page");
+                            } else if(data.length == 1) {
+                               $.mobile.changePage("#edit-page");
+                            }
+                        }
+                    }); */
+
+            });
+			
+			$("#call-btn").click(function() {
+               
+                var tel=$("#telefone-detalhe").val();
+				document.location.href = 'tel:'+tel;
+			});
+            $("#login-btn").click(function() {
+               
+                var username=$("#input-username").val();
+                var senha=$("#input-senha").val();
+                    
+                if(username.length > 0 && senha.length > 0) {
+
+                    $.ajax({
+                        url:"http://neolist.com.br/appweb/getLoginNeoList.php?username="+username+"&senha="+senha,
+                        dataType : "json",
+                        //data : "GET",
+                        success : function(data) {
+                            //alert(data[0].login);
+                            if(data[0].login == null) {
+                           
+                              $('#popUpDadosLoginInvalidos').popup('open');
+                            
+                            } else if(data[0].login != null) {
+                                
+                                 var url="http://neolist.com.br/appweb/getDetalhesAlteracao.php?id="+data[0].login;
+                                 $.getJSON(url,function(result) {
+                                    console.log(result);
+
+                                      $.each(result, function(i, field) {
+                                       
+                                       var id=field.id;
+                                       var nome=field.nome;
+                                       var username=field.login;
+                                       var email=field.email;
+                                       var telefone = field.telefone;
+                                       var categoria = field.categoria;
+                                       var idioma = field.idioma;
+                                       var estado = field.estado;
+                                       var cidade = field.cidade;
+
+                                       $("#id-edit").val(id);   
+                                       $("#nome-edit").val(nome);
+                                       $("#username-edit").val(username);
+                                       $("#email-edit").val(email);
+                                       $("#telefone-edit").val(telefone);
+                                       $("#categoria-edit").val(categoria);
+                                       $("#idioma-edit").val(idioma);
+                                       $("#estado-edit").val(estado);
+                                       $("#cidade-edit").val(cidade);
+                                      });
+                                 }); 
+
+                              $.mobile.changePage("#edit-page");
+                            }
+                        }
+                    });
+
+                } else {
+
+                    $('#popUpFaltaDadosLogin').popup('open');
+
+                }
+
+             });
+
+
+               $("#insert").click(function() {
+            
+                 var nome=removerAcentos($("#nome").val());
+                 var username=$("#username").val();
+                 var senha=$("#senha").val();
+                 var categoria=$("#categoria").val();
+                 var idioma=$("#idioma").val();
+                 var email=$("#email").val();
+                 var telefone=$("#telefone").val();
+                 var pais=$("#pais").val();
+                 var estado=removerAcentos($("#estado").val());
+                 var cidade=removerAcentos($("#cidade").val());
+	             var dataString = "nome="+nome+"&username="+username+"&senha="+senha+"&idioma="+idioma+"&email="+email+"&telefone="+telefone+"&pais="+pais+"&cidade="+cidade+"&estado="+estado+"&insert=";
+                   /* alert(nome);
+                    alert(username);
+                    alert(senha);
+                    alert(categoria);
+                    alert(idioma);
+                    alert(pais);
+                    alert(email);
+                    alert(telefone);
+                    alert(estado);
+                    alert(cidade); */
+
+               if($.trim(nome).length>=0 & $.trim(username).length>=0 & $.trim(senha).length>=0 & categoria >0 & $.trim(idioma).length>0 & $.trim(pais).length>0 & $.trim(email).length>0 & $.trim(telefone).length>0 & $.trim(estado).length>0 & $.trim(cidade).length>0) 
+                {
+                   
+                    if($.trim(username).length>=6)
+                    {
+
+                    if($.trim(senha).length>=6)
+                    { 
+
+                        $.ajax({
+                                url:"http://neolist.com.br/appweb/getExistenciaLogin.php?username="+username+"",
+                                dataType: "json",
+                                success: function(data) {
+                                //alert(data[0].login);
+                                if(data[0].login == null) {
+
+                                   
+                                   $.ajax({
+                                            type: "POST",
+                                            //url: "http://phonegappro.esy.es/test/insert.php",
+                                            url:"http://neolist.com.br/appweb/insertUsuariosNeoList.php",
+                                            data: dataString,
+                                            crossDomain: true,
+                                            cache: false,
+                                            beforeSend: function() { $("#insert").val('Connecting...');},
+                                            success: function(data) {
+											    $('#popUpCadastroSucesso').popup('open');
+                                                $.mobile.changePage("#home-page");
+                                            }
+                                        }); 
+                                
+                                } else {
+                                    $('#popUpLoginUtilizado').popup('open');
+
+                                }
+                            }
+                        }); 
+
+                    } else {
+
+                       $('#popUpValorMinimoCampoSenha').popup('open');
+                    }
+                    
+                    } else {
+
+                       $('#popUpValorMinimoCampoLogin').popup('open');
+                }
+
+                } else {
+
+                       $('#popUpCamposVazios').popup('open');
+                    }
+                    return false;
+                });
+
+                $("#update-btn").click(function() {
+                 
+                 var id=$("#id-edit").val();
+                 var nome=$("#nome-edit").val();
+                 var categoria=$("#categoria-edit").val();
+                 var idioma=$("#idioma-edit").val();
+                 var email=$("#email-edit").val();
+                 var telefone=$("#telefone-edit").val();
+                 var pais=$("#pais-edit").val();
+                 var estado=$("#estado-edit").val();
+                 var cidade=$("#cidade-edit").val();
+
+                 var dataString = "nome-edit="+nome+"&categoria-edit="+categoria+"&idioma-edit="+idioma+"&email-edit="+email+"&telefone-edit="+telefone+"&pais-edit="+pais+"&cidade-edit="+cidade+"&estado-edit="+estado+"id-edit="+id+"&update=";
+
+                    /*alert(id);
+                    alert(nome);
+                    alert(categoria);
+                    alert(idioma);
+                    alert(pais);
+                    alert(email);
+                    alert(telefone);
+                    alert(estado);
+                    alert(cidade); */
+                   
+               if($.trim(nome).length>=0 & categoria >0 & $.trim(idioma).length>0 & $.trim(pais).length>0 & $.trim(email).length>0 & $.trim(telefone).length>0 & 
+                $.trim(estado).length>0 & $.trim(cidade).length>0) 
+                {
+
+                        $.ajax({
+                            type: "POST",
+                            //url: "http://phonegappro.esy.es/test/insert.php",
+                            url:"http://neolist.com.br/appweb/updateUsuariosNeoList.php",
+                            data: dataString,
+                            crossDomain: true,
+                            cache: false,
+                            beforeSend: function() { $("#insert").val('Connecting...');},
+                            success: function(data) {
+                                $.mobile.changePage("#home-page");
+                            }
+                        });
+
+                } else {
+
+                       $('#popUpCamposVaziosUpdate').popup('open');
+                    }
+                    return false;
+                });
+
+            </script>
+
+        </body>
+    </html>
