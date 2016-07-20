@@ -2,7 +2,7 @@
     <html>
         <head>
             <meta charset="utf-8" />
-            <meta name="format-detection"  content="telephone=no" /> 
+            <meta name="format-detection" /> <!-- content="telephone=no" /> -->
             <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
 
             <link rel="stylesheet"  href="libs/jQM-flat/jquery.mobile.flatui.css">
@@ -36,7 +36,7 @@
                         <div id="logoContainer" class="centerText" >
                                 <img src="img/caminho-neocatecumenal-logo.png" id="logo" style="max-width:136px;" />
 								<p>NeoList 2016</p>
-								<p>Versão: 1.0.5</p>
+								<p>Versão: 1.0.4</p>
                             </div>
 
                         <div id="menu">
@@ -118,8 +118,7 @@
     						<div style="margin-bottom:7px;"></div>
                             <input type="password" name="senha" id="senha" data-mini="true" placeholder="Senha"/>
                             <div style="margin-bottom:7px;"></div>
-							<!--data-native-menu="false"-->
-                                <select name="categoria" id="categoria"  data-mini="true" data-theme="b">
+                                <select name="categoria" id="categoria" data-native-menu="true" data-mini="true" data-theme="b">
                                     <option value="">Categoria</option>
                                         <option value="7">Brigadista</option>
                                         <option value="6">Enfermeiro(a)</option>
@@ -131,7 +130,7 @@
                                 </select>
                                 <div style="margin-bottom:7px;"></div>
     						
-    						<select name="idioma" id="idioma" data-mini="true" data-theme="b">
+    						<select name="idioma" id="idioma" data-native-menu="true" data-mini="true" data-theme="b">
     							<option value="">Idioma</option>
     							<option value="ar">Árabe</option>
     							<option value="es">Espanhol</option>
@@ -145,7 +144,7 @@
                             <div style="margin-bottom:7px;"></div>
                             <input type="number" pattern="[0-9]" name="telefone" id="telefone" data-mini="true" placeholder="Telefone 55 11 9999999999"/>
 							<div style="margin-bottom:7px;"></div>
-                            <select name="pais" id="pais" data-mini="true" data-theme="b">
+                            <select name="pais" id="pais" data-native-menu="true" data-mini="true" data-theme="b">
                                 <option value="">Pais</option>  
                                 <option value="de">Alemanha</option>     
                                 <option value="at">Austria</option>
@@ -207,7 +206,7 @@
                             <div style="margin-bottom:7px;"></div>
                             <input type="text" name="username-edit" id="username-edit" data-mini="true" placeholder="Login" readonly="true" autocomplete="off"/>
                             <div style="margin-bottom:7px;"></div>
-                                <select name="categoria-edit" id="categoria-edit" data-mini="true" data-theme="b">
+                                <select name="categoria-edit" id="categoria-edit" data-native-menu="false" data-mini="true" data-theme="b">
                                     <option value="">Categoria</option>
                                         <option value="7">Brigadista</option>
                                         <option value="6">Enfermeiro(a)</option>
@@ -219,7 +218,7 @@
                                 </select>
                                 <div style="margin-bottom:7px;"></div>
                             
-                            <select name="idioma-edit" id="idioma-edit" data-mini="true" data-theme="b">
+                            <select name="idioma-edit" id="idioma-edit" data-native-menu="false" data-mini="true" data-theme="b">
                                 <option value="">Idioma</option>
                                 <option value="ar">Árabe</option>
                                 <option value="es">Espanhol</option>
@@ -233,7 +232,7 @@
                             <div style="margin-bottom:7px;"></div>
                             <input type="number" pattern="+[0-9]*" name="telefone-edit" id="telefone-edit" data-mini="true" placeholder="Telefone"/>
                             <div style="margin-bottom:7px;"></div>
-                            <select name="pais-edit" id="pais-edit" data-mini="true" data-theme="b" placeholder="Pais">
+                            <select name="pais-edit" id="pais-edit" data-native-menu="false" data-mini="true" data-theme="b" placeholder="Pais">
                                 <option value="">País</option>       
                                 <option value="de">Alemanha</option>     
                                 <option value="at">Austria</option>
@@ -702,7 +701,7 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                  var pais=$("#pais").val();
                  var estado=removerAcentos($("#estado").val());
                  var cidade=removerAcentos($("#cidade").val());
-	             var dataString = "nome="+nome+"&username="+username+"&senha="+senha+"&idioma="+idioma+"&email="+email+"&telefone="+telefone+"&pais="+pais+"&cidade="+cidade+"&estado="+estado+"&insert=";
+	             var dataString = "nome="+nome+"&username="+username+"&senha="+senha+"&idioma="+idioma+"&email="+email+"&telefone="+telefone+"&pais="+pais+"&cidade="+cidade+"&estado="+estado+"&categoria="+categoria+"&insert=";
                    /* alert(nome);
                     alert(username);
                     alert(senha);
