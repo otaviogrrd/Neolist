@@ -41,6 +41,7 @@ var app = {
     // Phonegap is now ready...
     onDeviceReady: function() {
         console.log("device ready, start making you custom calls!");
+        navigator.splashscreen.hide();
 
         // Start adding your code here....
 
