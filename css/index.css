@@ -60,7 +60,7 @@ margin: .8em 30% .8em;
 #logo{
     width:70%;
     max-width:206px;
-    margin:35px 0 40px;
+    margin-top:35px;
 }
 .centerText{
     text-align:center;
