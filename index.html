@@ -91,6 +91,9 @@
                     
                 </form>
 
+                <div style="background:#fff700; !important;" data-role="popup" id="popUpConexErro3" class="ui-content" data-theme="b">
+                <p>Erro de Conexão, verifique sua internet ou tente mais tarde.</p>
+                </div>
                 <div style="background:#fff700; !important;" data-role="popup" id="popUpDadosLoginInvalidos">
                    <p>Usuário ou senha inválidos, verifique.</p>
                 </div>
@@ -166,6 +169,9 @@
                 </form>
                 
                 
+                <div style="background:#fff700; !important;" data-role="popup" id="popUpConexErro2" class="ui-content" data-theme="b">
+                <p>Erro de Conexão, verifique sua internet ou tente mais tarde.</p>
+                </div>
                
                 <div style="background:#fff700; !important;" data-role="popup" id="popUpCamposVazios" class="ui-content" data-theme="b">
                 <p>Informe todos os campos, preenchimento obrigatório.</p>
@@ -254,6 +260,10 @@
                     <input type="text" name="cidade-edit" id="cidade-edit" data-mini="true" placeholder="Cidade"/>
                     <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="update-btn" value="Atualizar"/>
 
+                <div style="background:#fff700; !important;" data-role="popup" id="popUpConexErro4" class="ui-content" data-theme="b">
+                <p>Erro de Conexão, verifique sua internet ou tente mais tarde.</p>
+                </div>
+               
                     <div style="background:#fff700; !important;" data-role="popup" id="popUpCamposVaziosUpdate" class="ui-content" data-theme="b">
                     <p>Informe todos os campos, preenchimento obrigatório.</p>
                     </div>
@@ -736,12 +746,14 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                                     data: dataString,
                                     crossDomain: true,
                                     cache: false,
-                                    beforeSend: function() { $("#insert").val('Connecting...');},
+                                    beforeSend: function() { $("#insert").val('Conectando...');},
                                     success: function(data) {
-					$('#popUpCadastroSucesso').popup('open');
+									$('#popUpCadastroSucesso').popup('open');
                                         $.mobile.changePage("#home-page");
                                     }
-                                }); 
+                                }).fail(function() {
+								$('#popUpConexErro2').popup('open'); 
+								});
                         
                         } else {
                             $('#popUpLoginUtilizado').popup('open');
@@ -765,7 +777,8 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                $('#popUpCamposVazios').popup('open');
             }
             return false;
-        });
+        }).fail(function() {
+		$('#popUpConexErro3').popup('open');});		
 
         $("#update-btn").click(function() {
          
@@ -802,11 +815,13 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                     data: dataString,
                     crossDomain: true,
                     cache: false,
-                    beforeSend: function() { $("#insert").val('Connecting...');},
+                    beforeSend: function() { $("#insert").val('Conectando...');},
                     success: function(data) {
                         $.mobile.changePage("#home-page");
                     }
-                });
+                }).fail(function() {
+								$('#popUpConexErro4').popup('open'); 
+								});
 
         } else {
 
