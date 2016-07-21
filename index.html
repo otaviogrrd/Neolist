@@ -383,9 +383,9 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
               var pais = field.pais;
               var estado = field.estado;
               var cidade = field.cidade;
-        var descricao_categoria = field.descricao_categoria;
-        var descricao_idioma = field.descricao_idioma;
-        var nome_pais = field.nome_pais;
+              var descricao_categoria = field.descricao_categoria;
+              var descricao_idioma = field.descricao_idioma;
+              var nome_pais = field.nome_pais;
               var localData = JSON.stringify(field);
               window.localStorage.setItem('CONTACT'+id, localData);
                 
@@ -531,9 +531,9 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                var pais = localData.pais;
                var estado = localData.estado;
                var cidade = localData.cidade;
-				   var descricao_categoria = localData.descricao_categoria;
-        var descricao_idioma = localData.descricao_idioma;
-        var nome_pais = localData.nome_pais;
+	       var descricao_categoria = localData.descricao_categoria;
+               var descricao_idioma = localData.descricao_idioma;
+               var nome_pais = localData.nome_pais;
                // $("#listview").append('<a onclick="pegaIdSelecionado('+id+');" href="#detalhes-page" data-icon="flat-man" idContato="'+id+'" theme="f"  data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="rever ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-f"><span class="ui-btn-inner"><span class="ui-btn-text">'+nome+'</span><span class="ui-icon ui-icon-flat-man ui-icon-shadow">&nbsp;</span></span></a>');
             
                $("#nome-detalhe").val(nome);
@@ -565,9 +565,9 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                    var pais = field.nome_pais;
                    var cidade = field.cidade;
                    var estado = field.estado;
-        var descricao_categoria = field.descricao_categoria;
-        var descricao_idioma = field.descricao_idioma;
-        var nome_pais = field.nome_pais;
+        	   var descricao_categoria = field.descricao_categoria;
+        	   var descricao_idioma = field.descricao_idioma;
+        	   var nome_pais = field.nome_pais;
                  
 
                    $("#nome-detalhe").val(nome);
@@ -626,12 +626,11 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
             }); */
 
     });
-		
-		$("#call-btn").click(function() {
-       
+    
+    $("#call-btn").click(function() {
         var tel=$("#telefone-detalhe").val();
-			document.location.href = 'tel:'+tel;
-		});
+        document.location.href = 'tel:'+tel;
+    });
     $("#login-btn").click(function() {
        
         var username=$("#input-username").val();
@@ -683,13 +682,9 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                     }
                 }
             });
-
         } else {
-
             $('#popUpFaltaDadosLogin').popup('open');
-
         }
-
      });
 
 
@@ -705,7 +700,7 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
          var pais=$("#pais").val();
          var estado=removerAcentos($("#estado").val());
          var cidade=removerAcentos($("#cidade").val());
-             var dataString = "nome="+nome+"&username="+username+"&senha="+senha+"&idioma="+idioma+"&email="+email+"&telefone="+telefone+"&pais="+pais+"&cidade="+cidade+"&estado="+estado+"&categoria="+categoria+"&insert=";
+         var dataString = "nome="+nome+"&username="+username+"&senha="+senha+"&idioma="+idioma+"&email="+email+"&telefone="+telefone+"&pais="+pais+"&cidade="+cidade+"&estado="+estado+"&categoria="+categoria+"&insert=";
            /* alert(nome);
             alert(username);
             alert(senha);
@@ -725,14 +720,12 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
 
             if($.trim(senha).length>=6)
             { 
-
                 $.ajax({
                         url:"http://neolist.com.br/appweb/getExistenciaLogin.php?username="+username+"",
                         dataType: "json",
                         success: function(data) {
                         //alert(data[0].login);
                         if(data[0].login == null) {
-
                            
                            $.ajax({
                                     type: "POST",
@@ -743,7 +736,7 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                                     cache: false,
                                     beforeSend: function() { $("#insert").val('Connecting...');},
                                     success: function(data) {
-										    $('#popUpCadastroSucesso').popup('open');
+					$('#popUpCadastroSucesso').popup('open');
                                         $.mobile.changePage("#home-page");
                                     }
                                 }); 
