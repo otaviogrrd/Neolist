@@ -263,10 +263,10 @@
                 <div style="background:#fff700; !important;" data-role="popup" id="popUpConexErro4" class="ui-content" data-theme="b">
                 <p>Erro de Conexão, verifique sua internet ou tente mais tarde.</p>
                 </div>
-               
                 <div style="background:#fff700; !important;" data-role="popup" id="popUpAtualizaSucesso" class="ui-content" data-theme="b">
-                <p>Cadastro realizado com sucesso.</p>
+                <p>Cadastro atualizado com sucesso.</p>
                 </div>
+               
                     <div style="background:#fff700; !important;" data-role="popup" id="popUpCamposVaziosUpdate" class="ui-content" data-theme="b">
                     <p>Informe todos os campos, preenchimento obrigatório.</p>
                     </div>
@@ -752,7 +752,7 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                                     beforeSend: function() { $("#insert").val('Conectando...');},
                                     success: function(data) {
 									$('#popUpCadastroSucesso').popup('open');
-                                        $.mobile.changePage("#home-page");
+						setTimeout(function(){$.mobile.changePage("#home-page");},2000); 
                                     }
                                 }).fail(function() {
 								$('#popUpConexErro2').popup('open'); 
@@ -763,7 +763,7 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
 
                         }
                     }
-                }); 
+                }).fail(function() {$('#popUpConexErro3').popup('open');}); 
 
             } else {
 
@@ -780,8 +780,7 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                $('#popUpCamposVazios').popup('open');
             }
             return false;
-        }).fail(function() {
-		$('#popUpConexErro3').popup('open');});		
+        });		
 
         $("#update-btn").click(function() {
          
@@ -810,7 +809,6 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
        if($.trim(nome).length>=0 & categoria >0 & $.trim(idioma).length>0 & $.trim(pais).length>0 & $.trim(email).length>0 & $.trim(telefone).length>0 & 
         $.trim(estado).length>0 & $.trim(cidade).length>0) 
         {
-
                 $.ajax({
                     type: "POST",
                     //url: "http://phonegappro.esy.es/test/insert.php",
@@ -820,8 +818,9 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                     cache: false,
                     beforeSend: function() { $("#insert").val('Conectando...');},
                     success: function(data) {
+						console.log('sucesso');
                     	$('#popUpAtualizaSucesso').popup('open');
-                        $.mobile.changePage("#home-page");
+						setTimeout(function(){$.mobile.changePage("#home-page");},2000); 
                     }
                 }).fail(function() {
                 	$('#popUpConexErro4').popup('open');});
