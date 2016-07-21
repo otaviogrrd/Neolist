@@ -264,6 +264,9 @@
                 <p>Erro de Conexão, verifique sua internet ou tente mais tarde.</p>
                 </div>
                
+                <div style="background:#fff700; !important;" data-role="popup" id="popUpAtualizaSucesso" class="ui-content" data-theme="b">
+                <p>Cadastro realizado com sucesso.</p>
+                </div>
                     <div style="background:#fff700; !important;" data-role="popup" id="popUpCamposVaziosUpdate" class="ui-content" data-theme="b">
                     <p>Informe todos os campos, preenchimento obrigatório.</p>
                     </div>
@@ -670,7 +673,7 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                                var nome=field.nome;
                                var username=field.login;
                                var email=field.email;
-                               var telefone = field.telefone.substring(2);
+                               var telefone = field.telefone.substring(1);
                                var categoria = field.categoria;
                                var idioma = field.idioma;
                                var pais = field.pais;
@@ -817,11 +820,11 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                     cache: false,
                     beforeSend: function() { $("#insert").val('Conectando...');},
                     success: function(data) {
+                    	$('#popUpAtualizaSucesso').popup('open');
                         $.mobile.changePage("#home-page");
                     }
                 }).fail(function() {
-								$('#popUpConexErro4').popup('open'); 
-								});
+                	$('#popUpConexErro4').popup('open');});
 
         } else {
 
