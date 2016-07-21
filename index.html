@@ -660,9 +660,10 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                                var nome=field.nome;
                                var username=field.login;
                                var email=field.email;
-                               var telefone = field.telefone;
+                               var telefone = field.telefone.substring(2);
                                var categoria = field.categoria;
                                var idioma = field.idioma;
+                               var pais = field.pais;
                                var estado = field.estado;
                                var cidade = field.cidade;
 
@@ -671,8 +672,9 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
                                $("#username-edit").val(username);
                                $("#email-edit").val(email);
                                $("#telefone-edit").val(telefone);
-                               $("#categoria-edit").val(categoria);
-                               $("#idioma-edit").val(idioma);
+                               $("#categoria-edit").val(categoria).selectmenu("refresh", true);
+                               $("#idioma-edit").val(idioma).selectmenu("refresh", true);
+                               $("#pais-edit").val(pais).selectmenu("refresh", true);
                                $("#estado-edit").val(estado);
                                $("#cidade-edit").val(cidade);
                               });
