@@ -8,3 +8,10 @@ function getUrlVars() {
     }
     return vars;
 }
+
+var idSelecionado = 0;
+
+function pegaIdSelecionado(arg) {
+	idSelecionado = arg;
+	return false;
+}
