@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="br.org.cn.NeoList" version="2.0.1">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.NeoList" version="2.0.2">
   <name>NeoList</name>
   <description>Lista de Contatos dos peregrinos da JMJ</description>
   <author href="http://www.cn.org.br/" email="otavio.grrd@gmail.com">Caminho Neocatecumenal no Brasil</author>
