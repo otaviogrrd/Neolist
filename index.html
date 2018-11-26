@@ -336,6 +336,7 @@
                     <label for="address">Telefone</label>
                     <input type="text" name="telefone-detalhe" id="telefone-detalhe" data-mini="true" readonly="true"/>							
                     <input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="call-btn" value="Ligar"/>
+                    <input type="button" data-theme="g" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="whats-btn" value="Whatsapp"/>
 
                     <label for="address">Pais</label>
                     <input type="text" name="pais-detalhe" id="pais-detalhe" data-mini="true" readonly="true"/>
@@ -636,6 +637,10 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
     $("#call-btn").click(function() {
         var tel=$("#telefone-detalhe").val();
         document.location.href = 'tel:'+tel;
+    });
+    $("#whats-btn").click(function() {
+        var tel=$("#telefone-detalhe").val();
+        document.location.href = 'http://api.whatsapp.com/send?phone='+tel;
     });
     $("#login-btn").click(function() {
        
