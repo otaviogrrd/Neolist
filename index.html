@@ -145,6 +145,7 @@
     						<option value="in">Inglês</option>
     						<option value="it">Italiano</option>
     						<option value="pt">Português</option>
+    						<option value="ou">Outro</option>
     					</select>
     					<div style="margin-bottom:7px;"></div>
                     <input type="text" name="email" id="email" data-mini="true" placeholder="Email" autocomplete="off" /> 
@@ -236,6 +237,7 @@
                         <option value="in">Inglês</option>
                         <option value="it">Italiano</option>
                         <option value="pt">Português</option>
+						<option value="ou">Outro</option>
                     </select>
                     <div style="margin-bottom:7px;"></div>
                     <input type="text" name="email-edit" id="email-edit" data-mini="true" placeholder="Email" autocomplete="off"/>
@@ -293,7 +295,7 @@
                 Faça o cadastro para receber SMS do Centro Neocatecumenal de Brasília, durante a peregrinação.
                 Lembre que em caso de mudança ou modificação de dados deverá atualizar seu cadastro.
 
-                Os dados do Neolist devem ser usados com prudência, e somente para este fim, enquanto têm nomes de Responsáveis dos diversos grupos de peregrinos.
+                Os dados do Neolist devem ser usados com prudência, e somente para este fim, enquanto possui dados de Responsáveis dos diversos grupos de peregrinos.
             </div>
 
 
@@ -332,6 +334,7 @@
 
                     <label for="address">Email</label>
                     <input type="text" name="email-detalhe" id="email-detalhe" data-mini="true" readonly="true"/>
+                    <input type="button" data-theme="e" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="email-btn" value="Email"/>
 
                     <label for="address">Telefone</label>
                     <input type="text" name="telefone-detalhe" id="telefone-detalhe" data-mini="true" readonly="true"/>							
@@ -641,6 +644,10 @@ function removerAcentos(s){ return s.replace(/[\W\[\] ]/g,function(a){return map
     $("#whats-btn").click(function() {
         var tel=$("#telefone-detalhe").val();
         document.location.href = 'http://api.whatsapp.com/send?phone='+tel;
+    });
+	$("#email-btn").click(function() {
+        var email=$("#email-detalhe").val();
+        document.location.href = 'mailto:'+email;
     });
     $("#login-btn").click(function() {
        
