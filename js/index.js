@@ -73,6 +73,7 @@ $(document).on("pageshow", "#contatos-page", function() {
                     var idioma = field.idioma;
                     var email = field.email;
                     var telefone = field.telefone;
+                    var telefone2 = field.telefone2;
                     var pais = field.pais;
                     var estado = field.estado;
                     var cidade = field.cidade;
@@ -153,6 +154,7 @@ $(document).on("pageshow", "#contatos-page", function() {
                     var idioma = localData.idioma;
                     var email = localData.email;
                     var telefone = localData.telefone;
+                    var telefone2 = localData.telefone2;
                     var pais = localData.pais;
                     var estado = localData.estado;
                     var cidade = localData.cidade;
@@ -236,6 +238,7 @@ $(document).on("pageshow", "#detalhes-page", function() {
         var idioma = localData.idioma;
         var email = localData.email;
         var telefone = localData.telefone;
+        var telefone2 = localData.telefone2;
         var pais = localData.pais;
         var estado = localData.estado;
         var cidade = localData.cidade;
@@ -248,6 +251,7 @@ $(document).on("pageshow", "#detalhes-page", function() {
         $("#idioma-detalhe").val(descricao_idioma);
         $("#email-detalhe").val(email);
         $("#telefone-detalhe").val(telefone);
+        $("#telefone2-detalhe").val(telefone2);
         $("#pais-detalhe").val(nome_pais);
 
         if (estado == null || estado == "null" || estado == "") {
@@ -267,6 +271,7 @@ $(document).on("pageshow", "#detalhes-page", function() {
                     var idioma = field.descricao_idioma;
                     var email = field.email;
                     var telefone = field.telefone;
+                    var telefone2 = field.telefone2;
                     var pais = field.nome_pais;
                     var cidade = field.cidade;
                     var estado = field.estado;
@@ -280,6 +285,7 @@ $(document).on("pageshow", "#detalhes-page", function() {
                     $("#idioma-detalhe").val(idioma);
                     $("#email-detalhe").val(email);
                     $("#telefone-detalhe").val(telefone);
+                    $("#telefone2-detalhe").val(telefone2);
                     $("#pais-detalhe").val(pais);
 
                     if (estado == null || estado == "null" || estado == "") {
@@ -310,6 +316,7 @@ $(document).on("pagebeforeshow", "#cadastro-page", function() {
     $("#idioma").val("");
     $("#email").val("");
     $("#telefone").val("");
+    $("#telefone2").val("");
     $("#pais").val("");
     $("#estado").val("");
     $("#cidade").val("");
@@ -321,6 +328,14 @@ $("#call-btn").click(function() {
 });
 $("#whats-btn").click(function() {
     var tel = $("#telefone-detalhe").val();
+    document.location.href = 'http://api.whatsapp.com/send?phone=' + tel;
+});
+$("#call2-btn").click(function() {
+    var tel = $("#telefone2-detalhe").val();
+    document.location.href = 'tel:' + tel;
+});
+$("#whats2-btn").click(function() {
+    var tel = $("#telefone2-detalhe").val();
     document.location.href = 'http://api.whatsapp.com/send?phone=' + tel;
 });
 $("#email-btn").click(function() {
@@ -354,6 +369,7 @@ $("#login-btn").click(function() {
                             var username = field.login;
                             var email = field.email;
                             var telefone = field.telefone.substring(1);
+                            var telefone2 = field.telefone2.substring(1);
                             var categoria = field.categoria;
                             var idioma = field.idioma;
                             var pais = field.pais;
@@ -365,6 +381,7 @@ $("#login-btn").click(function() {
                             $("#username-edit").val(username);
                             $("#email-edit").val(email);
                             $("#telefone-edit").val(telefone);
+                            $("#telefone2-edit").val(telefone2);
                             $("#categoria-edit").val(categoria).selectmenu("refresh", true);
                             $("#idioma-edit").val(idioma).selectmenu("refresh", true);
                             $("#pais-edit").val(pais).selectmenu("refresh", true);
@@ -391,10 +408,11 @@ $("#insert").click(function() {
     var idioma = $("#idioma").val();
     var email = $("#email").val();
     var telefone = $("#telefone").val();
+    var telefone2 = $("#telefone2").val();
     var pais = $("#pais").val();
     var estado = removerAcentos($("#estado").val());
     var cidade = removerAcentos($("#cidade").val());
-    var dataString = "nome=" + nome + "&username=" + username + "&senha=" + senha + "&idioma=" + idioma + "&email=" + email + "&telefone=" + telefone + "&pais=" + pais + "&cidade=" + cidade + "&estado=" + estado + "&categoria=" + categoria + "&insert=";
+    var dataString = "nome=" + nome + "&username=" + username + "&senha=" + senha + "&idioma=" + idioma + "&email=" + email + "&telefone=" + telefone + "&telefone2=" + telefone2 + "&pais=" + pais + "&cidade=" + cidade + "&estado=" + estado + "&categoria=" + categoria + "&insert=";
 
     if ($.trim(nome).length >= 0 & $.trim(username).length >= 0 & $.trim(senha).length >= 0 & categoria > 0 & $.trim(idioma).length > 0 & $.trim(pais).length > 0 & $.trim(email).length > 0 & $.trim(telefone).length > 0 & $.trim(estado).length > 0 & $.trim(cidade).length > 0) {
 

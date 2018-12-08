@@ -145,6 +145,14 @@
                         <div class="ui-block-a"><input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="call-btn" value="Ligar" /></div>
                         <div class="ui-block-b"><input type="button" data-theme="g" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="whats-btn" value="Whatsapp" /></div>
                     </fieldset>
+					
+                    <label for="address">Telefone2</label>
+                    <input type="text" name="telefone2-detalhe" id="telefone2-detalhe" data-mini="true" readonly="true" />
+
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a"><input type="button" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="call2-btn" value="Ligar" /></div>
+                        <div class="ui-block-b"><input type="button" data-theme="g" data-mini="false" class="ui-btn-hidden" aria-disabled="false" id="whats2-btn" value="Whatsapp" /></div>
+                    </fieldset>
 
                     <label for="address">Pais</label>
                     <input type="text" name="pais-detalhe" id="pais-detalhe" data-mini="true" readonly="true" />
@@ -195,6 +203,8 @@
                     <input type="text" name="email" id="email" data-mini="true" placeholder="Email" autocomplete="off" />
                     <div style="margin-bottom:7px;"></div>
                     <input type="number" pattern="[0-9]" name="telefone" id="telefone" data-mini="true" placeholder="Telefone 55 11 9999999999" />
+                    <div style="margin-bottom:7px;"></div>
+                    <input type="number" pattern="[0-9]" name="telefone2" id="telefone2" data-mini="true" placeholder="Telefone 55 11 9999999999" />
                     <div style="margin-bottom:7px;"></div>
                     <select name="pais" id="pais" data-native-menu="true" data-mini="true" data-theme="b">
                         <option value="">Pais</option>
@@ -475,6 +485,8 @@
                     <input type="text" name="email-edit" id="email-edit" data-mini="true" placeholder="Email" autocomplete="off" />
                     <div style="margin-bottom:7px;"></div>
                     <input type="number" pattern="+[0-9]*" name="telefone-edit" id="telefone-edit" data-mini="true" placeholder="Telefone" />
+                    <div style="margin-bottom:7px;"></div>
+                    <input type="number" pattern="+[0-9]*" name="telefone2-edit" id="telefone2-edit" data-mini="true" placeholder="Telefone 2" />
                     <div style="margin-bottom:7px;"></div>
                     <select name="pais-edit" id="pais-edit" data-native-menu="true" data-mini="true" data-theme="b" placeholder="Pais">
                         <option value="">País</option>
