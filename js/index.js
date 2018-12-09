@@ -482,7 +482,7 @@ $("#update-btn").click(function() {
     var pais = $("#pais-edit").val();
     var estado = removerAcentos($("#estado-edit").val());
     var cidade = removerAcentos($("#cidade-edit").val());
-
+		
     var dataString = "nome-edit=" + nome + "&categoria-edit=" + categoria + "&idioma-edit=" + idioma + "&email-edit=" + email + "&telefone-edit=" + telefone + "&telefone2-edit=" + telefone2 + "&pais-edit=" + pais + "&cidade-edit=" + cidade + "&estado-edit=" + estado + "&id-edit=" + id + "&update=";
 
     if ($.trim(nome).length >= 0 & categoria > 0 & $.trim(idioma).length > 0 & $.trim(pais).length > 0 & $.trim(email).length > 0 & $.trim(telefone).length > 0 & $.trim(telefone2).length > 0 &

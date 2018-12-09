@@ -35,6 +35,14 @@ h1 {
     text-align:center;
 }
 
+.col70{
+width:70% !important;
+}
+.col30{
+width:30% !important;
+}
+
+
 /* header */
 .ui-listview-filter {
   margin: 0;
