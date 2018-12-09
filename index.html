@@ -12,6 +12,7 @@
     <title>Neolist</title>
 
     <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
     <script type="text/javascript" src="js/geturi.js"></script>
     <script type="text/javascript" src="js/fastclick.min.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
@@ -204,9 +205,9 @@
                     <div style="margin-bottom:7px;"></div>
                     <input type="text" name="email" id="email" data-mini="true" placeholder="Email" autocomplete="off" />
                     <div style="margin-bottom:7px;"></div>
-                    <input type="number" pattern="[0-9]" name="telefone" id="telefone" data-mini="true" placeholder="Telefone 55 11 9999999999" />
+                    <input type="tel" pattern="[0-9]" name="telefone" id="telefone" data-mini="true" placeholder="Telefone" />
                     <div style="margin-bottom:7px;"></div>
-                    <input type="number" pattern="[0-9]" name="telefone2" id="telefone2" data-mini="true" placeholder="Telefone 55 11 9999999999" />
+                    <input type="tel" pattern="[0-9]" name="telefone2" id="telefone2" data-mini="true" placeholder="Telefone" />
                     <div style="margin-bottom:7px;"></div>
                     <select name="pais" id="pais" data-native-menu="true" data-mini="true" data-theme="b">
                         <option value="">Pais</option>
@@ -486,9 +487,9 @@
                     <div style="margin-bottom:7px;"></div>
                     <input type="text" name="email-edit" id="email-edit" data-mini="true" placeholder="Email" autocomplete="off" />
                     <div style="margin-bottom:7px;"></div>
-                    <input type="number" pattern="+[0-9]*" name="telefone-edit" id="telefone-edit" data-mini="true" placeholder="Telefone" />
+                    <input type="tel" pattern="+[0-9]*" name="telefone-edit" id="telefone-edit" data-mini="true" placeholder="Telefone" />
                     <div style="margin-bottom:7px;"></div>
-                    <input type="number" pattern="+[0-9]*" name="telefone2-edit" id="telefone2-edit" data-mini="true" placeholder="Telefone 2" />
+                    <input type="tel" pattern="+[0-9]*" name="telefone2-edit" id="telefone2-edit" data-mini="true" placeholder="Telefone 2" />
                     <div style="margin-bottom:7px;"></div>
                     <select name="pais-edit" id="pais-edit" data-native-menu="true" data-mini="true" data-theme="b" placeholder="Pais">
                         <option value="">País</option>
