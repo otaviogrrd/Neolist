@@ -432,7 +432,7 @@ $("#insert").click(function() {
                                 crossDomain: true,
                                 cache: false,
                                 beforeSend: function() {
-                                    $("#insert").val('Conectando...');
+                                    //$("#insert").val('Conectando...');
                                 },
                                 success: function(data) {
                                     $('#popUpCadastroSucesso').popup('open');
@@ -494,7 +494,7 @@ $("#update-btn").click(function() {
             crossDomain: true,
             cache: false,
             beforeSend: function() {
-                $("#insert").val('Conectando...');
+                //$("#insert").val('Conectando...');
             },
             success: function(data) {
                 $('#popUpAtualizaSucesso').popup('open');
