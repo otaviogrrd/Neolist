@@ -336,7 +336,8 @@ $("#call-btn").click(function() {
 });
 $("#whats-btn").click(function() {
     var tel = $("#telefone-detalhe").val();
-    document.location.href = 'http://api.whatsapp.com/send?phone=' + tel;
+    var nome = $("#nome-detalhe").val();
+    document.location.href = 'http://api.whatsapp.com/send?phone=' + tel + '&text=Olá ' + nome + ', te encontrei no app NeoList.';
 });
 $("#call2-btn").click(function() {
     var tel = $("#telefone2-detalhe").val();
@@ -344,7 +345,8 @@ $("#call2-btn").click(function() {
 });
 $("#whats2-btn").click(function() {
     var tel = $("#telefone2-detalhe").val();
-    document.location.href = 'http://api.whatsapp.com/send?phone=' + tel;
+    var nome = $("#nome-detalhe").val();
+    document.location.href = 'http://api.whatsapp.com/send?phone=' + tel + '&text=Olá ' + nome + ', te encontrei no app NeoList.';
 });
 $("#email-btn").click(function() {
     var email = $("#email-detalhe").val();
