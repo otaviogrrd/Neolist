@@ -414,7 +414,7 @@ $("#insert").click(function() {
     var cidade = removerAcentos($("#cidade").val());
     var dataString = "nome=" + nome + "&username=" + username + "&senha=" + senha + "&idioma=" + idioma + "&email=" + email + "&telefone=" + telefone + "&telefone2=" + telefone2 + "&pais=" + pais + "&cidade=" + cidade + "&estado=" + estado + "&categoria=" + categoria + "&insert=";
 
-    if ($.trim(nome).length >= 0 & $.trim(username).length >= 0 & $.trim(senha).length >= 0 & categoria > 0 & $.trim(idioma).length > 0 & $.trim(pais).length > 0 & $.trim(email).length > 0 & $.trim(telefone).length > 0 & $.trim(estado).length > 0 & $.trim(cidade).length > 0) {
+    if ($.trim(nome).length >= 0 & $.trim(username).length >= 0 & $.trim(senha).length >= 0 & categoria > 0 & $.trim(idioma).length > 0 & $.trim(pais).length > 0 & $.trim(email).length > 0 & $.trim(telefone).length > 0 & $.trim(telefone2).length > 0 & $.trim(estado).length > 0 & $.trim(cidade).length > 0) {
 
         if ($.trim(username).length >= 6) {
 
@@ -478,13 +478,14 @@ $("#update-btn").click(function() {
     var idioma = $("#idioma-edit").val();
     var email = $("#email-edit").val();
     var telefone = $("#telefone-edit").val();
+    var telefone2 = $("#telefone2-edit").val();
     var pais = $("#pais-edit").val();
     var estado = removerAcentos($("#estado-edit").val());
     var cidade = removerAcentos($("#cidade-edit").val());
 
-    var dataString = "nome-edit=" + nome + "&categoria-edit=" + categoria + "&idioma-edit=" + idioma + "&email-edit=" + email + "&telefone-edit=" + telefone + "&pais-edit=" + pais + "&cidade-edit=" + cidade + "&estado-edit=" + estado + "&id-edit=" + id + "&update=";
+    var dataString = "nome-edit=" + nome + "&categoria-edit=" + categoria + "&idioma-edit=" + idioma + "&email-edit=" + email + "&telefone-edit=" + telefone + "&telefone2-edit=" + telefone2 + "&pais-edit=" + pais + "&cidade-edit=" + cidade + "&estado-edit=" + estado + "&id-edit=" + id + "&update=";
 
-    if ($.trim(nome).length >= 0 & categoria > 0 & $.trim(idioma).length > 0 & $.trim(pais).length > 0 & $.trim(email).length > 0 & $.trim(telefone).length > 0 &
+    if ($.trim(nome).length >= 0 & categoria > 0 & $.trim(idioma).length > 0 & $.trim(pais).length > 0 & $.trim(email).length > 0 & $.trim(telefone).length > 0 & $.trim(telefone2).length > 0 &
         $.trim(estado).length > 0 & $.trim(cidade).length > 0) {
         $.ajax({
             type: "POST",
