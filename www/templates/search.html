@@ -1,0 +1,33 @@
+<ion-view view-title="Contatos">
+  <ion-content>
+
+    <img class="brand" src="../img/caminho-neocatecumenal-logo.png" width="20%" alt="">
+
+    <h2 class="col col-center text-center">Buscar contatos</h2>
+
+    <form>
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="text" placeholder="Pesquise por nome" ng-model="search.term">
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Categorias
+          </div>
+          <select ng-model="search.category">
+            <option ng-repeat="item in categories" value="{{item.id}}">{{item.name}}</option>
+          </select>
+        </label>
+        <br>
+
+        <button type="submit" class="button button-positive pull-right" ng-click="search();">Buscar</button>
+      </div>
+    </form>
+
+    <ion-list class="list list-inset">
+      <ion-item ng-repeat="item in list" ui-sref="app.detail({contactId:item.id})">
+        {{item.nome}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
