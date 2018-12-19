@@ -29,7 +29,7 @@ angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
