@@ -1,0 +1,84 @@
+<ion-view view-title="Contatos">
+  <ion-content>
+
+    <img class="brand" src="../img/caminho-neocatecumenal-logo.png" width="20%" alt="">
+
+    <h2 class="col col-center text-center">Cadastro</h2>
+
+    <form ng-submit="registerUser();">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="text" palceholder="Nome" ng-model="register.nome" />
+        </label>
+
+        <label class="item item-input">
+          <input type="text" palceholder="Login" ng-model="register.nome" />
+        </label>
+
+        <label class="item item-input">
+          <input type="password" palceholder="Senha" ng-model="register.password" />
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Categorias
+          </div>
+          <select ng-model="register.category">
+            <option ng-repeat="item in viewdata.categories" value="{{item.id}}">{{item.name}}</option>
+          </select>
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Idioma
+          </div>
+          <select ng-model="register.language">
+            <option ng-repeat="item in viewdata.languages" value="{{item.val}}">{{item.name}}</option>
+          </select>
+        </label>
+
+        <label class="item item-input">
+          <input type="email" palceholder="Email" ng-model="register.email" />
+        </label>
+
+        <label class="item item-input">
+          <input type="number" palceholder="Telefone" ng-model="register.phone" />
+        </label>
+
+        <label class="item item-input">
+          <input type="number" palceholder="Telefone" ng-model="register.phone2" />
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Pais
+          </div>
+          <select ng-model="register.country">
+            <option ng-repeat="item in viewdata.countries" value="{{item.sigla}}">{{item.nome_pais}}</option>
+          </select>
+        </label>
+
+
+        
+
+        <label class="item item-input">
+          <input type="text" palceholder="Telefone" ng-model="register.state" />
+        </label>
+
+        <label class="item item-input">
+          <input type="text" palceholder="Telefone" ng-model="register.city" />
+        </label>
+
+        <br>
+
+        <button type="submit" class="button button-positive pull-right">Cadastrar</button>
+      </div>
+    </form>
+
+    <ion-list class="list list-inset">
+      <ion-item ng-repeat="item in list" ui-sref="app.detail({contactId:item.id})">
+        {{item.nome}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
