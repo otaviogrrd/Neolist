@@ -65,12 +65,12 @@ angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services'])
     }
   })
 
-
-  .state('app.browse', {
-    url: '/browse',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/browse.html'
+  .state('app.register',{
+    url:'/register',
+    views:{
+      'menuContent':{
+        controller:'RegisterCtrl',
+        templateUrl: 'templates/register.html'
       }
     }
   });
