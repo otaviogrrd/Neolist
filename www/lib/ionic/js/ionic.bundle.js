@@ -55052,7 +55052,7 @@ IonicModule
     },
 
     navBar: {
-      alignTitle: 'left',
+      alignTitle: 'center',
       positionPrimaryButtons: 'right',
       positionSecondaryButtons: 'right'
     },
@@ -63715,7 +63715,7 @@ function headerFooterBarDirective(isHeader) {
       restrict: 'E',
       controller: '$ionicHeaderBar',
       compile: function(tElement) {
-        tElement.addClass(isHeader ? 'bar bar-header' : 'bar bar-footer');
+        tElement.addClass(isHeader ? 'bar bar-header bar-light' : 'bar bar-footer');
         // top style tabs? if so, remove bottom border for seamless display
         $timeout(function() {
           if (isHeader && $document[0].getElementsByClassName('tabs-top').length) tElement.addClass('has-tabs-top');

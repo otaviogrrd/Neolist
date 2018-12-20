@@ -1,0 +1,141 @@
+// VARIAVEIS 
+	// Cores da Jornada
+$azulPadrao: #003588;
+$azulClaroPadrao: #007ab2;
+$vermelhoPadrao: #e00607;
+$brancoPadrao: #fff;
+	// ---------------------------
+// -------------------------------
+
+// HEADER DO APP
+.bar.bar-light{
+	background-color: #fff ;
+	border-bottom: none !important;
+	background-image: none !important;
+	webkit-box-shadow: 2px 0 4px 1px rgba(0,0,0,.15);
+    box-shadow: 2px 0 4px 1px rgba(0,0,0,.15);
+
+}
+.bar{
+	.title{
+		font-weight: 900;
+		line-height: 44px;
+		text-transform: uppercase;
+		letter-spacing: -1px;
+		color: $azulPadrao !important;
+	}
+	.button.button-clear{
+		color: $vermelhoPadrao;
+	}
+}
+// -------------------------------
+
+// MENU DO APP
+.menu{
+	.bar-header{
+		min-height: 113px;
+		.list{
+			.item{
+				border: none;
+
+			}
+			.item-thumbnail-left{
+				padding-left: 155px;
+				img{
+					max-width: 129px;
+					max-height: none;
+					height: auto;
+					top: 11px;
+				}
+				h2{
+					font-weight: 900;
+					line-height: normal;
+					text-transform: uppercase;
+					letter-spacing: -1px;
+					color: $azulPadrao;
+					font-size: 20px;
+					margin-top: 21px;
+				}
+				p{
+					margin-top: -6px;
+					font-size: 11px;
+				}
+			}
+		}
+	}
+	.has-header {
+    	top: 129px;
+    	.list{
+    		.item{
+    			border: none;
+    			text-transform: uppercase;
+    			color: $azulPadrao;
+    			font-size: 17px;
+    			padding-left: 33px;
+    			font-weight: 500;
+    			.item-content{
+    				padding-left: 0;
+    			}
+    		}
+    	}
+	}
+}
+// -------------------------------
+
+// FORM DO APP
+.button{
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	line-height: 0px;
+    min-height: 46px;
+}
+.button-padrao{
+	background-color: $azulPadrao;
+	color: $brancoPadrao;
+}
+
+.cardForm{
+	margin-top: 28px;
+	.item-text-wrap{
+		padding-top: 1px;
+		padding-bottom: 7px; 
+		.list{			
+			.item-input{
+				border: 1px solid #ccc;
+				font-size: 19px;
+				input{
+					font-size: 19px;
+    				font-weight: 100;
+    				margin-top: -6px;
+				}    
+				.icon{
+					min-width: 30px;
+					font-size: 23px;
+					color: #e6e6e6;
+				}				
+			}
+			.item-select{
+				.input-label{
+					font-size: 13px;
+					font-weight: bold;
+					text-transform: uppercase;
+					color: $azulClaroPadrao;
+				}
+				select{
+					font-size: 19px;
+    				font-weight: 100;
+				}
+			}
+			button{
+				margin-top: 20px;
+			}
+		}
+	}
+	
+}
+// -------------------------------
+
+.brand{
+  display:block;
+  margin:20px auto 0;
+}

@@ -1,28 +1,31 @@
-<ion-view view-title="Contatos">
+<ion-view view-title="Encontre Contatos">
   <ion-content>
 
-    <img class="brand" src="../img/caminho-neocatecumenal-logo.png" width="20%" alt="">
-
+    <!--<img class="brand" src="../img/jmj-cnc-logo.png" width="50%" alt="">
     <h2 class="col col-center text-center">Buscar contatos</h2>
+    -->   
 
-    <form>
-      <div class="list list-inset">
-        <label class="item item-input">
-          <input type="text" placeholder="Pesquise por nome" ng-model="search.term">
-        </label>
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Categorias
+    <div class="card cardForm">
+      <div class="item item-text-wrap">
+        <form>
+          <div class="list list-inset">
+            <label class="item item-input">              
+              <i class="icon ion-search placeholder-icon"></i>
+              <input type="text" placeholder="Escreva o nome" ng-model="search.term">
+            </label>
+            <label class="item item-input item-select">
+              <div class="input-label">
+                Categorias
+              </div>
+              <select ng-model="search.category">
+                <option ng-repeat="item in categories" value="{{item.id}}">{{item.name}}</option>
+              </select>
+            </label>
+            <button type="submit" class="button button-block button-padrao" ng-click="search();">Pesquisar</button>
           </div>
-          <select ng-model="search.category">
-            <option ng-repeat="item in categories" value="{{item.id}}">{{item.name}}</option>
-          </select>
-        </label>
-        <br>
-
-        <button type="submit" class="button button-positive pull-right" ng-click="search();">Buscar</button>
+        </form>
       </div>
-    </form>
+    </div>    
 
     <ion-list class="list list-inset">
       <ion-item ng-repeat="item in list" ui-sref="app.detail({contactId:item.id})">
