@@ -1,4 +1,4 @@
-<ion-view view-title="Contatos">
+<ion-view view-title="Cadastro">
   <ion-content>
 
     <img class="brand" src="../img/caminho-neocatecumenal-logo.png" width="20%" alt="">
@@ -9,7 +9,7 @@
       <div class="list list-inset">
         <label class="item item-input">
           <input type="text" placeholder="Nome" ng-model="register.nome" name="nome" required="" />
-          <div for="form.nome.$error" ng-if="form.nome.$touched  && form.nome.$dirty">
+          <div for="form.nome.$error" ng-if="form.nome.$valid == false && form.nome.$touched  && form.nome.$dirty">
             <div ng-message-exp="['required']">
               O nome é um campo obrigatório
             </div>
@@ -18,7 +18,7 @@
 
         <label class="item item-input">
           <input type="text" placeholder="Login" ng-model="register.login" name="login" required="" />
-          <div for="form.login.$error" ng-if="form.login.$touched  && form.login.$dirty">
+          <div for="form.login.$error" ng-if="form.login.$valid == false && form.login.$touched  && form.login.$dirty">
             <div ng-message-exp="['required']">
               O login é um campo obrigatório
             </div>
@@ -28,7 +28,7 @@
         <label class="item item-input">
           <input type="password" placeholder="Senha" ng-model="register.password" name="password" required="" />
 
-          <div for="form.password.$error" ng-if="form.password.$touched  && form.password.$dirty">
+          <div for="form.password.$error" ng-if="form.password.$valid == false form.password.$touched  && form.password.$dirty">
             <div ng-message-exp="['required']">
               A senha é obrigatória
             </div>
@@ -42,7 +42,7 @@
           <select ng-model="register.category" name="category" required="">
             <option ng-repeat="item in viewdata.categories" value="{{item.id}}">{{item.name}}</option>
           </select>
-            <div for="form.category.$error" ng-if="form.category.$touched  && form.category.$dirty">
+            <div for="form.category.$error" ng-if="form.category.$valid == false && form.category.$touched  && form.category.$dirty">
             <div ng-message-exp="['required']">
               A categoria é obrigatória
             </div>
@@ -60,7 +60,7 @@
 
         <label class="item item-input">
           <input type="email" placeholder="Email" ng-model="register.email" required="" name="email" />
-          <div for="form.email.$error" ng-if="form.email.$touched  && form.email.$dirty">
+          <div for="form.email.$error" ng-if="form.email.$valid == false && form.email.$touched  && form.email.$dirty">
             <div ng-message-exp="['required']">
               O Email é obrigatório
             </div>
@@ -70,7 +70,7 @@
         <label class="item item-input">
           <input type="number" placeholder="Telefone" ng-model="register.phone" required="" name="phone" />
 
-          <div for="form.phone.$error" ng-if="form.phone.$touched  && form.phone.$dirty">
+          <div for="form.phone.$error" ng-if="form.phone.$valid == false && form.phone.$touched  && form.phone.$dirty">
             <div ng-message-exp="['required']">
               O Telefone é obrigatório
             </div>
@@ -95,7 +95,7 @@
 
         <label class="item item-input">
           <input type="text" placeholder="Estado" ng-model="register.state" required="" name="state" />
-          <div for="form.state.$error" ng-if="form.state.$touched  && form.state.$dirty">
+          <div for="form.state.$error" ng-if="form.state.$valid == false && form.state.$touched  && form.state.$dirty">
             <div ng-message-exp="['required']">
               O Estado é obrigatório
             </div>
@@ -105,7 +105,7 @@
         <label class="item item-input">
           <input type="text" placeholder="Cidade" ng-model="register.city" required="" name="city" />
 
-          <div for="form.city.$error" ng-if="form.city.$touched  && form.city.$dirty">
+          <div for="form.city.$error" ng-if="form.city.$valid == false && form.city.$touched  && form.city.$dirty">
             <div ng-message-exp="['required']">
               A cidade é obrigatório
             </div>

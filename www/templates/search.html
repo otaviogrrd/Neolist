@@ -32,7 +32,7 @@
     <ion-list class="list list-inset list-Principal">
       <ion-item class="item item-divider">Lista de Contatos</ion-item>
       <ion-item ng-repeat="item in list" ui-sref="app.detail({contactId:item.id})">
-        <i class="IconLeft" ng-class="MudaIcone(item.descricao_categoria)"></i>
+        <i class="IconLeft" ng-class="setIcon(item.categoria)"></i>
         <h3>{{item.nome}}</h3>
         <p>{{item.descricao_categoria}}</p>
       </ion-item>
