@@ -218,7 +218,7 @@ $brancoPadrao: #fff;
 			border-bottom: 1px solid #f5f5f5;
 		}
 		.item-content{
-			padding-left: 81px;
+			padding-left: 81px;			
 			h3{
 				color: $vermelhoPadrao;
 				@include padraoTextTit();
@@ -270,6 +270,9 @@ $brancoPadrao: #fff;
 				padding-left: 12px;
 				padding-top: 10px;
 			}			
+		}
+		.activated{
+			background-color: #fff4f4
 		}
 	}
 }
