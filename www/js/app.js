@@ -59,6 +59,16 @@ angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services'])
     }
   })
 
+  .state('app.login',{
+    url:'/login',
+    views:{
+      'menuContent':{
+        controller:'LoginCtrl',
+        templateUrl:'templates/loginview.html'
+      }
+    }
+  })
+
   .state('app.about',{
     url:'/about',
     views:{

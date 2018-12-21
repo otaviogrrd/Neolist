@@ -1,4 +1,4 @@
-appControllers.controller('RegisterCtrl', function($scope, $http, $state, UserService) {
+appControllers.controller('RegisterCtrl', function($scope, $http, $state, $ionicPopup, UserService) {
 
     $scope.register = {};
     $scope.viewdata = {
@@ -83,7 +83,38 @@ appControllers.controller('RegisterCtrl', function($scope, $http, $state, UserSe
             });
 
         }else{
-            UserService.insert($scope.register);
+            UserService.insert($scope.register).then(function(response){
+                if(response.status == 200){
+
+                   if(response.data == 'user exists'){
+                    var alert = $ionicPopup.alert({
+                        title: 'Usuário já cadastrado!',
+                        template: 'Você já tem cadastro no app'
+                    });
+                    alert.then(function(res) {
+                        login();
+                    });
+                   }
+
+                   if(response.data == 'ok'){
+                    var alert = $ionicPopup.alert({
+                        title: 'Sucesso',
+                        template: 'Cadastro realizado com sucesso!'
+                    });
+                    alert.then(function(res) {
+                        login();
+                    });
+                   }
+
+                   if(response.data == 'erro'){
+                    var alert = $ionicPopup.alert({
+                        title: 'Ops!',
+                        template: 'Houve um problema para efetuar o seu cadastro, tente novamente'
+                    });
+                    
+                   }
+                }
+            });
         }
       // console.log($scope.register);
     }
