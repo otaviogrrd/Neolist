@@ -1,9 +1,11 @@
 <ion-view view-title="Encontre Contatos">
   <ion-content>
 
-    <!--<img class="brand" src="../img/jmj-cnc-logo.png" width="50%" alt="">
-    <h2 class="col col-center text-center">Buscar contatos</h2>
-    -->   
+    <div class="contentExpli item item-thumbnail-right" href="#">
+      <img src="../img/jmj-cnc-pessoas.png">
+      <h2>Não fique perdido na JMJ !</h2>
+      <p>Encontre na lista abaixo ou na caixa de pesquisa a pessoa certa para te ajudar.</p>
+    </div>
 
     <div class="card cardForm">
       <div class="item item-text-wrap">
@@ -11,7 +13,7 @@
           <div class="list list-inset">
             <label class="item item-input">              
               <i class="icon ion-search placeholder-icon"></i>
-              <input type="text" placeholder="Escreva o nome" ng-model="search.term">
+              <input type="text" placeholder="Pesquisar um nome" ng-model="search.term">
             </label>
             <label class="item item-input item-select">
               <div class="input-label">
@@ -27,9 +29,12 @@
       </div>
     </div>    
 
-    <ion-list class="list list-inset">
+    <ion-list class="list list-inset list-Principal">
+      <ion-item class="item item-divider">Lista de Contatos</ion-item>
       <ion-item ng-repeat="item in list" ui-sref="app.detail({contactId:item.id})">
-        {{item.nome}}
+        <i class="IconLeft" ng-class="MudaIcone(item.descricao_categoria)"></i>
+        <h3>{{item.nome}}</h3>
+        <p>{{item.descricao_categoria}}</p>
       </ion-item>
     </ion-list>
   </ion-content>
