@@ -7,6 +7,12 @@ $brancoPadrao: #fff;
 	// ---------------------------
 // -------------------------------
 
+@mixin padraoTextTit(){
+	text-transform: uppercase;
+	letter-spacing: -1px;
+	font-weight: 900;
+}
+
 // HEADER DO APP
 .bar.bar-light{
 	background-color: #fff ;
@@ -18,14 +24,19 @@ $brancoPadrao: #fff;
 }
 .bar{
 	.title{
-		font-weight: 900;
-		line-height: 44px;
-		text-transform: uppercase;
-		letter-spacing: -1px;
+		@include padraoTextTit();		
+		line-height: 44px;		
 		color: $azulPadrao !important;
 	}
 	.button.button-clear{
 		color: $vermelhoPadrao;
+		&:active,
+		&:focus{
+			color: $azulClaroPadrao;
+		}
+		&:hover{
+			color: $vermelhoPadrao;
+		} 
 	}
 }
 // -------------------------------
@@ -48,10 +59,8 @@ $brancoPadrao: #fff;
 					top: 11px;
 				}
 				h2{
-					font-weight: 900;
-					line-height: normal;
-					text-transform: uppercase;
-					letter-spacing: -1px;
+					@include padraoTextTit();
+					line-height: normal;					
 					color: $azulPadrao;
 					font-size: 20px;
 					margin-top: 21px;
@@ -76,6 +85,12 @@ $brancoPadrao: #fff;
     			.item-content{
     				padding-left: 0;
     			}
+    			.active,
+    			.activated{
+    				background-color: transparent !important;
+    				border: none  !important;
+    				color: $vermelhoPadrao  !important;
+    			}
     		}
     	}
 	}
@@ -92,10 +107,19 @@ $brancoPadrao: #fff;
 .button-padrao{
 	background-color: $azulPadrao;
 	color: $brancoPadrao;
+	&:active,
+	&:focus{
+		background-color: $azulClaroPadrao !important;
+		color: $brancoPadrao;
+	}
+	&:hover{
+		background-color: $vermelhoPadrao;
+		color: $brancoPadrao;
+	} 
 }
 
 .cardForm{
-	margin-top: 28px;
+	margin-top: 3px;
 	.item-text-wrap{
 		padding-top: 1px;
 		padding-bottom: 7px; 
@@ -124,6 +148,7 @@ $brancoPadrao: #fff;
 				select{
 					font-size: 19px;
     				font-weight: 100;
+    				max-width: 60%;
 				}
 			}
 			button{
@@ -135,7 +160,127 @@ $brancoPadrao: #fff;
 }
 // -------------------------------
 
+
+// CONTEUDO DO APP
 .brand{
   display:block;
   margin:20px auto 0;
+}
+
+.contentExpli{
+	border: none;
+    padding: 27px 22px 0 22px;
+    width: 100%;
+    margin-left: 0;
+	margin-top: 9px;
+    img:first-child{
+    	max-width: 203px;
+	    height: auto;
+	    max-height: none;
+		margin-top: -14px;
+	    opacity: 0.2;
+    }
+    h2{
+    	@include padraoTextTit();
+    	font-size: 18px;
+    	white-space: normal;
+    	z-index: 2;
+    	position: relative;
+    	color: $vermelhoPadrao;    	
+    }
+    p{
+		white-space: normal;
+	    font-size: 13px;
+	    line-height: 12px;
+	    color: #003588;
+	    font-weight: bold;
+	    padding-bottom: 4px;
+    }
+}
+
+.list-Principal{
+	top: -23px;
+	.item-divider{
+		background-color: $vermelhoPadrao;
+		color: $brancoPadrao;
+		@include padraoTextTit();
+		padding-top: 12px;
+    	padding-bottom: 13px;
+    	text-align: center;
+	}
+	.item{
+		border: none;
+		border-top: 1px solid #f5f5f5;
+		&:first-child{
+			border-top: none;
+		}
+		&:last-child{
+			border-bottom: 1px solid #f5f5f5;
+		}
+		.item-content{
+			padding-left: 81px;
+			h3{
+				color: $vermelhoPadrao;
+				@include padraoTextTit();
+				padding-bottom: 0px;
+				margin-top: 8px;			
+			}
+			p{
+				font-size: 13px;
+	    		font-weight: 300;
+	    		margin-top: -7px;
+	    		color: $azulPadrao;
+			}
+			.IconLeft{
+				color: $azulClaroPadrao;
+				position: absolute;
+			    left: 14px;
+			    top: 12px;
+			    font-size: 29px;
+			    border: 1px solid;
+			    border-radius: 30px;
+			    max-width: 50px;
+			    max-height: 50px;
+			    height: 100%;
+			    width: 100%;
+			    padding-left: 11px;
+			    padding-top: 8px;
+			}
+			.ion-android-walk{
+				padding-left: 17px;				
+			}
+			.ion-ios-medical{
+				padding-left: 14px;
+				padding-top: 10px;
+			}
+			.ion-ios-information{
+				padding-left: 12px;
+				padding-top: 9px;	    		
+			}
+			.ion-ios-home{
+				padding-left: 13px;
+			}
+			.ion-bonfire{
+				padding-left: 13px;
+			}
+			.ion-ios-medkit{
+				padding-left: 13px;
+			}
+			.ion-happy{
+				padding-left: 12px;
+				padding-top: 10px;
+			}			
+		}
+	}
+}
+
+// -------------------------------
+
+
+// MEDIA QUERIES PARA AJUSTAR TAMANHO PARA GRANDES WIDTH
+@media (min-width: 800px) {
+	.has-header{
+		width: 800px;
+    	margin: auto;
+	}
 }

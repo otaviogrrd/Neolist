@@ -114,4 +114,34 @@ appControllers.controller('SearchCtrl', function($scope, $http, SearchService, G
     getData();
   })
 
+
+// FUNÇÃO QUE GERA ICONES NA LISTA
+  // ::::::::::  FIZ ESSA FUNÇÃO TOSCA PARA FAZER APARECER OS ICONES, POR FAVOR ALGUÉM PODE MELHORAR???
+
+  $scope.MudaIcone = function(NomeIcon){
+    var NomeClass;
+
+    if(NomeIcon == "Responsável de Grupo"){
+      NomeClass = "ion-ios-people";
+    }else if(NomeIcon == "Responsável pela Acolhida"){
+      NomeClass = "ion-ios-home";
+    }else if(NomeIcon == "Peregrino(a)"){
+      NomeClass = "ion-android-walk";
+    }else if(NomeIcon == "Brigadista"){
+      NomeClass = "ion-bonfire";
+    }else if(NomeIcon == "Enfermeiro(a)"){
+      NomeClass = "ion-ios-medical";
+    }else if(NomeIcon == "Médico"){
+      NomeClass = "ion-ios-medkit";
+    }else if(NomeIcon == "Monitor"){
+      NomeClass = "ion-ios-information";
+    }else{
+      NomeClass = "ion-happy";
+    }
+
+    return NomeClass;
+  }
+
+// ---------- FIM DA FUNÇÃO QUE GERA ICONES NA LISTA
+
 });
