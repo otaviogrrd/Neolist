@@ -40,16 +40,25 @@ appControllers.controller('DetailCtrl', function($scope, $http, $state, $statePa
   };
 
   function getData(){
-    SearchService.getById($stateParams.contactId).then(function(response){
-      if(response.status == 200){
-        console.log(response);
-        $scope.detail = response.data[0];
-        // console.log(response.data);
-        // $scope.list = response.data;
-      }else{
-        $scope.detail = GenericLocalDaoService.getById("contacts", $stateParams.contactId);
-      }
-    })
+    var data = SearchService.getById($stateParams.contactId);
+
+    if(data instanceof Object){
+      console.log(data);
+      $scope.detail = data;
+    }else{
+      data.then(function(response){
+        if(response.status == 200){
+          $scope.detail = response.data[0];
+        }
+      })
+    }
+    // SearchService.getById($stateParams.contactId).then(function(response){
+    //   if(response.status == 200){
+    //     $scope.detail = response.data[0];
+    //   }else{
+    //     $scope.detail = GenericLocalDaoService.getById("contacts", $stateParams.contactId);
+    //   }
+    // })
   }
 
 
