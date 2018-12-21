@@ -34,8 +34,10 @@
       return values;
     };
     this.getById = function (key, id) {
+
       var values = window.localStorage.getItem(key);
       values = isUndefinedOrNull(values) ? [] : values;
+      values = JSON.parse(values);
 
       for (var x = 0; x <= values.length; x++) {
         var item = values[x];

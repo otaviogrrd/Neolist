@@ -1,4 +1,4 @@
-appControllers.controller('RegisterCtrl', function($scope, $http, $state) {
+appControllers.controller('RegisterCtrl', function($scope, $http, $state, UserService) {
 
     $scope.register = {};
     $scope.viewdata = {
@@ -74,9 +74,23 @@ appControllers.controller('RegisterCtrl', function($scope, $http, $state) {
 
     $scope.countries();
 
-    $scope.registerUser = function(){
-      console.log($scope.register);
+    $scope.registerUser = function(form){
+        // UserService.insert($scope.register);
+        if (angular.isDefined(form) && !form.$valid) {
+            angular.forEach(form.$error.required, function (field) {
+                field.$setDirty();
+                field.$setTouched();
+            });
+
+        }else{
+            UserService.insert($scope.register);
+        }
+      // console.log($scope.register);
     }
+
+
+
+    
 
 
 });

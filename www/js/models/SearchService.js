@@ -1,9 +1,5 @@
-/**
- * Created by renatoprobst on 18/03/17.
- */
-
 appServices
-  .service('SearchService', function ($http, $filter)
+  .service('SearchService', function ($http, $filter, GenericLocalDaoService)
   {
 
     var BASE_URL = "http://neolist.com.br/appweb/getContatosNeoList.php";
@@ -14,9 +10,17 @@ appServices
 
 
     this.getById = function(contactId){
-      return $http.get("http://neolist.com.br/appweb/getDetalheContatoNeoList.php",{
-        params: { id: contactId }
-      });
+      var storageContact = GenericLocalDaoService.getById("contacts", contactId);
+
+      if(!angular.isUndefined(storageContact)){
+        return storageContact;
+      }else{
+        return $http.get("http://neolist.com.br/appweb/getDetalheContatoNeoList.php",{
+          params: { id: contactId }
+        });
+      }
+
+     
 
     }
 

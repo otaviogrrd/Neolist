@@ -5,27 +5,48 @@
 
     <h2 class="col col-center text-center">Cadastro</h2>
 
-    <form ng-submit="registerUser();">
+    <form  name="form">
       <div class="list list-inset">
         <label class="item item-input">
-          <input type="text" palceholder="Nome" ng-model="register.nome" />
+          <input type="text" placeholder="Nome" ng-model="register.nome" name="nome" required="" />
+          <div for="form.nome.$error" ng-if="form.nome.$touched  && form.nome.$dirty">
+            <div ng-message-exp="['required']">
+              O nome é um campo obrigatório
+            </div>
+          </div>
         </label>
 
         <label class="item item-input">
-          <input type="text" palceholder="Login" ng-model="register.nome" />
+          <input type="text" placeholder="Login" ng-model="register.login" name="login" required="" />
+          <div for="form.login.$error" ng-if="form.login.$touched  && form.login.$dirty">
+            <div ng-message-exp="['required']">
+              O login é um campo obrigatório
+            </div>
+          </div>
         </label>
 
         <label class="item item-input">
-          <input type="password" palceholder="Senha" ng-model="register.password" />
+          <input type="password" placeholder="Senha" ng-model="register.password" name="password" required="" />
+
+          <div for="form.password.$error" ng-if="form.password.$touched  && form.password.$dirty">
+            <div ng-message-exp="['required']">
+              A senha é obrigatória
+            </div>
+          </div>
         </label>
 
         <label class="item item-input item-select">
           <div class="input-label">
             Categorias
           </div>
-          <select ng-model="register.category">
+          <select ng-model="register.category" name="category" required="">
             <option ng-repeat="item in viewdata.categories" value="{{item.id}}">{{item.name}}</option>
           </select>
+            <div for="form.category.$error" ng-if="form.category.$touched  && form.category.$dirty">
+            <div ng-message-exp="['required']">
+              A categoria é obrigatória
+            </div>
+          </div>
         </label>
 
         <label class="item item-input item-select">
@@ -38,15 +59,26 @@
         </label>
 
         <label class="item item-input">
-          <input type="email" palceholder="Email" ng-model="register.email" />
+          <input type="email" placeholder="Email" ng-model="register.email" required="" name="email" />
+          <div for="form.email.$error" ng-if="form.email.$touched  && form.email.$dirty">
+            <div ng-message-exp="['required']">
+              O Email é obrigatório
+            </div>
+          </div>
         </label>
 
         <label class="item item-input">
-          <input type="number" palceholder="Telefone" ng-model="register.phone" />
+          <input type="number" placeholder="Telefone" ng-model="register.phone" required="" name="phone" />
+
+          <div for="form.phone.$error" ng-if="form.phone.$touched  && form.phone.$dirty">
+            <div ng-message-exp="['required']">
+              O Telefone é obrigatório
+            </div>
+          </div>
         </label>
 
         <label class="item item-input">
-          <input type="number" palceholder="Telefone" ng-model="register.phone2" />
+          <input type="number" placeholder="Telefone" ng-model="register.phone2" />
         </label>
 
         <label class="item item-input item-select">
@@ -62,16 +94,27 @@
         
 
         <label class="item item-input">
-          <input type="text" palceholder="Telefone" ng-model="register.state" />
+          <input type="text" placeholder="Estado" ng-model="register.state" required="" name="state" />
+          <div for="form.state.$error" ng-if="form.state.$touched  && form.state.$dirty">
+            <div ng-message-exp="['required']">
+              O Estado é obrigatório
+            </div>
+          </div>
         </label>
 
         <label class="item item-input">
-          <input type="text" palceholder="Telefone" ng-model="register.city" />
+          <input type="text" placeholder="Cidade" ng-model="register.city" required="" name="city" />
+
+          <div for="form.city.$error" ng-if="form.city.$touched  && form.city.$dirty">
+            <div ng-message-exp="['required']">
+              A cidade é obrigatório
+            </div>
+          </div>
         </label>
 
         <br>
 
-        <button type="submit" class="button button-positive pull-right">Cadastrar</button>
+        <button type="submit" class="button button-positive pull-right" ng-click="registerUser(form);">Cadastrar</button>
       </div>
     </form>
 
