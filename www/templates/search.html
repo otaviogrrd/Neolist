@@ -13,13 +13,13 @@
           <div class="list list-inset">
             <label class="item item-input">              
               <i class="icon ion-search placeholder-icon"></i>
-              <input type="text" placeholder="Pesquisar um nome" ng-model="search.term">
+              <input type="text" placeholder="Pesquisar um nome" ng-model="searchfield.nome">
             </label>
             <label class="item item-input item-select">
               <div class="input-label">
                 Categorias
               </div>
-              <select ng-model="search.category">
+              <select ng-model="searchfield.categoria">
                 <option ng-repeat="item in categories" value="{{item.id}}">{{item.name}}</option>
               </select>
             </label>
