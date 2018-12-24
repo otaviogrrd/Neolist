@@ -1,6 +1,6 @@
 
 appServices
-.service('UserService', function ($http, $filter)
+.service('UserService', function ($http, $filter, GenericLocalDaoService)
 {
 
   var BASE_URL = "http://neolist.com.br/appweb";
@@ -33,25 +33,43 @@ appServices
 
 
   this.getById = function(contactId){
-    return $http.get("http://neolist.com.br/appweb/getDetalheContatoNeoList.php",{
+    return $http.get(BASE_URL + "/getDetalheContatoNeoList.php",{
       params: { id: contactId }
     });
+
+  }
+
+  this.findMe = function(email)
+  {
+    var data = GenericLocalDaoService.get('contacts'), 
+    me = _.where(data, {email: email});
+
+    return (me != "") ? me : {};
 
   }
 
 
   this.login = function(data)
   {
-    // return $http.post(BASE_URL+ '/getLoginNeoList.php', {
-    //   "username=" + data.login,
-    //   "&senha=" + data.password
-    //   {
-    //     headers: {
-    //       'Authorization': undefined,
-    //       'Content-Type': 'application/x-www-form-urlencoded'
-    //     }
+    return $http.get(BASE_URL + '/getLoginNeoList.php',{
+      params:{
+        username:data.username,
+        senha:data.password
+      }
+    });
+  }
 
-    //   }); 
+  this.logout = function(){
+    return GenericLocalDaoService.remove('userdata');
+  }
+
+  this.updateProfile = function(login, data){
+
+    return $http.get(BASE_URL + '/getDetalhesAlteracao.php',{
+      params:{
+        id:login
+      }
+    });
   }
 
 

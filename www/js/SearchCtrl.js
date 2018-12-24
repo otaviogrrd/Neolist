@@ -1,4 +1,4 @@
-appControllers.controller('SearchCtrl', function($scope, $http, SearchService, GenericLocalDaoService) {
+appControllers.controller('SearchCtrl', function($scope,$rootScope, $http, SearchService, GenericLocalDaoService) {
 
   // console.log('here');
 
@@ -41,51 +41,6 @@ appControllers.controller('SearchCtrl', function($scope, $http, SearchService, G
   $scope.search = function()
   {
     $scope.list = SearchService.searchBy($scope.searchfield);
-
-    
-    // console.log(response);
-   // SearchService.searchBy($scope.searchfield).then(function(response){
-   //  console.log(response);
-   // })
-   // $scope.listAll = $scope.list;
-
-   // var filterList = _.where($scope.listAll, $scope.searchfield);
-
-   // $scope.list = filterList;
-
-    // if($scope.searchfield.term == ""){
-    //   $scope.list = GenericLocalDaoService.get("contacts");
-    // }
-
-    // if(!angular.isUndefined($scope.searchfield.category)){
-
-    //   $scope.list = GenericLocalDaoService.getByKey('contacts',"categoria",$scope.searchfield.category);
-
-    // }
-
-    // if(!angular.isUndefined($scope.searchfield.term))
-    // {
-    //   var searchObject = $scope.list;
-    //   var response = [];
-
-    //   angular.forEach(searchObject, function(key, value)
-    //   {
-    //     if(!angular.isUndefined(searchObject[value]))
-    //     {
-    //       var itemName = searchObject[value].nome.toLowerCase();
-
-    //       if(itemName.search($scope.searchfield.term.toLowerCase()) >= 0)
-    //       {
-    //         response.push(searchObject[value]);
-    //       }
-    //     }
-    //   })
-    //   $scope.list = toObject(response)
-    // }
-
-
-    
-
   }
 
   function toObject(arr) {
