@@ -1,5 +1,5 @@
 appControllers
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, UserService) {
+.controller('AppCtrl', function($scope, $rootScope, $state,$ionicModal, $timeout, UserService, GenericLocalDaoService) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -9,7 +9,7 @@ appControllers
   //});
 
   // Form data for the login modal
-  $scope.loginData = {};
+  $scope.logindata = {};
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -30,26 +30,26 @@ appControllers
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+    UserService.login($scope.logindata).then(function(response){
+      
+      if(!angular.isUndefined(response.data[0].login)){
+        var medata = UserService.findMe(response.data[0].login);
+        GenericLocalDaoService.save("userdata", medata);
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+        var user = GenericLocalDaoService.get('userdata');
+
+        if(!angular.isUndefined(user)){
+          $rootScope.user = user[0];
+        }
+
+        $scope.closeLogin();
+        $state.go('app.search');
+      }
+    });
   };
-})
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+  $scope.doLogout = function(){
+    UserService.logout();
+    $rootScope.user = {};
+  }
 });

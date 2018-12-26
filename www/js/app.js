@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, GenericLocalDaoService, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs).
@@ -17,6 +17,17 @@ angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services'])
     if (window.cordova && window.Keyboard) {
       window.Keyboard.hideKeyboardAccessoryBar(true);
     }
+
+    function userLogged(){
+      var user = GenericLocalDaoService.get('userdata');
+      if(!angular.isUndefined(user) && user != null){
+        $rootScope.user = user[0];
+      }
+    }
+
+    
+    userLogged();
+    // window.user = $rootScope.user;
 
     if (window.StatusBar) {
       // Set the statusbar to use the default style, tweak this to
@@ -74,6 +85,25 @@ angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services'])
     views:{
       'menuContent':{
         templateUrl: 'templates/about.html'
+      }
+    }
+  })
+
+  .state('app.editprofile',{
+    url:'/editprofile',
+    views:{
+      'menuContent':{
+        controller:'ProfileCtrl',
+        templateUrl: 'templates/profile.html'
+      }
+    }
+  })
+
+  .state('app.logout',{
+    url:'/logout',
+    views:{
+      'menuContent':{
+        controller:'LogoutCtrl'
       }
     }
   })

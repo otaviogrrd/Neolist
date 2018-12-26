@@ -1,4 +1,4 @@
-appControllers.controller('DetailCtrl', function($scope, $http, $state, $stateParams, $ionicActionSheet,SearchService, GenericLocalDaoService) {
+appControllers.controller('DetailCtrl', function($scope, $rootScope, $http, $state, $stateParams, $ionicActionSheet,SearchService, GenericLocalDaoService) {
 
   // console.log('here');
 

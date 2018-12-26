@@ -1,0 +1,111 @@
+<ion-view view-title="Cadastro">
+  <ion-content>
+
+    <img class="brand" src="../img/caminho-neocatecumenal-logo.png" width="20%" alt="">
+
+    <h2 class="col col-center text-center">Editar</h2>
+
+    <form  name="form">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="text" placeholder="Nome" ng-model="user.nome" name="nome" required="" />
+          <div for="form.nome.$error" ng-if="form.nome.$valid == false && form.nome.$touched  && form.nome.$dirty">
+            <div ng-message-exp="['required']">
+              O nome é um campo obrigatório
+            </div>
+          </div>
+        </label>
+
+        <label class="item item-input">
+          <input type="text" placeholder="Login" ng-model="user.login" name="login" required="" />
+          <div for="form.login.$error" ng-if="form.login.$valid == false && form.login.$touched  && form.login.$dirty">
+            <div ng-message-exp="['required']">
+              O login é um campo obrigatório
+            </div>
+          </div>
+        </label>
+
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Categorias
+          </div>
+          <select ng-model="user.category" name="category" required="">
+            <option ng-repeat="item in viewdata.categories" value="{{item.id}}">{{item.name}}</option>
+          </select>
+            <div for="form.category.$error" ng-if="form.category.$valid == false && form.category.$touched  && form.category.$dirty">
+            <div ng-message-exp="['required']">
+              A categoria é obrigatória
+            </div>
+          </div>
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Idioma
+          </div>
+          <select ng-model="user.language">
+            <option ng-repeat="item in viewdata.languages" value="{{item.val}}">{{item.name}}</option>
+          </select>
+        </label>
+
+        <label class="item item-input">
+          <input type="email" placeholder="Email" ng-model="user.email" required="" name="email" />
+          <div for="form.email.$error" ng-if="form.email.$valid == false && form.email.$touched  && form.email.$dirty">
+            <div ng-message-exp="['required']">
+              O Email é obrigatório
+            </div>
+          </div>
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Telefone" ng-model="user.telefone" required="" name="phone" />
+
+          <div for="form.telefone.$error" ng-if="form.telefone.$valid == false && form.telefone.$touched  && form.telefone.$dirty">
+            <div ng-message-exp="['required']">
+              O Telefone é obrigatório
+            </div>
+          </div>
+        </label>
+
+        <label class="item item-input">
+          <input type="text" placeholder="Telefone" ng-model="user.telefone2" />
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Pais
+          </div>
+          <select ng-model="user.pais">
+            <option ng-repeat="item in viewdata.countries" value="{{item.sigla | lowercase}}">{{item.nome_pais}}</option>
+          </select>
+        </label>
+
+
+        
+
+        <label class="item item-input">
+          <input type="text" placeholder="Estado" ng-model="user.estado" required="" name="estado" />
+          <div for="form.estado.$error" ng-if="form.estado.$valid == false && form.estado.$touched  && form.estado.$dirty">
+            <div ng-message-exp="['required']">
+              O Estado é obrigatório
+            </div>
+          </div>
+        </label>
+
+        <label class="item item-input">
+          <input type="text" placeholder="Cidade" ng-model="user.cidade" required="" name="cidade" />
+
+          <div for="form.cidade.$error" ng-if="form.cidade.$valid == false && form.cidade.$touched  && form.cidade.$dirty">
+            <div ng-message-exp="['required']">
+              A cidade é obrigatório
+            </div>
+          </div>
+        </label>
+
+        <br>
+
+        <button type="submit" class="button button-full button-positive" ng-click="editUser(form);">Editar</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
