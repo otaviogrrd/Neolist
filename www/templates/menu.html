@@ -28,14 +28,20 @@
         <ion-item menu-close href="#/app/search" ng-class="item-icon-left">
            Encontre Contatos
         </ion-item>
-        <ion-item menu-close href="#/app/register">
+        <ion-item menu-close ng-click="login()" ng-show="user.login === undefined">
+          Login
+        </ion-item>
+        <ion-item menu-close href="#/app/register" ng-show="user.login === undefined">
           Cadastre-se
         </ion-item>
-        <ion-item menu-close ng-click="login()">
-          Login
+        <ion-item menu-close ui-sref="app.editprofile"  ng-show="user.login">
+          Editar Perfil
         </ion-item>
         <ion-item menu-close href="#/app/about">
           Sobre
+        </ion-item>
+        <ion-item menu-close ng-click="doLogout();" ng-show="user.login">
+          Sair
         </ion-item>
       </ion-list>
     </ion-content>

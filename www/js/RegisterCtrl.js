@@ -1,4 +1,4 @@
-appControllers.controller('RegisterCtrl', function($scope, $http, $state, $ionicPopup, UserService) {
+appControllers.controller('RegisterCtrl', function($scope,$rootScope, $http, $state, $ionicPopup, UserService) {
 
     $scope.register = {};
     $scope.viewdata = {
@@ -116,7 +116,6 @@ appControllers.controller('RegisterCtrl', function($scope, $http, $state, $ionic
                 }
             });
         }
-      // console.log($scope.register);
     }
 
 
