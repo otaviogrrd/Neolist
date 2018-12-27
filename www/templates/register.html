@@ -1,9 +1,14 @@
 <ion-view view-title="Cadastro">
   <ion-content>
 
-    <img class="brand" src="../img/caminho-neocatecumenal-logo.png" width="20%" alt="">
+    <!--<img class="brand" src="../img/caminho-neocatecumenal-logo.png" width="20%" alt="">
 
-    <h2 class="col col-center text-center">Cadastro</h2>
+    <h2 class="col col-center text-center">Cadastro</h2>-->
+    <div class="contentExpli item item-thumbnail-right" href="#">
+      <img src="../img/jmj-cnc-cadastro.png">
+      <h2>Ainda não é Cadastrado ?</h2>
+      <p>Colabore conosco para encontrar seu grupo mais facilmente!</p>
+    </div>
 
     <form  name="form">
       <div class="list list-inset">
@@ -102,7 +107,7 @@
           </div>
         </label>
 
-        <label class="item item-input">
+        <label class="item item-input last-item">
           <input type="text" placeholder="Cidade" ng-model="register.city" required="" name="city" />
 
           <div for="form.city.$error" ng-if="form.city.$valid == false && form.city.$touched  && form.city.$dirty">
@@ -114,7 +119,7 @@
 
         <br>
 
-        <button type="submit" class="button button-positive pull-right" ng-click="registerUser(form);">Cadastrar</button>
+        <button type="submit" class="button button-block button-padrao button-cad" ng-click="registerUser(form);">Cadastrar</button>
       </div>
     </form>
 

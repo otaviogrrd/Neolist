@@ -97,14 +97,41 @@ $brancoPadrao: #fff;
 }
 // -------------------------------
 
-// FORM DO APP
+// FORM DO APP    
+
+.card,
+.list-inset,
+.padding > .list{
+	.item{
+		&:first-child{
+			border-top-left-radius: 8px !important;
+    		border-top-right-radius: 8px !important;
+		}
+		
+		div[ng-message-exp="['required']"]{
+			color: #e00607;
+		    background-color: #fdcbc8;
+		    border-radius: 32px;
+		    font-size: 12px;
+		    padding: 3px 14px;
+		    font-weight: 500;
+		}
+		
+	}	
+	.last-item{
+		border-bottom-left-radius: 8px !important;
+    	border-bottom-right-radius: 8px !important;
+	}
+}
+
+
 .button{
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
 	line-height: 0px;
-    min-height: 46px;
+    min-height: 43px;
 }
-.button-padrao{
+.button-padrao,{
 	background-color: $azulPadrao;
 	color: $brancoPadrao;
 	&:active,
@@ -116,6 +143,44 @@ $brancoPadrao: #fff;
 		background-color: $vermelhoPadrao;
 		color: $brancoPadrao;
 	} 
+}
+.button-cad{
+	background-color: $vermelhoPadrao;
+	color: $brancoPadrao;
+	&:active,
+	&:focus{
+		background-color: $azulClaroPadrao !important;
+		color: $brancoPadrao;
+	}
+	&:hover{
+		background-color: $azulClaroPadrao !important;
+		color: $brancoPadrao;
+	}
+}
+
+.item-input{
+	border: 1px solid #ccc;
+	font-size: 19px;
+	input{
+		font-size: 19px;
+		font-weight: 100;
+		margin-top: -6px;
+	}
+}
+.item-select{
+	.input-label{
+		font-size: 13px;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: $azulClaroPadrao;
+	}
+	select{
+		font-size: 19px;
+		font-weight: 100;
+		max-width: 60%;
+		right: 7px;
+		z-index: -1;
+	}
 }
 
 .cardForm{
