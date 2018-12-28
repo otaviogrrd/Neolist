@@ -38,7 +38,7 @@ angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services'])
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-  $ionicConfigProvider.backButton.text('Voltar');
+  $ionicConfigProvider.backButton.text('');
 
 
   $stateProvider

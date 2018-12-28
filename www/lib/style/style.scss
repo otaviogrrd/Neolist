@@ -63,10 +63,17 @@ $brancoPadrao: #fff;
 					line-height: normal;					
 					color: $azulPadrao;
 					font-size: 20px;
-					margin-top: 21px;
+					margin-top: 14px;
+				}
+				a{
+					margin-top: -6px;
+					font-size: 11px;
+					padding: 0;
+					position: relative;
+					top: -11px;
 				}
 				p{
-					margin-top: -6px;
+					margin-top: -16px;
 					font-size: 11px;
 				}
 			}
@@ -104,8 +111,8 @@ $brancoPadrao: #fff;
 .padding > .list{
 	.item{
 		&:first-child{
-			border-top-left-radius: 8px !important;
-    		border-top-right-radius: 8px !important;
+			border-top-left-radius: 8px ;
+    		border-top-right-radius: 8px ;
 		}
 		
 		div[ng-message-exp="['required']"]{
@@ -159,7 +166,7 @@ $brancoPadrao: #fff;
 }
 
 .item-input{
-	border: 1px solid #ccc;
+	border: 1px solid #ccc !important;
 	font-size: 19px;
 	input{
 		font-size: 19px;
@@ -232,6 +239,22 @@ $brancoPadrao: #fff;
   margin:20px auto 0;
 }
 
+hr{
+	border: none;
+    background-color: #f5f5f5;
+    height: 3px;
+    margin-top: 21px;
+    margin-bottom: 21px;
+}
+
+.text-link-login{
+	width: 100%;
+    display: block;
+    text-align: center;
+    margin-bottom: 22px;
+    margin-top: 18px;
+}
+
 .contentExpli{
 	border: none;
     padding: 27px 22px 0 22px;
@@ -242,7 +265,7 @@ $brancoPadrao: #fff;
     	max-width: 203px;
 	    height: auto;
 	    max-height: none;
-		margin-top: -14px;
+		margin-top: -12px;
 	    opacity: 0.2;
     }
     h2{
@@ -256,11 +279,55 @@ $brancoPadrao: #fff;
     p{
 		white-space: normal;
 	    font-size: 13px;
-	    line-height: 12px;
-	    color: #003588;
+	    line-height: 15px;
+	    color: $azulPadrao;
 	    font-weight: bold;
 	    padding-bottom: 4px;
     }
+}
+.login-view{
+	text-align: center;
+	margin-top: 36px;
+	img,
+	img:first-child{
+		opacity: 1.0;
+    	text-align: center;
+    	left: 17%;
+    	position: static;
+    	margin: 0px auto 0px auto;
+	}
+	h2{
+		font-size: 24px;
+    	margin-top: 12px;
+    	margin-bottom: 20px!important;
+	}
+}
+.text-Padrao{
+	border: none;
+    padding: 0 22px 0 22px;
+    width: 100%;
+    margin-left: 0;
+    p{
+		font-size: 13px;
+	    line-height: 15px;
+	    color: $azulPadrao;
+	    font-weight: 400;
+    }
+    img{
+    	float:left;
+    	width: 52%;
+    }
+    h4{
+    	@include padraoTextTit();
+    	font-size: 18px;
+    	white-space: normal;
+    	z-index: 2;
+    	position: relative;
+    	color: $vermelhoPadrao;    	
+    }
+}
+.ContentMarginNegative{
+	margin-top: -14px;
 }
 
 .list-Principal{
@@ -272,6 +339,7 @@ $brancoPadrao: #fff;
 		padding-top: 12px;
     	padding-bottom: 13px;
     	text-align: center;
+    	border-radius: 0px !important;
 	}
 	.item{
 		border: none;
@@ -350,5 +418,21 @@ $brancoPadrao: #fff;
 	.has-header{
 		width: 800px;
     	margin: auto;
+	}
+}
+
+@media (min-width: 430px) {
+	.text-Padrao{
+		img{
+	    	width: 200px;
+	    }
+	}
+}
+
+@media (min-width: 549px) {
+	.text-Padrao{
+		img{
+	    	width: 105px;
+	    }
 	}
 }
