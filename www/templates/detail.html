@@ -1,29 +1,28 @@
 <ion-view view-title="Detalhes">
-
-
-
+  
   <ion-content>
-    <img class="brand" src="../img/caminho-neocatecumenal-logo.png" width="20%" alt="">
-    <h2 class="col col-center text-center">{{detail.nome}}</h2>
-    <div class="list list-inset">
-      <p ng-if="detail.descricao_categoria"><strong>Voluntário como: </strong>{{detail.descricao_categoria}}</p>
-      <p ng-if="detail.descricao_idioma"><strong>Idioma: </strong>{{detail.descricao_idioma}}</p>
-      <p ng-if="detail.nome_pais"><strong>Pais / Estado: </strong> {{detail.nome_pais}} / {{detail.estado}} </p>
+    <div class="contentExpli item item-thumbnail-right">
+      <img src="../img/jmj-cnc-detalhe.png">
+      <h2 class="nome-desc">{{detail.nome}}</h2>
+      <p ng-if="detail.descricao_categoria">{{detail.descricao_categoria}}</p>
+    </div>    
+    <div class="list list-inset text-Padrao">
+      <p ng-if="detail.descricao_idioma">Idioma:&nbsp; <strong>{{detail.descricao_idioma}}</strong></p>
+      <p ng-if="detail.nome_pais">Estado / Pais:&nbsp; <strong>{{detail.estado}} / {{detail.nome_pais}}</strong></p>
     </div>
 
-
-    <a ng-click="showActionsheet('email')" class="item item-icon-left" ng-if="detail.email">
-      <i class="icon ion-android-mail"></i>
+    <a ng-click="showActionsheet('email')" class="item item-detail item-icon-left" ng-if="detail.email">
+      <i class="icon ion-android-mail icon-padrao"></i>
       {{detail.email}}
     </a>
 
-    <a ng-click="showActionsheet('phone')" class="item item-icon-left" ng-if="detail.telefone">
-      <i class="icon ion-ios-telephone"></i>
+    <a ng-click="showActionsheet('phone')" class="item item-icon-left item-detail" ng-if="detail.telefone">
+      <i class="icon ion-ios-telephone icon-padrao"></i>
       {{detail.telefone}}
     </a>
 
-    <a ng-click="showActionsheet('phone')" class="item item-icon-left" ng-if="detail.telefone2">
-      <i class="icon ion-ios-telephone"></i>
+    <a ng-click="showActionsheet('phone')" class="item item-icon-left item-detail" ng-if="detail.telefone2">
+      <i class="icon ion-ios-telephone icon-padrao"></i>
       {{detail.telefone2}}
     </a>
 

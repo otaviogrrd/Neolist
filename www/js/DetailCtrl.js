@@ -11,13 +11,13 @@ appControllers.controller('DetailCtrl', function($scope, $rootScope, $http, $sta
     if(type == 'email'){
       titleText = "Enviar um email";
       buttons = [
-          { text: '<i class="icon ion-android-send"></i> Enviar' },
+          { text: '<i class="icon ion-android-mail"></i> Escrever e-mail' },
       ];
     }else{
       titleText = "Telefone";
       buttons = [
           { text: '<i class="icon ion-android-call"></i> Ligar' },
-          { text: '<i class="icon ion-navicon-round"></i> Whatsapp' },
+          { text: '<i class="icon ion-social-whatsapp"></i> Whatsapp' },
       ];
     }
 

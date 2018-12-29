@@ -55005,7 +55005,7 @@ IonicModule
     },
 
     backButton: {
-      icon: 'ion-ios-arrow-back',
+      icon: 'ion-chevron-left',
       text: 'Back',
       previousTitleText: true
     },
@@ -64891,7 +64891,7 @@ IonicModule
 
       if (!hasInnerText) {
         var buttonTextEle = $document[0].createElement('span');
-        buttonTextEle.className = 'back-text';
+        buttonTextEle.className = 'back-text hide';
 
         if (!hasButtonText && $ionicConfig.backButton.text()) {
           buttonTextEle.innerHTML += '<span class="default-title">' + $ionicConfig.backButton.text() + '</span>';
