@@ -2,7 +2,7 @@
 	// Cores da Jornada
 $azulPadrao: #003588;
 $azulClaroPadrao: #007ab2;
-$vermelhoPadrao: #e00607;
+$vermelhoPadrao: #e20101;
 $brancoPadrao: #fff;
 	// ---------------------------
 // -------------------------------
@@ -276,6 +276,10 @@ hr{
     	position: relative;
     	color: $vermelhoPadrao;    	
     }
+    .nome-desc{
+    	font-size: 24px;
+    	margin-bottom: -3px;
+    }
     p{
 		white-space: normal;
 	    font-size: 13px;
@@ -325,6 +329,30 @@ hr{
     	position: relative;
     	color: $vermelhoPadrao;    	
     }
+}
+.icon-padrao{
+	color: $azulClaroPadrao;
+	position: absolute;
+    left: 14px;
+    top: 12px;
+    font-size: 25px !important;
+    border: 1px solid;
+    border-radius: 30px;
+    max-width: 41px;
+    max-height: 41px;
+    height: 100%;
+    width: 100%;
+    padding-left: 4px;
+    padding-top: 0px;
+    margin-top: 5px;
+}
+.item-detail{
+	font-size: 16px;
+	padding-left: 68px;
+	color: $azulPadrao !important;
+	.icon-padrao{
+		color: $vermelhoPadrao;
+	}
 }
 .ContentMarginNegative{
 	margin-top: -14px;
@@ -410,14 +438,39 @@ hr{
 	}
 }
 
+.action-sheet-wrapper{
+	.action-sheet-group{
+		margin-bottom: 5px;
+	}
+}
+.action-sheet{
+	color: $azulClaroPadrao;
+	.button{
+		min-height: 60px;
+	}
+}
+.action-sheet-has-icons{
+	.icon{
+		top: 9px;
+	}
+}
+
 // -------------------------------
 
 
 // MEDIA QUERIES PARA AJUSTAR TAMANHO PARA GRANDES WIDTH
 @media (min-width: 800px) {
-	.has-header{
+	.has-header, 
+	.content-limit{
 		width: 800px;
-    	margin: auto;
+    	margin-left: auto;
+    	margin-right: auto;
+	}
+	.modal{
+		max-width: 800px;
+		.has-header{
+			width: auto;
+		}
 	}
 }
 

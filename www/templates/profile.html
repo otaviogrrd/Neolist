@@ -1,9 +1,11 @@
 <ion-view view-title="Cadastro">
   <ion-content>
 
-    <img class="brand" src="../img/caminho-neocatecumenal-logo.png" width="20%" alt="">
-
-    <h2 class="col col-center text-center">Editar</h2>
+    <div class="contentExpli item item-thumbnail-right" href="#">
+      <img src="../img/jmj-cnc-cadastro.png">
+      <h2>Editar Perfil</h2>
+      <p>Mantenha seus dados sempre atualizados.</p>
+    </div>
 
     <form  name="form">
       <div class="list list-inset">
@@ -92,7 +94,7 @@
           </div>
         </label>
 
-        <label class="item item-input">
+        <label class="item item-input last-item">
           <input type="text" placeholder="Cidade" ng-model="user.cidade" required="" name="cidade" />
 
           <div for="form.cidade.$error" ng-if="form.cidade.$valid == false && form.cidade.$touched  && form.cidade.$dirty">
@@ -104,7 +106,7 @@
 
         <br>
 
-        <button type="submit" class="button button-full button-positive" ng-click="editUser(form);">Editar</button>
+        <button type="submit" class="button button-block button-padrao button-cad" ng-click="editUser(form);">Editar</button>
       </div>
     </form>
   </ion-content>
