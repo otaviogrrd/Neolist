@@ -4,7 +4,7 @@ appControllers.controller('DetailCtrl', function($scope, $rootScope, $http, $sta
 
   $scope.detail = {};
 
-   $scope.showActionsheet = function(type) {
+   $scope.showActionsheet = function(type, phone) {
     var titleText = null,
         buttons = null;
 
@@ -29,7 +29,8 @@ appControllers.controller('DetailCtrl', function($scope, $rootScope, $http, $sta
           console.log('CANCELLED');
         },
         buttonClicked: function(index) {
-          console.log('BUTTON CLICKED', index);
+          $scope.registerButtonClick(type,index, phone);
+          
           return true;
         },
         destructiveButtonClicked: function() {
@@ -38,6 +39,29 @@ appControllers.controller('DetailCtrl', function($scope, $rootScope, $http, $sta
         }
       });
   };
+
+  $scope.registerButtonClick = function(type, index, phone)
+  {
+    if(type == 'email')
+    {
+       document.location.href = 'mailto:' + $scope.detail.email;
+    }
+
+    if(type == 'phone'){
+
+      var phoneSend = (phone == 1) ? $scope.detail.telefone : $scope.detail.telefone2;
+      if(index == 0){
+        document.location.href = 'tel:' + phoneSend;
+      }else{
+        document.location.href = 'https://wa.me/"'+phoneSend.replace(' ','')+'"?text='+encodeURI('Olá ' + $scope.detail.nome + ', te encontrei no app NeoList');
+
+        // document.location.href = "whatsapp://send?text=Olá '"+$scope.detail.nome+", te encontreo no app NeoList'&phone="+phoneSend;
+        // document.location.href = 'http://api.whatsapp.com/send?phone=' + phoneSend + '&text=Olá ' + $scope.detail.nome + ', te encontrei no app NeoList.';
+      }
+ 
+    }
+  }
+
 
   function getData(){
     var data = SearchService.getById($stateParams.contactId);

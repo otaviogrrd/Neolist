@@ -1,15 +1,28 @@
 appControllers
-.controller('AppCtrl', function($scope, $rootScope, $state,$ionicModal, $timeout, UserService, GenericLocalDaoService) {
+.controller('AppCtrl', function($scope, $rootScope,$ionicHistory, $ionicPopup, $state,$ionicModal, $timeout, $cordovaNetwork, UserService, GenericLocalDaoService) {
 
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  // Form data for the login modal
   $scope.logindata = {};
+
+  document.addEventListener("deviceready", function () {
+
+    $scope.network = $cordovaNetwork.getNetwork();
+    $scope.isOnline = $cordovaNetwork.isOnline();
+    $scope.$apply();
+      // listen for Online event
+      $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
+        $scope.isOnline = true;
+        $scope.network = $cordovaNetwork.getNetwork();
+        $scope.updateContacts();
+        $scope.$apply();
+      })
+
+      // listen for Offline event
+      $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+        $scope.isOnline = false;
+        $scope.network = $cordovaNetwork.getNetwork();
+        $scope.$apply();
+      })
+    }, false);
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -31,25 +44,60 @@ appControllers
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     UserService.login($scope.logindata).then(function(response){
-      
+
       if(!angular.isUndefined(response.data[0].login)){
-        var medata = UserService.findMe(response.data[0].login);
-        GenericLocalDaoService.save("userdata", medata);
+        if(response.data[0].login == null){
+          var alert = $ionicPopup.alert({
+            title: 'Ops',
+            template: 'Usuário e/ou senha incorretos!'
+          });
+          alert.then(function(res) {
+            login(); 
+          });
+        }else{
 
-        var user = GenericLocalDaoService.get('userdata');
+          UserService.getUpdatedProfile(response.data[0].login).then(function(response){
+            if(response.status == 200){
+              GenericLocalDaoService.save("userdata", response.data);
+              var user = GenericLocalDaoService.get('userdata');
 
-        if(!angular.isUndefined(user)){
-          $rootScope.user = user[0];
+              if(!angular.isUndefined(user)){
+                $rootScope.user = user[0];
+              }
+
+              $ionicHistory.clearHistory();
+              $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                historyRoot: true
+              });
+
+              $scope.closeLogin();
+              $state.go('app.search');
+            }
+          })
         }
-
-        $scope.closeLogin();
-        $state.go('app.search');
       }
     });
   };
 
+  $scope.updateContacts = function(){
+    SearchService.getAll().then(function(response){
+      if(response.status == 200)
+      {
+        GenericLocalDaoService.remove("contacts");
+        GenericLocalDaoService.save("contacts",response.data)
+      }
+    })
+  }
+
   $scope.doLogout = function(){
     UserService.logout();
     $rootScope.user = {};
+    $ionicHistory.clearHistory();
+    $ionicHistory.nextViewOptions({
+      disableAnimate: true,
+      historyRoot: true
+    });
+    $state.go('app.search');
   }
 });

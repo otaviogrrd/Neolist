@@ -11,17 +11,17 @@
       <p ng-if="detail.nome_pais">Estado / Pais:&nbsp; <strong>{{detail.estado}} / {{detail.nome_pais}}</strong></p>
     </div>
 
-    <a ng-click="showActionsheet('email')" class="item item-detail item-icon-left" ng-if="detail.email">
+    <a ng-click="showActionsheet('email',0)" class="item item-detail item-icon-left" ng-if="detail.email">
       <i class="icon ion-android-mail icon-padrao"></i>
       {{detail.email}}
     </a>
 
-    <a ng-click="showActionsheet('phone')" class="item item-icon-left item-detail" ng-if="detail.telefone">
+    <a ng-click="showActionsheet('phone', 1)" class="item item-icon-left item-detail" ng-if="detail.telefone">
       <i class="icon ion-ios-telephone icon-padrao"></i>
       {{detail.telefone}}
     </a>
 
-    <a ng-click="showActionsheet('phone')" class="item item-icon-left item-detail" ng-if="detail.telefone2">
+    <a ng-click="showActionsheet('phone', 2)" class="item item-icon-left item-detail" ng-if="detail.telefone2">
       <i class="icon ion-ios-telephone icon-padrao"></i>
       {{detail.telefone2}}
     </a>

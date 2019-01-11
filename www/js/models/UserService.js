@@ -6,7 +6,6 @@ appServices
   var BASE_URL = "http://neolist.com.br/appweb";
 
   this.insert = function(data){
-
     return $http.post(BASE_URL + "/insertUsuariosNeoList.php",
       "nome=" + data.nome +
       "&username=" + data.login +
@@ -53,7 +52,7 @@ appServices
   {
     return $http.get(BASE_URL + '/getLoginNeoList.php',{
       params:{
-        username:data.username,
+        username:angular.isUndefined(data.username) ? data.login : data.username,
         senha:data.password
       }
     });
@@ -63,12 +62,31 @@ appServices
     return GenericLocalDaoService.remove('userdata');
   }
 
-  this.updateProfile = function(login, data){
+  this.updateProfile = function(data)
+  {
+    return $http.post(BASE_URL + "/updateUsuariosNeoList.php",
+      "id-edit="+ data.id +
+      "&nome-edit=" + data.nome +
+      "&username=" + data.login +
+      "&idioma-edit=" + data.language +
+      "&email-edit=" + data.email +
+      "&telefone-edit=" + data.telefone.trim() +
+      "&telefone2-edit=" + data.telefone2.trim() +
+      "&pais-edit=" + data.pais +
+      "&cidade-edit=" + data.cidade +
+      "&estado-edit=" + data.estado +
+      "&categoria-edit=" + data.category,
+      {
+        headers: {
+          'Authorization': undefined,
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      });
+  }
 
-    return $http.get(BASE_URL + '/getDetalhesAlteracao.php',{
-      params:{
-        id:login
-      }
+  this.getUpdatedProfile = function(login){
+    return $http.get(BASE_URL + '/getDetalheAlteracaoNeoList.php',{
+      params: { id: login }
     });
   }
 
