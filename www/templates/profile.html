@@ -27,11 +27,11 @@
           </div>
         </label>
 
-
         <label class="item item-input item-select">
           <div class="input-label">
             Categorias
           </div>
+
           <select ng-model="user.category" name="category" required="">
             <option ng-repeat="item in viewdata.categories" value="{{item.id}}">{{item.name}}</option>
           </select>

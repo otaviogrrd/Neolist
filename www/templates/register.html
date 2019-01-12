@@ -7,7 +7,7 @@
       <p>Colabore conosco para encontrar seu grupo mais facilmente!</p>
     </div>
 
-    <form  name="form">
+    <form name="form">
       <div class="list list-inset">
         <label class="item item-input">
           <input type="text" placeholder="Nome" ng-model="register.nome" name="nome" required="" />
@@ -30,7 +30,7 @@
         <label class="item item-input">
           <input type="password" placeholder="Senha" ng-model="register.password" name="password" required="" />
 
-          <div for="form.password.$error" ng-if="form.password.$valid == false form.password.$touched  && form.password.$dirty">
+          <div for="form.password.$error" ng-if="form.password.$valid == false && form.password.$touched  && form.password.$dirty">
             <div ng-message-exp="['required']">
               A senha é obrigatória
             </div>

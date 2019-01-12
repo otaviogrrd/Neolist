@@ -34,6 +34,10 @@
         <h3>{{item.nome}}</h3>
         <p>{{item.descricao_categoria}}</p>
       </ion-item>
+
+      <ion-item ng-if="list.length == 0">
+        <p>Nenhum resultado encontrado!</p>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>
