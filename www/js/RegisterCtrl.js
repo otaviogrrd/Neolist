@@ -16,7 +16,7 @@ appControllers.controller('RegisterCtrl', function($scope,$rootScope, $http, $st
 		},
 		{
 			id: 1,
-			name: 'Monitor'
+			name: 'CNC-Brasília'
 		},
 		{
 			id: 2,
