@@ -443,6 +443,42 @@ hr{
 			background-color: #fff4f4
 		}
 	}
+	.item.future{
+		padding-left: 81px;			
+		h3{
+			color: $vermelhoPadrao;
+			@include padraoTextTit();
+			padding-bottom: 0px;
+			margin-top: 8px;
+			white-space: normal;			
+		}
+		p{
+			font-size: 13px;
+			font-weight: 300;
+			margin-top: -7px;
+			color: $azulPadrao;
+			white-space: normal;
+		}
+		.IconLeft{
+			color: $azulClaroPadrao;
+			position: absolute;
+			left: 14px;
+			top: 15px;
+			font-size: 29px;
+			border: 1px solid;
+			border-radius: 30px;
+			max-width: 50px;
+			max-height: 50px;
+			height: 100%;
+			width: 100%;
+			padding-left: 11px;
+			padding-top: 8px;
+		}		
+		.ion-android-pin{
+			padding-left: 15px;
+			padding-top: 11px;
+		}			
+	}
 }
 
 .action-sheet-wrapper{
