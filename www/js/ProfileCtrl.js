@@ -104,7 +104,9 @@ appControllers.controller('ProfileCtrl', function($scope, $rootScope, $http, $st
 						UserService.getUpdatedProfile($scope.user.login).then(function(response)
 						{
 							if(response.status == 200){
-								GenericLocalDaoService.save("userdata",response.data);
+								GenericLocalDaoService.remove("contacts");
+								updateContacts();
+								GenericLocalDaoService.save("userdata",response.data);	
 							}
 						});
 					}else{
@@ -116,6 +118,17 @@ appControllers.controller('ProfileCtrl', function($scope, $rootScope, $http, $st
 				}
 			});
 		}
+	}
+
+	function updateContacts(){
+		GenericLocalDaoService.remove("contacts");
+    SearchService.getAll().then(function(response){
+      if(response.status == 200)
+      {
+        GenericLocalDaoService.save("contacts",response.data)
+      }
+    })
+    
 	}
 
 	$scope.$on('$ionicView.beforeEnter', function(){

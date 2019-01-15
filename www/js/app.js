@@ -94,6 +94,16 @@ angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services','ng
     }
   })
 
+  .state('app.events',{
+    url:'/events',
+    views:{
+      'menuContent':{
+        controller:'EventsCtrl',
+        templateUrl: 'templates/events.html'
+      }
+    }
+  })
+
   .state('app.register',{
     url:'/register',
     views:{
