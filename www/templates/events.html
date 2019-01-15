@@ -1,16 +1,15 @@
 <ion-view view-title="Eventos">
   <ion-content>
     <div class="contentExpli item item-thumbnail-right" href="#">
-      <img src="../img/jmj-cnc-pessoas.png">
-      <h2>Não perca os eventos na JMJ !</h2>
-      <p>Encontre na lista abaixo os eventos dessa JMJ.</p>
-    </div>
-  
+      <img src="../img/jmj-cnc-eventos.png">
+      <h2>Localize os eventos da JMJ!</h2>
+      <p>Encontre abaixo os eventos dessa JMJ.</p>
+    </div>  
 
     <ion-list class="list list-inset list-Principal">
       <ion-item class="item item-divider">Lista de Eventos</ion-item>
-      <ion-item ng-repeat="item in list" ng-class="isPast(item)" 
-      ng-click="viewOnMap(item.lat, item.lon);">
+      <ion-item ng-repeat="item in list" ng-class="isPast(item)" ng-click="viewOnMap(item.lat, item.lon);">
+        <i class="IconLeft ion-android-pin"></i>
         <h3>{{item.descricao}}</h3>
         <p>{{item.local}}</p>
       </ion-item>
