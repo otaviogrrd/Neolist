@@ -41,20 +41,28 @@
       "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
     }
   },
-  "cordova-plugin-ionic-keyboard": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-ionic-keyboard@^2.0.5"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-network-information": {
     "source": {
       "type": "registry",
       "id": "cordova-plugin-network-information"
     },
     "is_top_level": true,
+    "variables": {}
+  },
+  "ionic-plugin-keyboard": {
+    "source": {
+      "type": "registry",
+      "id": "ionic-plugin-keyboard"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "es6-promise-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "es6-promise-plugin@^4.1.0"
+    },
+    "is_top_level": false,
     "variables": {}
   }
 }

@@ -1,9 +1,9 @@
 // VARIAVEIS 
 	// Cores da Jornada
-$azulPadrao: #003588;
-$azulClaroPadrao: #007ab2;
-$vermelhoPadrao: #e20101;
-$brancoPadrao: #fff;
+	$azulPadrao: #003588;
+	$azulClaroPadrao: #007ab2;
+	$vermelhoPadrao: #e20101;
+	$brancoPadrao: #fff;
 	// ---------------------------
 // -------------------------------
 
@@ -19,7 +19,7 @@ $brancoPadrao: #fff;
 	border-bottom: none !important;
 	background-image: none !important;
 	webkit-box-shadow: 2px 0 4px 1px rgba(0,0,0,.15);
-    box-shadow: 2px 0 4px 1px rgba(0,0,0,.15);
+	box-shadow: 2px 0 4px 1px rgba(0,0,0,.15);
 
 }
 .bar{
@@ -80,26 +80,29 @@ $brancoPadrao: #fff;
 		}
 	}
 	.has-header {
-    	top: 129px;
-    	.list{
-    		.item{
-    			border: none;
-    			text-transform: uppercase;
-    			color: $azulPadrao;
-    			font-size: 17px;
-    			padding-left: 33px;
-    			font-weight: 500;
-    			.item-content{
-    				padding-left: 0;
-    			}
-    			.active,
-    			.activated{
-    				background-color: transparent !important;
-    				border: none  !important;
-    				color: $vermelhoPadrao  !important;
-    			}
-    		}
-    	}
+		top: 129px;
+		.list{
+			.item{
+				border: none;
+				text-transform: uppercase;
+				color: $azulPadrao;
+				font-size: 17px;
+				padding-left: 33px;
+				font-weight: 500;
+				.item-content{
+					padding-left: 0;
+				}
+				.active,
+				.activated{
+					background-color: transparent !important;
+					border: none  !important;
+					color: $vermelhoPadrao  !important;
+				}
+			}
+		}
+	}
+	.scroll-content.scroll-content-false{
+		top:129px !important;
 	}
 }
 // -------------------------------
@@ -112,22 +115,22 @@ $brancoPadrao: #fff;
 	.item{
 		&:first-child{
 			border-top-left-radius: 8px ;
-    		border-top-right-radius: 8px ;
+			border-top-right-radius: 8px ;
 		}
 		
 		div[ng-message-exp="['required']"]{
 			color: #e00607;
-		    background-color: #fdcbc8;
-		    border-radius: 32px;
-		    font-size: 12px;
-		    padding: 3px 14px;
-		    font-weight: 500;
+			background-color: #fdcbc8;
+			border-radius: 32px;
+			font-size: 12px;
+			padding: 3px 14px;
+			font-weight: 500;
 		}
 		
 	}	
 	.last-item{
 		border-bottom-left-radius: 8px !important;
-    	border-bottom-right-radius: 8px !important;
+		border-bottom-right-radius: 8px !important;
 	}
 }
 
@@ -136,7 +139,7 @@ $brancoPadrao: #fff;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
 	line-height: 0px;
-    min-height: 43px;
+	min-height: 43px;
 }
 .button-padrao,{
 	background-color: $azulPadrao;
@@ -172,6 +175,8 @@ $brancoPadrao: #fff;
 		font-size: 19px;
 		font-weight: 100;
 		margin-top: -6px;
+		padding-top:14px;
+		vertical-align: middle;
 	}
 }
 .item-select{
@@ -201,8 +206,10 @@ $brancoPadrao: #fff;
 				font-size: 19px;
 				input{
 					font-size: 19px;
-    				font-weight: 100;
-    				margin-top: -6px;
+					font-weight: 100;
+					margin-top: -6px;
+					padding-top:14px;
+					vertical-align: middle;
 				}    
 				.icon{
 					min-width: 30px;
@@ -219,8 +226,8 @@ $brancoPadrao: #fff;
 				}
 				select{
 					font-size: 19px;
-    				font-weight: 100;
-    				max-width: 60%;
+					font-weight: 100;
+					max-width: 60%;
 				}
 			}
 			button{
@@ -235,59 +242,59 @@ $brancoPadrao: #fff;
 
 // CONTEUDO DO APP
 .brand{
-  display:block;
-  margin:20px auto 0;
+	display:block;
+	margin:20px auto 0;
 }
 
 hr{
 	border: none;
-    background-color: #f5f5f5;
-    height: 3px;
-    margin-top: 21px;
-    margin-bottom: 21px;
+	background-color: #f5f5f5;
+	height: 3px;
+	margin-top: 21px;
+	margin-bottom: 21px;
 }
 
 .text-link-login{
 	width: 100%;
-    display: block;
-    text-align: center;
-    margin-bottom: 22px;
-    margin-top: 18px;
+	display: block;
+	text-align: center;
+	margin-bottom: 22px;
+	margin-top: 18px;
 }
 
 .contentExpli{
 	border: none;
-    padding: 27px 22px 0 22px;
-    width: 100%;
-    margin-left: 0;
+	padding: 27px 22px 0 22px;
+	width: 100%;
+	margin-left: 0;
 	margin-top: 9px;
-    img:first-child{
-    	max-width: 203px;
-	    height: auto;
-	    max-height: none;
+	img:first-child{
+		max-width: 203px;
+		height: auto;
+		max-height: none;
 		margin-top: -12px;
-	    opacity: 0.2;
-    }
-    h2{
-    	@include padraoTextTit();
-    	font-size: 18px;
-    	white-space: normal;
-    	z-index: 2;
-    	position: relative;
-    	color: $vermelhoPadrao;    	
-    }
-    .nome-desc{
-    	font-size: 24px;
-    	margin-bottom: -3px;
-    }
-    p{
+		opacity: 0.2;
+	}
+	h2{
+		@include padraoTextTit();
+		font-size: 18px;
 		white-space: normal;
-	    font-size: 13px;
-	    line-height: 15px;
-	    color: $azulPadrao;
-	    font-weight: bold;
-	    padding-bottom: 4px;
-    }
+		z-index: 2;
+		position: relative;
+		color: $vermelhoPadrao;    	
+	}
+	.nome-desc{
+		font-size: 24px;
+		margin-bottom: -3px;
+	}
+	p{
+		white-space: normal;
+		font-size: 13px;
+		line-height: 15px;
+		color: $azulPadrao;
+		font-weight: bold;
+		padding-bottom: 4px;
+	}
 }
 .login-view{
 	text-align: center;
@@ -295,56 +302,56 @@ hr{
 	img,
 	img:first-child{
 		opacity: 1.0;
-    	text-align: center;
-    	left: 17%;
-    	position: static;
-    	margin: 0px auto 0px auto;
+		text-align: center;
+		left: 17%;
+		position: static;
+		margin: 0px auto 0px auto;
 	}
 	h2{
 		font-size: 24px;
-    	margin-top: 12px;
-    	margin-bottom: 20px!important;
+		margin-top: 12px;
+		margin-bottom: 20px!important;
 	}
 }
 .text-Padrao{
 	border: none;
-    padding: 0 22px 0 22px;
-    width: 100%;
-    margin-left: 0;
-    p{
+	padding: 0 22px 0 22px;
+	width: 100%;
+	margin-left: 0;
+	p{
 		font-size: 13px;
-	    line-height: 15px;
-	    color: $azulPadrao;
-	    font-weight: 400;
-    }
-    img{
-    	float:left;
-    	width: 52%;
-    }
-    h4{
-    	@include padraoTextTit();
-    	font-size: 18px;
-    	white-space: normal;
-    	z-index: 2;
-    	position: relative;
-    	color: $vermelhoPadrao;    	
-    }
+		line-height: 15px;
+		color: $azulPadrao;
+		font-weight: 400;
+	}
+	img{
+		float:left;
+		width: 52%;
+	}
+	h4{
+		@include padraoTextTit();
+		font-size: 18px;
+		white-space: normal;
+		z-index: 2;
+		position: relative;
+		color: $vermelhoPadrao;    	
+	}
 }
 .icon-padrao{
 	color: $azulClaroPadrao;
 	position: absolute;
-    left: 14px;
-    top: 12px;
-    font-size: 25px !important;
-    border: 1px solid;
-    border-radius: 30px;
-    max-width: 41px;
-    max-height: 41px;
-    height: 100%;
-    width: 100%;
-    padding-left: 4px;
-    padding-top: 0px;
-    margin-top: 5px;
+	left: 14px;
+	top: 12px;
+	font-size: 25px !important;
+	border: 1px solid;
+	border-radius: 30px;
+	max-width: 41px;
+	max-height: 41px;
+	height: 100%;
+	width: 100%;
+	padding-left: 4px;
+	padding-top: 0px;
+	margin-top: 5px;
 }
 .item-detail{
 	font-size: 16px;
@@ -365,9 +372,9 @@ hr{
 		color: $brancoPadrao;
 		@include padraoTextTit();
 		padding-top: 12px;
-    	padding-bottom: 13px;
-    	text-align: center;
-    	border-radius: 0px !important;
+		padding-bottom: 13px;
+		text-align: center;
+		border-radius: 0px !important;
 	}
 	.item{
 		border: none;
@@ -388,24 +395,24 @@ hr{
 			}
 			p{
 				font-size: 13px;
-	    		font-weight: 300;
-	    		margin-top: -7px;
-	    		color: $azulPadrao;
+				font-weight: 300;
+				margin-top: -7px;
+				color: $azulPadrao;
 			}
 			.IconLeft{
 				color: $azulClaroPadrao;
 				position: absolute;
-			    left: 14px;
-			    top: 12px;
-			    font-size: 29px;
-			    border: 1px solid;
-			    border-radius: 30px;
-			    max-width: 50px;
-			    max-height: 50px;
-			    height: 100%;
-			    width: 100%;
-			    padding-left: 11px;
-			    padding-top: 8px;
+				left: 14px;
+				top: 12px;
+				font-size: 29px;
+				border: 1px solid;
+				border-radius: 30px;
+				max-width: 50px;
+				max-height: 50px;
+				height: 100%;
+				width: 100%;
+				padding-left: 11px;
+				padding-top: 8px;
 			}
 			.ion-android-walk{
 				padding-left: 17px;				
@@ -463,8 +470,8 @@ hr{
 	.has-header, 
 	.content-limit{
 		width: 800px;
-    	margin-left: auto;
-    	margin-right: auto;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	.modal{
 		max-width: 800px;
@@ -477,15 +484,15 @@ hr{
 @media (min-width: 430px) {
 	.text-Padrao{
 		img{
-	    	width: 200px;
-	    }
+			width: 200px;
+		}
 	}
 }
 
 @media (min-width: 549px) {
 	.text-Padrao{
 		img{
-	    	width: 105px;
-	    }
+			width: 105px;
+		}
 	}
 }
