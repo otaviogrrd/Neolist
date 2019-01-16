@@ -1,4 +1,4 @@
-angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services','ngCordova'])
+angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services','ngCordova','ngIntlTelInput'])
 
 .run(function($ionicPlatform, GenericLocalDaoService, $rootScope) {
   $ionicPlatform.ready(function() {
@@ -23,9 +23,9 @@ angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services','ng
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, ngIntlTelInputProvider) {
   $ionicConfigProvider.backButton.text('');
-
+  ngIntlTelInputProvider.set({initialCountry: 'us'});
 
   $stateProvider
 

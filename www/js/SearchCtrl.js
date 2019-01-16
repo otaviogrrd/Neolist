@@ -29,8 +29,6 @@ appControllers.controller('SearchCtrl', function($scope,$rootScope, $http, Searc
           GenericLocalDaoService.save("contacts",response.data)
           $scope.list = response.data;
 
-        }else{
-          $scope.list = GenericLocalDaoService.get("contacts");
         }
       })
     }else{
@@ -50,7 +48,7 @@ appControllers.controller('SearchCtrl', function($scope,$rootScope, $http, Searc
     return rv;
   }
 
-  $scope.$on('$ionicView.beforeEnter', function(){
+  $scope.$on('$ionicView.afterEnter', function(){
     getData();
   })
 

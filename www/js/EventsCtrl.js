@@ -44,6 +44,7 @@ appControllers.controller('EventsCtrl', function($scope,$rootScope, $http, Gener
   }
 
   $scope.$on('$ionicView.beforeEnter', function(){
+    console.log('here before');
     getData();
   })
 });
