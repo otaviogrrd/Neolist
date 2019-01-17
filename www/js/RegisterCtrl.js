@@ -1,5 +1,4 @@
 appControllers.controller('RegisterCtrl', function($scope,$rootScope, $http, $state, $ionicPopup, $ionicHistory,  UserService, GenericLocalDaoService) {
-
 	$scope.register = {};
 	$scope.viewdata = {
 		categories: [{
@@ -63,9 +62,6 @@ appControllers.controller('RegisterCtrl', function($scope,$rootScope, $http, $st
 		countries:{}
 	}
 
-
-
-
 	$scope.countries = function() {
 		$http.get('./js/models/country.json').then(function(response) {
 			$scope.viewdata.countries = response.data;
@@ -74,7 +70,10 @@ appControllers.controller('RegisterCtrl', function($scope,$rootScope, $http, $st
 
 	$scope.countries();
 
+	$scope.register.phone = "5561996455276";
+
 	$scope.registerUser = function(form){
+
 		if (angular.isDefined(form) && !form.$valid) {
 			angular.forEach(form.$error.required, function (field) {
 				field.$setDirty();

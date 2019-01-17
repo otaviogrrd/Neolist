@@ -25,7 +25,11 @@ angular.module('neolist', ['ionic', 'neolist.controllers','neolist.services','ng
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, ngIntlTelInputProvider) {
   $ionicConfigProvider.backButton.text('');
-  ngIntlTelInputProvider.set({initialCountry: 'us'});
+  
+  ngIntlTelInputProvider.set({
+    initialCountry: 'us',
+    utilsScript: 'bower_components/intlpnIonic/js/utils.js'
+  });
 
   $stateProvider
 

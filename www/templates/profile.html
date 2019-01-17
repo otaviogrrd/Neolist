@@ -18,15 +18,6 @@
           </div>
         </label>
 
-        <label class="item item-input">
-          <input type="text" placeholder="Login" ng-model="user.login" name="login" required="" />
-          <div for="form.login.$error" ng-if="form.login.$valid == false && form.login.$touched  && form.login.$dirty">
-            <div ng-message-exp="['required']">
-              O login é um campo obrigatório
-            </div>
-          </div>
-        </label>
-
         <label class="item item-input item-select">
           <div class="input-label">
             Categorias
@@ -59,19 +50,15 @@
             </div>
           </div>
         </label>
-        <label class="item item-input">
-          <input type="text" placeholder="Telefone" ng-model="user.telefone" required="" name="phone" />
 
-          <div for="form.telefone.$error" ng-if="form.telefone.$valid == false && form.telefone.$touched  && form.telefone.$dirty">
-            <div ng-message-exp="['required']">
-              O Telefone é obrigatório
-            </div>
-          </div>
-        </label>
+        <input type="text" class="form-control" id="tel-dc" name="tel" ng-model="user.phone" ng-intl-tel-input data-default-country='br'>
+        <span class="help-block" ng-show="form.tel.$invalid && form.tel.$touched">Invalid :(</span>
+        <span class="help-block" ng-show="form.tel.$valid">Valid :)</span>
 
-        <label class="item item-input">
-          <input type="text" placeholder="Telefone" ng-model="user.telefone2" />
-        </label>
+
+        <input type="text" class="form-control" id="tel-dc" name="tel2" ng-model="user.telefone2" ng-intl-tel-input data-default-country='br'>
+        <span class="help-block" ng-show="form.tel2.$invalid && form.tel2.$touched">Invalid :(</span>
+        <span class="help-block" ng-show="form.tel2.$valid">Valid :)</span>
 
         <label class="item item-input item-select">
           <div class="input-label">
