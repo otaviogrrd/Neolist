@@ -68,20 +68,16 @@
             </div>
           </div>
         </label>
+        
 
-        <label class="item item-input">
-          <input type="number" placeholder="Telefone" ng-model="register.phone" required="" name="phone" />
+          <input type="text" class="form-control" id="tel-dc" name="tel" ng-model="register.phone" ng-intl-tel-input data-default-country='br'>
+          <span class="help-block" ng-show="form.tel.$invalid && form.tel.$touched">Invalid :(</span>
+          <span class="help-block" ng-show="form.tel.$valid">Valid :)</span>
 
-          <div for="form.phone.$error" ng-if="form.phone.$valid == false && form.phone.$touched  && form.phone.$dirty">
-            <div ng-message-exp="['required']">
-              O Telefone é obrigatório
-            </div>
-          </div>
-        </label>
 
-        <label class="item item-input">
-          <input type="number" placeholder="Telefone" ng-model="register.phone2" />
-        </label>
+          <input type="text" class="form-control" id="tel-dc" name="tel2" ng-model="register.telefone" ng-intl-tel-input data-default-country='br'>
+          <span class="help-block" ng-show="form.tel2.$invalid && form.tel2.$touched">Invalid :(</span>
+          <span class="help-block" ng-show="form.tel2.$valid">Valid :)</span>
 
         <label class="item item-input item-select">
           <div class="input-label">

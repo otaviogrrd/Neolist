@@ -87,6 +87,7 @@ appControllers
         GenericLocalDaoService.remove("contacts");
         GenericLocalDaoService.save("contacts",response.data)
       }
+      $state.go('app.search');
     })
   }
 

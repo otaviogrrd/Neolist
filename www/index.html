@@ -15,7 +15,8 @@
           .catch(err => console.log('Error', err));
       }
     </script>-->
-
+    
+    <link rel="stylesheet" href="bower_components/intl-tel-input/build/css/intlTelInput.css">
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -28,16 +29,24 @@
     -->
 
     <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="bower_components/ngCordova/dist/ng-cordova.min.js"></script>
+
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <script src="bower_components/underscore/underscore-min.js"></script>
-    <!-- <script src="bower_components/moment/min/locales.min.js"></script> -->
     <script src="bower_components/moment/min/moment-with-locales.js"></script>
+    
+    <script src="bower_components/intl-tel-input/build/js/intlTelInput.min.js"></script>
+    <script src="bower_components/intl-tel-input/build/js/utils.js"></script>
+    <script src="bower_components/ng-intl-tel-input/ng-intl-tel-input.module.js"></script>
+    <script src="bower_components/ng-intl-tel-input/ng-intl-tel-input.provider.js"></script>
+    <script src="bower_components/ng-intl-tel-input/ng-intl-tel-input.directive.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
