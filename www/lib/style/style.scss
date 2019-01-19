@@ -107,8 +107,7 @@
 }
 // -------------------------------
 
-// FORM DO APP    
-
+// FORM DO APP
 .card,
 .list-inset,
 .padding > .list{
@@ -175,8 +174,43 @@
 		font-size: 19px;
 		font-weight: 100;
 		margin-top: -6px;
-		padding-top:14px;
+		padding-top: 2px;
 		vertical-align: middle;
+		color: $azulPadrao;
+		&::-webkit-input-placeholder {
+		   color: #111;
+		}
+
+		&:-moz-placeholder {
+		   color: #111;
+		}
+
+		&::-moz-placeholder {
+		   color: #111;
+		}
+
+		&:-ms-input-placeholder {  
+		   color: #111;
+		}		
+	}
+	.help-block{
+		position: absolute;
+    	right: 10px;    	
+	    border-radius: 32px;
+	    font-size: 22px;
+	    padding: 0px 11px;
+	    font-weight: 500;
+	    background-color: #b6ffbb;
+	    color: #1b691e;
+	}
+	.inv{
+		color: #e00607;
+	    background-color: #fdcbc8;
+	}
+	.intl-tel-input.allow-dropdown{
+		.flag-container{
+			left: -5px;
+		}
 	}
 }
 .item-select{
@@ -208,7 +242,7 @@
 					font-size: 19px;
 					font-weight: 100;
 					margin-top: -6px;
-					padding-top:14px;
+					padding-top: 2px;
 					vertical-align: middle;
 				}    
 				.icon{
@@ -238,7 +272,6 @@
 	
 }
 // -------------------------------
-
 
 // CONTEUDO DO APP
 .brand{
@@ -335,6 +368,15 @@ hr{
 		z-index: 2;
 		position: relative;
 		color: $vermelhoPadrao;    	
+	}
+}
+.EventoVazio{
+	p{
+		font-size: 13px;
+	    line-height: 15px;
+	    color: $azulPadrao;
+	    font-weight: bold;
+	    padding-bottom: 4px;
 	}
 }
 .icon-padrao{
@@ -502,6 +544,27 @@ hr{
 
 
 // MEDIA QUERIES PARA AJUSTAR TAMANHO PARA GRANDES WIDTH
+
+// Retina 
+@media only screen and (-webkit-min-device-pixel-ratio: 2){
+	.cardForm{
+		.item-text-wrap{
+			.list{			
+				.item-input{
+					input{
+						padding-top: 5px;
+					}
+				}
+			}
+		}
+	}
+	.item-input{	
+		input{
+			padding-top: 5px;
+		}
+	}
+}
+
 @media (min-width: 800px) {
 	.has-header, 
 	.content-limit{

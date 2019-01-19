@@ -68,17 +68,16 @@
             </div>
           </div>
         </label>
-        
-
-          <input type="text" class="form-control" id="tel-dc" name="tel" ng-model="register.phone" ng-intl-tel-input data-default-country='br'>
-          <span class="help-block" ng-show="form.tel.$invalid && form.tel.$touched">Invalid :(</span>
-          <span class="help-block" ng-show="form.tel.$valid">Valid :)</span>
-
-
+        <div class="item item-input">          
+          <input type="text" class="form-control" id="tel-dc" name="tel" ng-model="register.phone" ng-intl-tel-input data-default-country='br' />
+          <span class="help-block inv" ng-show="form.tel.$invalid && form.tel.$touched"><i class="ion-android-alert"></i></span>
+          <span class="help-block" ng-show="form.tel.$valid"><i class="ion-android-done"></i></span>
+        </div>
+        <div class="item item-input">
           <input type="text" class="form-control" id="tel-dc" name="tel2" ng-model="register.telefone" ng-intl-tel-input data-default-country='br'>
-          <span class="help-block" ng-show="form.tel2.$invalid && form.tel2.$touched">Invalid :(</span>
-          <span class="help-block" ng-show="form.tel2.$valid">Valid :)</span>
-
+          <span class="help-block inv" ng-show="form.tel2.$invalid && form.tel2.$touched"><i class="ion-android-alert"></i></span>
+          <span class="help-block" ng-show="form.tel2.$valid"><i class="ion-android-done"></i></span>
+        </div>
         <label class="item item-input item-select">
           <div class="input-label">
             Pais
@@ -86,10 +85,7 @@
           <select ng-model="register.country">
             <option ng-repeat="item in viewdata.countries" value="{{item.sigla}}">{{item.nome_pais}}</option>
           </select>
-        </label>
-
-
-        
+        </label>       
 
         <label class="item item-input">
           <input type="text" placeholder="Estado" ng-model="register.state" required="" name="state" />
